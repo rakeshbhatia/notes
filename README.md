@@ -5,6 +5,7 @@ I am a data scientist who is fascinated with solving challenging problems involv
 
 > **_Python_**
 > - [For Loops](https://rakeshbhatia.github.io/notes/python/basics/for_loops)
+> - [If Else](https://rakeshbhatia.github.io/notes/python/basics/if_else)
 > - [List Comprehensions](https://rakeshbhatia.github.io/notes/python/basics/list_comprehensions)
 
 > **_Web Scraping_**
@@ -15,3 +16,4 @@ I am a data scientist who is fascinated with solving challenging problems involv
 > - [Fixing Assumptions](https://rakeshbhatia.github.io/notes/thinkful/fixing_assumptions)
 > - [Analysis of Boston House Prices](https://rakeshbhatia.github.io/notes/thinkful/analysis_of_boston_house_prices)
 > - [In Sample Evaluation and Cross Validation](https://rakeshbhatia.github.io/notes/thinkful/in_sample_evaluation_and_cross_validation)
+
