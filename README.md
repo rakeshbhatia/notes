@@ -4,9 +4,10 @@
 I am a data scientist who is fascinated with solving challenging problems involving data across numerous fields. Check out my technical notes on python and data science below!
 
 > **_Python_**
-> - [For Loops](https://rakeshbhatia.github.io/notes/python/basics/for_loops)
-> - [If Else](https://rakeshbhatia.github.io/notes/python/basics/if_else)
-> - [List Comprehensions](https://rakeshbhatia.github.io/notes/python/basics/list_comprehensions)
+> - [If Else](https://rakeshbhatia.github.io/notes/python/if_else)
+> - [For Loops](https://rakeshbhatia.github.io/notes/python/for_loops)
+> - [Dictionaries](https://rakeshbhatia.github.io/notes/python/dictionaries)
+> - [List Comprehensions](https://rakeshbhatia.github.io/notes/python/list_comprehensions)
 
 > **_Web Scraping_**
 > - [Scraping NBA Player Data](https://rakeshbhatia.github.io/notes/web_scraping/scraping_nba_player_data)
