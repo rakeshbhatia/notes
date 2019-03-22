@@ -5,7 +5,7 @@ I am a data scientist who is fascinated with solving challenging problems involv
 
 > **_Python_**
 > - [If Else](https://rakeshbhatia.github.io/notes/python/if_else)
-> - [For Loops](https://rakeshbhatia.github.io/notes/python/for_loops)
+> - [Loops](https://rakeshbhatia.github.io/notes/python/loops)
 > - [Dictionaries](https://rakeshbhatia.github.io/notes/python/dictionaries)
 > - [List Comprehensions](https://rakeshbhatia.github.io/notes/python/list_comprehensions)
 
