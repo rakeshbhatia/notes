@@ -6,6 +6,7 @@ I am a data scientist who is fascinated with solving challenging data-oriented p
 > **_Python_**
 > - [If Else](https://rakeshbhatia.github.io/notes/python/if_else)
 > - [Loops](https://rakeshbhatia.github.io/notes/python/loops)
+> - [Sets](https://rakeshbhatia.github.io/notes/python/sets)
 > - [Dictionaries](https://rakeshbhatia.github.io/notes/python/dictionaries)
 > - [Linked Lists](https://rakeshbhatia.github.io/notes/python/linked_lists)
 > - [List Comprehensions](https://rakeshbhatia.github.io/notes/python/list_comprehensions)
