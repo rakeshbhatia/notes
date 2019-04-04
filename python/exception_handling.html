@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>list_comprehension</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>exception_handling</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11778,7 +11778,8 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="List-Comprehension"><strong>List Comprehension</strong><a class="anchor-link" href="#List-Comprehension">&#182;</a></h1>
+<h1 id="Exception-Handling">Exception Handling<a class="anchor-link" href="#Exception-Handling">&#182;</a></h1><p>03 April 2019</p>
+
 </div>
 </div>
 </div>
@@ -11787,7 +11788,12 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="One-Dimensional-List-Comprehension"><strong>One-Dimensional List Comprehension</strong><a class="anchor-link" href="#One-Dimensional-List-Comprehension">&#182;</a></h2>
+<h2 id="Try-and-Except">Try and Except<a class="anchor-link" href="#Try-and-Except">&#182;</a></h2><ul>
+<li>Exception: a Python object representing an error</li>
+<li>To defend the program, suspicious code that may raise an exception can be placed in a <code>try</code> block</li>
+<li>After the <code>try</code> block, include an <code>except</code> block to handle the problem elegantly, i.e. print an error message</li>
+</ul>
+
 </div>
 </div>
 </div>
@@ -11796,36 +11802,21 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's demonstrate the difference between for loops and list comprehensions in Python. A list comprehension can be used to generate lists in a single line of code, without the need for explicit loops (although it technically still uses loops "under the hood." First, we will create an empty list and create a simple list of all even integers between 0 and 20.</p>
-
+<h3 id="Try-to-add-a-string-and-int">Try to add a <code>string</code> and <code>int</code><a class="anchor-link" href="#Try-to-add-a-string-and-int">&#182;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create empty list</span>
-<span class="n">my_list</span> <span class="o">=</span> <span class="p">[]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[42]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Add all even numbers from 0 to 20 to the list</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="c1"># Do your main operations here</span>
+    <span class="s1">&#39;word&#39;</span> <span class="o">+</span> <span class="mi">50</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="c1"># If an exception occurs, print an error message</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error: &#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -11840,7 +11831,7 @@ div#notebook {
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+<pre>Error:  must be str, not int
 </pre>
 </div>
 </div>
@@ -11854,20 +11845,27 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now, let's use a list comprehension to do the same thing. Noting the differences between the two methods will give you an idea of how to use simple list comprehensions.</p>
+<h2 id="Finally">Finally<a class="anchor-link" href="#Finally">&#182;</a></h2><ul>
+<li>A <code>finally</code> block can be used together with <code>try</code> and <code>except</code> blocks</li>
+<li>It contains any code that must execute no matter what, even if an exception was raised</li>
+</ul>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Now create the same list in one line</span>
-<span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="c1"># Do your main operations here</span>
+    <span class="s1">&#39;word&#39;</span> <span class="o">+</span> <span class="mi">50</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="c1"># If an exception occurs, print an error message</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error: &#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Operation finished.&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -11882,7 +11880,8 @@ div#notebook {
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+<pre>Error:  must be str, not int
+Operation finished.
 </pre>
 </div>
 </div>
@@ -11890,95 +11889,6 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>We eliminated three lines of code using the list comprehension.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Two-Dimensional-List-Comprehension"><strong>Two-Dimensional List Comprehension</strong><a class="anchor-link" href="#Two-Dimensional-List-Comprehension">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's try a slightly more complicated list comprehension to create a matrix, or 2D array. This will essentially achieve the same result as using the double-nested for loop below.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create empty list</span>
-<span class="n">my_list</span> <span class="o">=</span> <span class="p">[]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[45]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Add all even numbers from 0 to 10 to the list</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
-    <span class="n">temp_list</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
-        <span class="n">temp_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
-    <span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_list</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt"></div>
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>We can see that our result is a matrix, or 2-dimensional array, i.e. list of lists.</p>
-
-</div>
-</div>
 </div>
     </div>
   </div>
