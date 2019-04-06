@@ -14,6 +14,7 @@ I am a data scientist who is fascinated with solving challenging data-oriented p
 
 
 > **_Web Scraping_**
+> - [Beautiful Soup Basics](https://rakeshbhatia.github.io/notes/web_scraping/beautiful_soup_basics)
 > - [Historical OHLC Stock Price Scraper](https://rakeshbhatia.github.io/notes/web_scraping/historical_ohlc_stock_price_scraper)
 
 >**_Thinkful Data Science_**
