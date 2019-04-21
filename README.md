@@ -12,10 +12,10 @@ I am a data scientist who is fascinated with solving challenging data-oriented p
 > - [List Comprehensions](https://rakeshbhatia.github.io/notes/python/list_comprehensions)
 > - [Exception Handling](https://rakeshbhatia.github.io/notes/python/exception_handling)
 
-
 > **_Web Scraping_**
 > - [Beautiful Soup Basics](https://rakeshbhatia.github.io/notes/web_scraping/beautiful_soup_basics)
-> - [Historical OHLC Stock Price Scraper](https://rakeshbhatia.github.io/notes/web_scraping/historical_ohlc_stock_price_scraper)
+> - [Scrape Historical OHLC Stock Prices](https://rakeshbhatia.github.io/notes/web_scraping/historical_ohlc_stock_price_scraper)
+> - [Scrape Fanduel NBA Player Stats](https://rakeshbhatia.github.io/notes/web_scraping/scrape_fanduel_nba_player_stats_with_scrapy)
 
 >**_Thinkful Data Science_**
 > - [Preparing Data](https://rakeshbhatia.github.io/notes/thinkful/preparing_data)
