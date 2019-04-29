@@ -16,6 +16,7 @@ I am a data scientist who is fascinated with solving challenging data-oriented p
 > - [Beautiful Soup Basics](https://rakeshbhatia.github.io/notes/content/web_scraping/beautiful_soup_basics)
 > - [Scrape Historical OHLC Stock Prices](https://rakeshbhatia.github.io/notes/content/web_scraping/historical_ohlc_stock_price_scraper)
 > - [Scrape Fanduel NBA Player Stats with Scrapy](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_fanduel_nba_player_stats_with_scrapy)
+> - [Scrapy Basics](https://rakeshbhatia.github.io/notes/content/web_scraping/scrapy_basics)
 
 >**_Thinkful Data Science_**
 > - [Preparing Data](https://rakeshbhatia.github.io/notes/content/thinkful/preparing_data)
