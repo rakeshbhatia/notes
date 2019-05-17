@@ -14,11 +14,11 @@ I am a data scientist who is fascinated with solving challenging data-oriented p
 > - [Dictionaries](https://rakeshbhatia.github.io/notes/content/python/dictionaries)
 
 > **_Web Scraping_**
-> - [Scrape Fanduel Nba Player Stats With Scrapy](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_fanduel_nba_player_stats_with_scrapy)
-> - [Beautiful Soup Basics](https://rakeshbhatia.github.io/notes/content/web_scraping/beautiful_soup_basics)
-> - [Scrape NBA Player RPM Stats From ESPN with lxml](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_nba_player_rpm_stats_from_espn_with_lxml)
 > - [Scrapy Basics](https://rakeshbhatia.github.io/notes/content/web_scraping/scrapy_basics)
+> - [Beautiful Soup Basics](https://rakeshbhatia.github.io/notes/content/web_scraping/beautiful_soup_basics)
 > - [Scrape Historical Ohlc Stock Prices](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_historical_ohlc_stock_prices)
+> - [Scrape Fanduel Nba Player Stats With Scrapy](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_fanduel_nba_player_stats_with_scrapy)
+> - [Scrape NBA Player RPM Stats From ESPN with lxml](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_nba_player_rpm_stats_from_espn_with_lxml)
 
 > **_Data Engineering_**
 > - [Plotting Current and Gain Distributions With Matplotlib](https://rakeshbhatia.github.io/notes/content/data_engineering/plotting_current_and_gain_distributions_with_matplotlib)
