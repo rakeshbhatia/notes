@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="utf-8" />
+<head><meta charset="utf-8">
 <title>sets</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
@@ -11778,7 +11778,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Sets">Sets<a class="anchor-link" href="#Sets">&#182;</a></h1><h2 id="Basics">Basics<a class="anchor-link" href="#Basics">&#182;</a></h2><ul>
+<h1 id="Sets">Sets<a class="anchor-link" href="#Sets">¶</a></h1><h2 id="Basics">Basics<a class="anchor-link" href="#Basics">¶</a></h2><ul>
 <li>A set is an unordered collection with no duplicate elements</li>
 <li>Uses: membership testing, eliminating duplicate entries</li>
 <li>A set can be initialized using curly braces or the <code>set()</code> function<ul>
@@ -11790,16 +11790,16 @@ div#notebook {
 </ul>
 </li>
 </ul>
-<h3 id="Create-a-set-using-curly-braces">Create a set using curly braces<a class="anchor-link" href="#Create-a-set-using-curly-braces">&#182;</a></h3>
+<h3 id="Create-a-set-using-curly-braces">Create a set using curly braces<a class="anchor-link" href="#Create-a-set-using-curly-braces">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pets</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;parrot&#39;</span><span class="p">,</span> <span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="s1">&#39;rabbit&#39;</span><span class="p">,</span> <span class="s1">&#39;hamster&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">}</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pets</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'dog'</span><span class="p">,</span> <span class="s1">'cat'</span><span class="p">,</span> <span class="s1">'parrot'</span><span class="p">,</span> <span class="s1">'cat'</span><span class="p">,</span> <span class="s1">'dog'</span><span class="p">,</span> <span class="s1">'rabbit'</span><span class="p">,</span> <span class="s1">'hamster'</span><span class="p">,</span> <span class="s1">'dog'</span><span class="p">}</span>
 
 <span class="c1"># Confirm that duplicates are removed</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pets</span><span class="p">)</span>
@@ -11817,7 +11817,7 @@ div#notebook {
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>{&#39;parrot&#39;, &#39;hamster&#39;, &#39;dog&#39;, &#39;cat&#39;, &#39;rabbit&#39;}
+<pre>{'parrot', 'hamster', 'dog', 'cat', 'rabbit'}
 </pre>
 </div>
 </div>
@@ -11831,17 +11831,17 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Set-Operations">Set Operations<a class="anchor-link" href="#Set-Operations">&#182;</a></h2><h3 id="Create-sets-from-two-words">Create sets from two words<a class="anchor-link" href="#Create-sets-from-two-words">&#182;</a></h3>
+<h2 id="Set-Operations">Set Operations<a class="anchor-link" href="#Set-Operations">¶</a></h2><h3 id="Create-sets-from-two-words">Create sets from two words<a class="anchor-link" href="#Create-sets-from-two-words">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s1">&#39;calcariferous&#39;</span><span class="p">)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s1">&#39;demagogue&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s1">'calcariferous'</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s1">'demagogue'</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -11854,13 +11854,13 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Unique-letters-in-a">Unique letters in a<a class="anchor-link" href="#Unique-letters-in-a">&#182;</a></h3>
+<h3 id="Unique-letters-in-a">Unique letters in a<a class="anchor-link" href="#Unique-letters-in-a">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span>
@@ -11880,7 +11880,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;a&#39;, &#39;c&#39;, &#39;e&#39;, &#39;f&#39;, &#39;i&#39;, &#39;l&#39;, &#39;o&#39;, &#39;r&#39;, &#39;s&#39;, &#39;u&#39;}</pre>
+<pre>{'a', 'c', 'e', 'f', 'i', 'l', 'o', 'r', 's', 'u'}</pre>
 </div>
 
 </div>
@@ -11894,13 +11894,13 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Unique-letters-in-b">Unique letters in b<a class="anchor-link" href="#Unique-letters-in-b">&#182;</a></h3>
+<h3 id="Unique-letters-in-b">Unique letters in b<a class="anchor-link" href="#Unique-letters-in-b">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">b</span>
@@ -11920,7 +11920,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;a&#39;, &#39;d&#39;, &#39;e&#39;, &#39;g&#39;, &#39;m&#39;, &#39;o&#39;, &#39;u&#39;}</pre>
+<pre>{'a', 'd', 'e', 'g', 'm', 'o', 'u'}</pre>
 </div>
 
 </div>
@@ -11934,13 +11934,13 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Letters-in-a-but-not-in-b">Letters in a but not in b<a class="anchor-link" href="#Letters-in-a-but-not-in-b">&#182;</a></h3>
+<h3 id="Letters-in-a-but-not-in-b">Letters in a but not in b<a class="anchor-link" href="#Letters-in-a-but-not-in-b">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In [16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
@@ -11960,7 +11960,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;c&#39;, &#39;f&#39;, &#39;i&#39;, &#39;l&#39;, &#39;r&#39;, &#39;s&#39;}</pre>
+<pre>{'c', 'f', 'i', 'l', 'r', 's'}</pre>
 </div>
 
 </div>
@@ -11974,13 +11974,13 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Letters-in-a-or-b-or-both">Letters in a or b or both<a class="anchor-link" href="#Letters-in-a-or-b-or-both">&#182;</a></h3>
+<h3 id="Letters-in-a-or-b-or-both">Letters in a or b or both<a class="anchor-link" href="#Letters-in-a-or-b-or-both">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">|</span> <span class="n">b</span>
@@ -12000,7 +12000,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;a&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;, &#39;g&#39;, &#39;i&#39;, &#39;l&#39;, &#39;m&#39;, &#39;o&#39;, &#39;r&#39;, &#39;s&#39;, &#39;u&#39;}</pre>
+<pre>{'a', 'c', 'd', 'e', 'f', 'g', 'i', 'l', 'm', 'o', 'r', 's', 'u'}</pre>
 </div>
 
 </div>
@@ -12014,13 +12014,13 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Letters-in-both-a-and-b">Letters in both a and b<a class="anchor-link" href="#Letters-in-both-a-and-b">&#182;</a></h3>
+<h3 id="Letters-in-both-a-and-b">Letters in both a and b<a class="anchor-link" href="#Letters-in-both-a-and-b">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In [18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span>
@@ -12040,7 +12040,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;a&#39;, &#39;e&#39;, &#39;o&#39;, &#39;u&#39;}</pre>
+<pre>{'a', 'e', 'o', 'u'}</pre>
 </div>
 
 </div>
@@ -12054,13 +12054,13 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Letters-in-a-or-b-but-not-both">Letters in a or b but not both<a class="anchor-link" href="#Letters-in-a-or-b-but-not-both">&#182;</a></h3>
+<h3 id="Letters-in-a-or-b-but-not-both">Letters in a or b but not both<a class="anchor-link" href="#Letters-in-a-or-b-but-not-both">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In [19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">^</span> <span class="n">b</span>
@@ -12080,7 +12080,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;c&#39;, &#39;d&#39;, &#39;f&#39;, &#39;g&#39;, &#39;i&#39;, &#39;l&#39;, &#39;m&#39;, &#39;r&#39;, &#39;s&#39;}</pre>
+<pre>{'c', 'd', 'f', 'g', 'i', 'l', 'm', 'r', 's'}</pre>
 </div>
 
 </div>

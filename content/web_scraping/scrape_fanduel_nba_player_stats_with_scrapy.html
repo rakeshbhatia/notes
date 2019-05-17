@@ -12037,11 +12037,11 @@ div#notebook {
 
 <span class="c1"># Pass in settings</span>
 <span class="n">process</span> <span class="o">=</span> <span class="n">CrawlerProcess</span><span class="p">({</span>
-    <span class="s1">'FEED_FORMAT'</span><span class="p">:</span> <span class="s1">'json'</span><span class="p">,</span>           <span class="c1"># Save our data as json</span>
-    <span class="s1">'FEED_URI'</span><span class="p">:</span> <span class="s1">'nba_fd_stats.json'</span><span class="p">,</span> <span class="c1"># Specify the json output file</span>
-    <span class="s1">'DEPTH_LIMIT'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>                <span class="c1"># Only traverse three links</span>
-    <span class="s1">'DOWNLOAD_DELAY'</span><span class="p">:</span> <span class="mf">0.50</span><span class="p">,</span>          <span class="c1"># Set a delay of 0.5 seconds</span>
-    <span class="s1">'LOG_ENABLED'</span><span class="p">:</span> <span class="kc">False</span>             <span class="c1"># For debugging, change this to true</span>
+    <span class="s1">'FEED_FORMAT'</span><span class="p">:</span> <span class="s1">'json'</span><span class="p">,</span>                 <span class="c1"># Save our data as json</span>
+    <span class="s1">'FEED_URI'</span><span class="p">:</span> <span class="s1">'nba_fanduel_stats.json'</span><span class="p">,</span>  <span class="c1"># Specify the json output file</span>
+    <span class="s1">'DEPTH_LIMIT'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>                      <span class="c1"># Only traverse three links</span>
+    <span class="s1">'DOWNLOAD_DELAY'</span><span class="p">:</span> <span class="mf">0.50</span><span class="p">,</span>                <span class="c1"># Set a delay of 0.5 seconds</span>
+    <span class="s1">'LOG_ENABLED'</span><span class="p">:</span> <span class="kc">False</span>                   <span class="c1"># For debugging, change this to true</span>
 <span class="p">})</span>
 </pre></div>
 
@@ -12075,9 +12075,9 @@ div#notebook {
 <span class="kn">from</span> <span class="nn">scrapy.crawler</span> <span class="k">import</span> <span class="n">CrawlerProcess</span>
 
 <span class="c1"># Create a new spider class</span>
-<span class="k">class</span> <span class="nc">DFSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">RotoSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
     <span class="c1"># Name our spider</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="s2">"DFS"</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">"RS"</span>
     
     <span class="c1"># URL(s) to start with.</span>
     <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span>
@@ -12121,11 +12121,11 @@ div#notebook {
         
 <span class="c1"># Pass in settings</span>
 <span class="n">process</span> <span class="o">=</span> <span class="n">CrawlerProcess</span><span class="p">({</span>
-    <span class="s1">'FEED_FORMAT'</span><span class="p">:</span> <span class="s1">'json'</span><span class="p">,</span>           <span class="c1"># Save our data as json</span>
-    <span class="s1">'FEED_URI'</span><span class="p">:</span> <span class="s1">'nba_fd_stats.json'</span><span class="p">,</span> <span class="c1"># Specify the json output file</span>
-    <span class="s1">'DEPTH_LIMIT'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>                <span class="c1"># Only traverse three links</span>
-    <span class="s1">'DOWNLOAD_DELAY'</span><span class="p">:</span> <span class="mf">0.50</span><span class="p">,</span>          <span class="c1"># Set a delay of 0.5 seconds</span>
-    <span class="s1">'LOG_ENABLED'</span><span class="p">:</span> <span class="kc">False</span>             <span class="c1"># For debugging, change this to true</span>
+    <span class="s1">'FEED_FORMAT'</span><span class="p">:</span> <span class="s1">'json'</span><span class="p">,</span>                 <span class="c1"># Save our data as json</span>
+    <span class="s1">'FEED_URI'</span><span class="p">:</span> <span class="s1">'nba_fanduel_stats.json'</span><span class="p">,</span>  <span class="c1"># Specify the json output file</span>
+    <span class="s1">'DEPTH_LIMIT'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>                      <span class="c1"># Only traverse three links</span>
+    <span class="s1">'DOWNLOAD_DELAY'</span><span class="p">:</span> <span class="mf">0.50</span><span class="p">,</span>                <span class="c1"># Set a delay of 0.5 seconds</span>
+    <span class="s1">'LOG_ENABLED'</span><span class="p">:</span> <span class="kc">False</span>                   <span class="c1"># For debugging, change this to true</span>
 <span class="p">})</span>
 </pre></div>
 
@@ -12149,7 +12149,7 @@ div#notebook {
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Start the crawler</span>
-<span class="n">process</span><span class="o">.</span><span class="n">crawl</span><span class="p">(</span><span class="n">DFSpider</span><span class="p">)</span>
+<span class="n">process</span><span class="o">.</span><span class="n">crawl</span><span class="p">(</span><span class="n">RotoSpider</span><span class="p">)</span>
 <span class="n">process</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'Scraping completed.'</span><span class="p">)</span>
 </pre></div>
@@ -12193,9 +12193,9 @@ Scraping completed.
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nba_fd_stats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s1">'nba_fd_stats.json'</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">'records'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Number of rows: </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nba_fd_stats</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">nba_fd_stats</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nba_fanduel_stats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s1">'nba_fanduel_stats.json'</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">'records'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Number of rows: </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nba_fanduel_stats</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nba_fanduel_stats</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 
 </div>

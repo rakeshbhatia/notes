@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="utf-8" />
+<head><meta charset="utf-8">
 <title>dictionaries</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
@@ -11778,7 +11778,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Dictionaries">Dictionaries<a class="anchor-link" href="#Dictionaries">&#182;</a></h1><h2 id="Fundamentals">Fundamentals<a class="anchor-link" href="#Fundamentals">&#182;</a></h2><ul>
+<h1 id="Dictionaries">Dictionaries<a class="anchor-link" href="#Dictionaries">¶</a></h1><h2 id="Fundamentals">Fundamentals<a class="anchor-link" href="#Fundamentals">¶</a></h2><ul>
 <li>A python dictionary represents a mapping between key-value pairs</li>
 <li>Key-value pairs can represent any combination of valid python objects</li>
 <li>Dictionaries are mutable, i.e. they can be modified </li>
@@ -11792,16 +11792,16 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Build-a-dictionary-using-brackets">Build a dictionary using brackets<a class="anchor-link" href="#Build-a-dictionary-using-brackets">&#182;</a></h2>
+<h2 id="Build-a-dictionary-using-brackets">Build a dictionary using brackets<a class="anchor-link" href="#Build-a-dictionary-using-brackets">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="prompt input_prompt">In [43]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_car</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;make&#39;</span><span class="p">:</span> <span class="s1">&#39;Nissan&#39;</span><span class="p">,</span> <span class="s1">&#39;model&#39;</span><span class="p">:</span> <span class="s1">&#39;Altima&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="mi">2010</span><span class="p">}</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_car</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'make'</span><span class="p">:</span> <span class="s1">'Nissan'</span><span class="p">,</span> <span class="s1">'model'</span><span class="p">:</span> <span class="s1">'Altima'</span><span class="p">,</span> <span class="s1">'year'</span><span class="p">:</span> <span class="mi">2010</span><span class="p">}</span>
 </pre></div>
 
 </div>
@@ -11814,13 +11814,13 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="View-the-dictionary">View the dictionary<a class="anchor-link" href="#View-the-dictionary">&#182;</a></h3>
+<h3 id="View-the-dictionary">View the dictionary<a class="anchor-link" href="#View-the-dictionary">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="prompt input_prompt">In [44]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_car</span>
@@ -11840,7 +11840,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;make&#39;: &#39;Nissan&#39;, &#39;model&#39;: &#39;Altima&#39;, &#39;year&#39;: 2010}</pre>
+<pre>{'make': 'Nissan', 'model': 'Altima', 'year': 2010}</pre>
 </div>
 
 </div>
@@ -11854,7 +11854,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Iterate-through-the-dictionary">Iterate through the dictionary<a class="anchor-link" href="#Iterate-through-the-dictionary">&#182;</a></h3><ul>
+<h3 id="Iterate-through-the-dictionary">Iterate through the dictionary<a class="anchor-link" href="#Iterate-through-the-dictionary">¶</a></h3><ul>
 <li>Corresponding key and value can be retrieved simultaneously using <code>items()</code> method</li>
 </ul>
 
@@ -11863,11 +11863,11 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="prompt input_prompt">In [45]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">my_car</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;My car</span><span class="se">\&#39;</span><span class="s1">s &#39;</span> <span class="o">+</span> <span class="n">key</span> <span class="o">+</span> <span class="s1">&#39; is: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'My car</span><span class="se">\'</span><span class="s1">s '</span> <span class="o">+</span> <span class="n">key</span> <span class="o">+</span> <span class="s1">' is: '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -11882,9 +11882,9 @@ div#notebook {
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>My car&#39;s make is: Nissan
-My car&#39;s model is: Altima
-My car&#39;s year is: 2010
+<pre>My car's make is: Nissan
+My car's model is: Altima
+My car's year is: 2010
 </pre>
 </div>
 </div>
@@ -11898,19 +11898,19 @@ My car&#39;s year is: 2010
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Build-a-dictionary-using-keys">Build a dictionary using keys<a class="anchor-link" href="#Build-a-dictionary-using-keys">&#182;</a></h2>
+<h2 id="Build-a-dictionary-using-keys">Build a dictionary using keys<a class="anchor-link" href="#Build-a-dictionary-using-keys">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[46]:</div>
+<div class="prompt input_prompt">In [46]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_car</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="n">my_car</span><span class="p">[</span><span class="s1">&#39;make&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Toyota&#39;</span>
-<span class="n">my_car</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Camry&#39;</span>
-<span class="n">my_car</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2005</span>
+<span class="n">my_car</span><span class="p">[</span><span class="s1">'make'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Toyota'</span>
+<span class="n">my_car</span><span class="p">[</span><span class="s1">'model'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Camry'</span>
+<span class="n">my_car</span><span class="p">[</span><span class="s1">'year'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2005</span>
 </pre></div>
 
 </div>
@@ -11923,13 +11923,13 @@ My car&#39;s year is: 2010
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="View-the-dictionary">View the dictionary<a class="anchor-link" href="#View-the-dictionary">&#182;</a></h3>
+<h3 id="View-the-dictionary">View the dictionary<a class="anchor-link" href="#View-the-dictionary">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="prompt input_prompt">In [47]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_car</span>
@@ -11949,7 +11949,7 @@ My car&#39;s year is: 2010
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;make&#39;: &#39;Toyota&#39;, &#39;model&#39;: &#39;Camry&#39;, &#39;year&#39;: 2005}</pre>
+<pre>{'make': 'Toyota', 'model': 'Camry', 'year': 2005}</pre>
 </div>
 
 </div>
@@ -11963,16 +11963,16 @@ My car&#39;s year is: 2010
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Build-a-nested-dictionary-using-brackets">Build a nested dictionary using brackets<a class="anchor-link" href="#Build-a-nested-dictionary-using-brackets">&#182;</a></h2>
+<h2 id="Build-a-nested-dictionary-using-brackets">Build a nested dictionary using brackets<a class="anchor-link" href="#Build-a-nested-dictionary-using-brackets">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[48]:</div>
+<div class="prompt input_prompt">In [48]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_cars</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;make&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Nissan&#39;</span><span class="p">,</span> <span class="s1">&#39;Toyota&#39;</span><span class="p">],</span> <span class="s1">&#39;model&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Altima&#39;</span><span class="p">,</span> <span class="s1">&#39;Camry&#39;</span><span class="p">],</span> <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2005</span><span class="p">,</span> <span class="mi">2010</span><span class="p">]}</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_cars</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'make'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Nissan'</span><span class="p">,</span> <span class="s1">'Toyota'</span><span class="p">],</span> <span class="s1">'model'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Altima'</span><span class="p">,</span> <span class="s1">'Camry'</span><span class="p">],</span> <span class="s1">'year'</span><span class="p">:</span> <span class="p">[</span><span class="mi">2005</span><span class="p">,</span> <span class="mi">2010</span><span class="p">]}</span>
 </pre></div>
 
 </div>
@@ -11985,13 +11985,13 @@ My car&#39;s year is: 2010
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="View-the-dictionary">View the dictionary<a class="anchor-link" href="#View-the-dictionary">&#182;</a></h3>
+<h3 id="View-the-dictionary">View the dictionary<a class="anchor-link" href="#View-the-dictionary">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="prompt input_prompt">In [49]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_cars</span>
@@ -12011,9 +12011,9 @@ My car&#39;s year is: 2010
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;make&#39;: [&#39;Nissan&#39;, &#39;Toyota&#39;],
- &#39;model&#39;: [&#39;Altima&#39;, &#39;Camry&#39;],
- &#39;year&#39;: [2005, 2010]}</pre>
+<pre>{'make': ['Nissan', 'Toyota'],
+ 'model': ['Altima', 'Camry'],
+ 'year': [2005, 2010]}</pre>
 </div>
 
 </div>
@@ -12027,16 +12027,16 @@ My car&#39;s year is: 2010
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Index-the-first-item-of-the-list-nested-in-the-'year'-key">Index the first item of the list nested in the 'year' key<a class="anchor-link" href="#Index-the-first-item-of-the-list-nested-in-the-'year'-key">&#182;</a></h3>
+<h3 id="Index-the-first-item-of-the-list-nested-in-the-'year'-key">Index the first item of the list nested in the 'year' key<a class="anchor-link" href="#Index-the-first-item-of-the-list-nested-in-the-'year'-key">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="prompt input_prompt">In [50]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_cars</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_cars</span><span class="p">[</span><span class="s1">'year'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -12067,16 +12067,16 @@ My car&#39;s year is: 2010
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Remove-a-list-element-at-a-particular-key">Remove a list element at a particular key<a class="anchor-link" href="#Remove-a-list-element-at-a-particular-key">&#182;</a></h3>
+<h3 id="Remove-a-list-element-at-a-particular-key">Remove a list element at a particular key<a class="anchor-link" href="#Remove-a-list-element-at-a-particular-key">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[51]:</div>
+<div class="prompt input_prompt">In [51]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">del</span> <span class="n">my_cars</span><span class="p">[</span><span class="s1">&#39;make&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">del</span> <span class="n">my_cars</span><span class="p">[</span><span class="s1">'make'</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -12089,13 +12089,13 @@ My car&#39;s year is: 2010
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="View-the-modified-dictionary">View the modified dictionary<a class="anchor-link" href="#View-the-modified-dictionary">&#182;</a></h3>
+<h3 id="View-the-modified-dictionary">View the modified dictionary<a class="anchor-link" href="#View-the-modified-dictionary">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[52]:</div>
+<div class="prompt input_prompt">In [52]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_cars</span>
@@ -12115,7 +12115,7 @@ My car&#39;s year is: 2010
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;make&#39;: [&#39;Nissan&#39;], &#39;model&#39;: [&#39;Altima&#39;, &#39;Camry&#39;], &#39;year&#39;: [2005, 2010]}</pre>
+<pre>{'make': ['Nissan'], 'model': ['Altima', 'Camry'], 'year': [2005, 2010]}</pre>
 </div>
 
 </div>
@@ -12129,16 +12129,16 @@ My car&#39;s year is: 2010
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Remove-an-entire-key-and-its-value">Remove an entire key and its value<a class="anchor-link" href="#Remove-an-entire-key-and-its-value">&#182;</a></h3>
+<h3 id="Remove-an-entire-key-and-its-value">Remove an entire key and its value<a class="anchor-link" href="#Remove-an-entire-key-and-its-value">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[53]:</div>
+<div class="prompt input_prompt">In [53]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">del</span> <span class="n">my_cars</span><span class="p">[</span><span class="s1">&#39;make&#39;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">del</span> <span class="n">my_cars</span><span class="p">[</span><span class="s1">'make'</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -12151,13 +12151,13 @@ My car&#39;s year is: 2010
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="View-the-modified-dictionary">View the modified dictionary<a class="anchor-link" href="#View-the-modified-dictionary">&#182;</a></h3>
+<h3 id="View-the-modified-dictionary">View the modified dictionary<a class="anchor-link" href="#View-the-modified-dictionary">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[54]:</div>
+<div class="prompt input_prompt">In [54]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_cars</span>
@@ -12177,7 +12177,7 @@ My car&#39;s year is: 2010
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;model&#39;: [&#39;Altima&#39;, &#39;Camry&#39;], &#39;year&#39;: [2005, 2010]}</pre>
+<pre>{'model': ['Altima', 'Camry'], 'year': [2005, 2010]}</pre>
 </div>
 
 </div>
@@ -12191,13 +12191,13 @@ My car&#39;s year is: 2010
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Empty-all-dictionary-contents">Empty all dictionary contents<a class="anchor-link" href="#Empty-all-dictionary-contents">&#182;</a></h3>
+<h3 id="Empty-all-dictionary-contents">Empty all dictionary contents<a class="anchor-link" href="#Empty-all-dictionary-contents">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[55]:</div>
+<div class="prompt input_prompt">In [55]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_cars</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
@@ -12213,13 +12213,13 @@ My car&#39;s year is: 2010
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="View-the-modified-dictionary">View the modified dictionary<a class="anchor-link" href="#View-the-modified-dictionary">&#182;</a></h3>
+<h3 id="View-the-modified-dictionary">View the modified dictionary<a class="anchor-link" href="#View-the-modified-dictionary">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[56]:</div>
+<div class="prompt input_prompt">In [56]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_cars</span>

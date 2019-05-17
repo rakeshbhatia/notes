@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8">
-<title>preparing_data</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>scrape_nba_player_rpm_stats_from_espn_with_lxml</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11778,20 +11778,26 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="DRILL:-Prepare-the-Data"><strong>DRILL: Prepare the Data</strong><a class="anchor-link" href="#DRILL:-Prepare-the-Data">¶</a></h1>
+<h1 id="Scrape-NBA-Player-Real-Plus-Minus-(RPM)-Stats-from-ESPN-with-lxml">Scrape NBA Player Real Plus-Minus (RPM) Stats from ESPN with lxml<a class="anchor-link" href="#Scrape-NBA-Player-Real-Plus-Minus-(RPM)-Stats-from-ESPN-with-lxml">¶</a></h1><p>02 May 2019</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [143]:</div>
+<div class="prompt input_prompt">In [237]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">linear_model</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">lxml.html</span> <span class="k">as</span> <span class="nn">lh</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">scrapy</span>
+<span class="kn">from</span> <span class="nn">scrapy.crawler</span> <span class="k">import</span> <span class="n">CrawlerProcess</span>
 </pre></div>
 
 </div>
@@ -11799,14 +11805,37 @@ div#notebook {
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Extract-&lt;tr&gt;-elements">Extract <code>&lt;tr&gt;</code> elements<a class="anchor-link" href="#Extract-&lt;tr&gt;-elements">¶</a></h2><ul>
+<li>Create a GET request to the site's url</li>
+<li>Store the webpage contents</li>
+<li>Extract the <code>&lt;tr&gt;</code> elements</li>
+</ul>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [144]:</div>
+<div class="prompt input_prompt">In [238]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ny_crime</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'table_8_offenses_known_to_law_enforcement_new_york_by_city_2013.csv'</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">url</span><span class="o">=</span><span class="s1">'http://www.espn.com/nba/statistics/rpm/_/sort/RPM'</span>
 
-<span class="n">ny_crime</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="c1"># Create a GET request to the ESPN RPM site url</span>
+<span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="c1"># Store the contents of the website</span>
+<span class="n">doc</span> <span class="o">=</span> <span class="n">lh</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+<span class="c1"># Parse the data stored in all &lt;tr&gt; tags in the HTML</span>
+<span class="n">tr_elements</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//tr'</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">'tr_elements: '</span><span class="p">,</span> <span class="n">tr_elements</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -11818,7 +11847,715 @@ div#notebook {
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[144]:</div>
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>tr_elements:  [&lt;Element tr at 0x1166d5b38&gt;, &lt;Element tr at 0x1167a3688&gt;, &lt;Element tr at 0x1167a3638&gt;, &lt;Element tr at 0x1167a3368&gt;, &lt;Element tr at 0x1167a3138&gt;, &lt;Element tr at 0x1167a32c8&gt;, &lt;Element tr at 0x1167a3188&gt;, &lt;Element tr at 0x1167a36d8&gt;, &lt;Element tr at 0x1166a5c28&gt;, &lt;Element tr at 0x11685b9a8&gt;, &lt;Element tr at 0x11685b9f8&gt;, &lt;Element tr at 0x11685b548&gt;, &lt;Element tr at 0x11685b868&gt;, &lt;Element tr at 0x11685b688&gt;, &lt;Element tr at 0x11685b778&gt;, &lt;Element tr at 0x11685bb88&gt;, &lt;Element tr at 0x11685bbd8&gt;, &lt;Element tr at 0x11685bc28&gt;, &lt;Element tr at 0x11685b7c8&gt;, &lt;Element tr at 0x11685bc78&gt;, &lt;Element tr at 0x11685bcc8&gt;, &lt;Element tr at 0x11685b728&gt;, &lt;Element tr at 0x11685bb38&gt;, &lt;Element tr at 0x11685b818&gt;, &lt;Element tr at 0x11685ba48&gt;, &lt;Element tr at 0x11685bdb8&gt;, &lt;Element tr at 0x11685b598&gt;, &lt;Element tr at 0x11685bae8&gt;, &lt;Element tr at 0x11685be58&gt;, &lt;Element tr at 0x11685be08&gt;, &lt;Element tr at 0x11685bd18&gt;, &lt;Element tr at 0x11685bd68&gt;, &lt;Element tr at 0x11685bf98&gt;, &lt;Element tr at 0x11685bf48&gt;, &lt;Element tr at 0x1166f0f98&gt;, &lt;Element tr at 0x116888368&gt;, &lt;Element tr at 0x1168884a8&gt;, &lt;Element tr at 0x1168882c8&gt;, &lt;Element tr at 0x116888318&gt;, &lt;Element tr at 0x116888548&gt;, &lt;Element tr at 0x116888188&gt;]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Check-the-length-of-each-row-of-the-table">Check the length of each row of the table<a class="anchor-link" href="#Check-the-length-of-each-row-of-the-table">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [239]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Check the length of the first 12 rows</span>
+<span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="k">for</span> <span class="n">T</span> <span class="ow">in</span> <span class="n">tr_elements</span><span class="p">[:</span><span class="mi">12</span><span class="p">]]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[239]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Store-first-element-(header)-and-empty-list-for-each-row">Store first element (header) and empty list for each row<a class="anchor-link" href="#Store-first-element-(header)-and-empty-list-for-each-row">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [240]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create empty list</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">i</span><span class="o">=</span><span class="mi">0</span>
+
+<span class="c1"># For each row, store each first element (header) and an empty list</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tr_elements</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>        
+    <span class="n">column_name</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">text_content</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="si">%d</span><span class="s1">:"</span><span class="si">%s</span><span class="s1">"'</span><span class="o">%</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">column_name</span><span class="p">))</span>
+    <span class="n">cols</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">column_name</span><span class="p">,[]))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1:"RK"
+2:"NAME"
+3:"TEAM"
+4:"GP"
+5:"MPG"
+6:"ORPM"
+7:"DRPM"
+8:"RPM"
+9:"WINS"
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Extract-links-to-all-player-pages">Extract links to all player pages<a class="anchor-link" href="#Extract-links-to-all-player-pages">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [241]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Extract player page links</span>
+<span class="n">links</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//*[@id="my-players-table"]/div/div[2]/table//a/@href'</span><span class="p">)</span>
+<span class="c1"># First four links are not player pages</span>
+<span class="n">links</span> <span class="o">=</span> <span class="n">links</span><span class="p">[</span><span class="mi">4</span><span class="p">:]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'links: '</span><span class="p">,</span> <span class="n">links</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>links:  ['http://www.espn.com/nba/player/_/id/4251/paul-george', 'http://www.espn.com/nba/player/_/id/3992/james-harden', 'http://www.espn.com/nba/player/_/id/3975/stephen-curry', 'http://www.espn.com/nba/player/_/id/3032977/giannis-antetokounmpo', 'http://www.espn.com/nba/player/_/id/3112335/nikola-jokic', 'http://www.espn.com/nba/player/_/id/6583/anthony-davis', 'http://www.espn.com/nba/player/_/id/3059318/joel-embiid', 'http://www.espn.com/nba/player/_/id/6478/nikola-vucevic', 'http://www.espn.com/nba/player/_/id/1966/lebron-james', 'http://www.espn.com/nba/player/_/id/6606/damian-lillard', 'http://www.espn.com/nba/player/_/id/3202/kevin-durant', 'http://www.espn.com/nba/player/_/id/3988/danny-green', 'http://www.espn.com/nba/player/_/id/3012/kyle-lowry', 'http://www.espn.com/nba/player/_/id/3032976/rudy-gobert', 'http://www.espn.com/nba/player/_/id/2779/chris-paul', 'http://www.espn.com/nba/player/_/id/3995/jrue-holiday', 'http://www.espn.com/nba/player/_/id/3213/al-horford', 'http://www.espn.com/nba/player/_/id/6442/kyrie-irving', 'http://www.espn.com/nba/player/_/id/3448/brook-lopez', 'http://www.espn.com/nba/player/_/id/3015/paul-millsap', 'http://www.espn.com/nba/player/_/id/3149673/pascal-siakam', 'http://www.espn.com/nba/player/_/id/6430/jimmy-butler', 'http://www.espn.com/nba/player/_/id/3206/marc-gasol', 'http://www.espn.com/nba/player/_/id/3102530/jusuf-nurkic', 'http://www.espn.com/nba/player/_/id/3136195/karl-anthony-towns', 'http://www.espn.com/nba/player/_/id/4238/eric-bledsoe', 'http://www.espn.com/nba/player/_/id/3428/danilo-gallinari', 'http://www.espn.com/nba/player/_/id/3155535/kevon-looney', 'http://www.espn.com/nba/player/_/id/6450/kawhi-leonard', 'http://www.espn.com/nba/player/_/id/6589/draymond-green', 'http://www.espn.com/nba/player/_/id/3195/mike-conley', 'http://www.espn.com/nba/player/_/id/3989/blake-griffin', 'http://www.espn.com/nba/player/_/id/2968436/joe-ingles', 'http://www.espn.com/nba/player/_/id/6426/davis-bertans', 'http://www.espn.com/nba/player/_/id/4259/ed-davis', 'http://www.espn.com/nba/player/_/id/2490620/robert-covington', 'http://www.espn.com/nba/player/_/id/6479/kemba-walker', 'http://www.espn.com/nba/player/_/id/3964/patrick-beverley', 'http://www.espn.com/nba/player/_/id/2386/andre-iguodala', 'http://www.espn.com/nba/player/_/id/4257/derrick-favors']
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Store-each-&lt;tr&gt;-element's-data-in-a-two-dimensional-array">Store each <code>&lt;tr&gt;</code> element's data in a two-dimensional array<a class="anchor-link" href="#Store-each-&lt;tr&gt;-element's-data-in-a-two-dimensional-array">¶</a></h2><p>Each <code>&lt;td&gt;</code> element can be accessed using <code>iterchildren()</code>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [242]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Our first row is the header (columns), so data is stored in the second row onwards</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tr_elements</span><span class="p">)):</span>
+    
+    <span class="c1"># T is our j'th row</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">tr_elements</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+    
+    <span class="c1"># If row is not of size 9, the //tr data is not from our table </span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">9</span><span class="p">:</span>
+        <span class="k">break</span>
+    
+    <span class="c1"># i is the index of our column</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="c1"># Iterate through each element of the row</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">T</span><span class="o">.</span><span class="n">iterchildren</span><span class="p">():</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">text_content</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'data: '</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="c1"># Check if row is empty</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Extract link to player page</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">link</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'/a/@href'</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">'link: '</span><span class="p">,</span> <span class="n">link</span><span class="p">)</span>
+            <span class="c1"># Convert any numerical value to integers</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">pass</span>
+        <span class="c1"># Append the data to the empty list of the i'th column</span>
+        <span class="n">col</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="c1"># Increment i for the next column</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>data:  1
+data:  Paul George, SF
+link:  []
+data:  OKC
+data:  77
+data:  36.9
+data:  4.49
+data:  3.09
+data:  7.58
+data:  19.77
+data:  2
+data:  James Harden, PG
+link:  []
+data:  HOU
+data:  78
+data:  36.8
+data:  7.38
+data:  0.09
+data:  7.47
+data:  18.63
+data:  3
+data:  Stephen Curry, PG
+link:  []
+data:  GS
+data:  69
+data:  33.8
+data:  5.86
+data:  0.68
+data:  6.54
+data:  14.78
+data:  4
+data:  Giannis Antetokounmpo, PF
+link:  []
+data:  MIL
+data:  72
+data:  32.8
+data:  3.13
+data:  3.09
+data:  6.22
+data:  14.49
+data:  5
+data:  Nikola Jokic, C
+link:  []
+data:  DEN
+data:  80
+data:  31.3
+data:  3.63
+data:  2.56
+data:  6.19
+data:  14.46
+data:  6
+data:  Anthony Davis, PF
+link:  []
+data:  NO
+data:  56
+data:  33.0
+data:  2.52
+data:  3.20
+data:  5.72
+data:  10.79
+data:  7
+data:  Joel Embiid, C
+link:  []
+data:  PHI
+data:  64
+data:  33.7
+data:  2.37
+data:  3.12
+data:  5.49
+data:  11.67
+data:  8
+data:  Nikola Vucevic, C
+link:  []
+data:  ORL
+data:  80
+data:  31.4
+data:  1.84
+data:  3.60
+data:  5.44
+data:  13.59
+data:  9
+data:  LeBron James, SF
+link:  []
+data:  LAL
+data:  55
+data:  35.2
+data:  3.48
+data:  1.84
+data:  5.32
+data:  10.89
+data:  10
+data:  Damian Lillard, PG
+link:  []
+data:  POR
+data:  80
+data:  35.5
+data:  5.69
+data:  -0.42
+data:  5.27
+data:  14.86
+data:  11
+data:  Kevin Durant, SF
+link:  []
+data:  GS
+data:  78
+data:  34.6
+data:  4.53
+data:  0.68
+data:  5.21
+data:  14.53
+data:  12
+data:  Danny Green, SG
+link:  []
+data:  TOR
+data:  80
+data:  27.7
+data:  2.92
+data:  2.16
+data:  5.08
+data:  11.73
+data:  13
+data:  Kyle Lowry, PG
+link:  []
+data:  TOR
+data:  65
+data:  34.0
+data:  2.83
+data:  2.10
+data:  4.93
+data:  11.36
+data:  14
+data:  Rudy Gobert, C
+link:  []
+data:  UTAH
+data:  81
+data:  31.8
+data:  0.26
+data:  4.44
+data:  4.70
+data:  13.20
+data:  15
+data:  Chris Paul, PG
+link:  []
+data:  HOU
+data:  58
+data:  32.0
+data:  2.40
+data:  2.27
+data:  4.67
+data:  9.06
+data:  16
+data:  Jrue Holiday, PG
+link:  []
+data:  NO
+data:  67
+data:  35.9
+data:  3.38
+data:  1.24
+data:  4.62
+data:  12.30
+data:  17
+data:  Al Horford, C
+link:  []
+data:  BOS
+data:  68
+data:  29.0
+data:  1.79
+data:  2.65
+data:  4.44
+data:  9.52
+data:  18
+data:  Kyrie Irving, PG
+link:  []
+data:  BOS
+data:  67
+data:  33.0
+data:  3.85
+data:  0.58
+data:  4.43
+data:  10.62
+data:  19
+data:  Brook Lopez, C
+link:  []
+data:  MIL
+data:  81
+data:  28.7
+data:  0.66
+data:  3.56
+data:  4.22
+data:  11.30
+data:  20
+data:  Paul Millsap, PF
+link:  []
+data:  DEN
+data:  70
+data:  27.1
+data:  1.50
+data:  2.65
+data:  4.15
+data:  8.58
+data:  21
+data:  Pascal Siakam, PF
+link:  []
+data:  TOR
+data:  80
+data:  31.9
+data:  1.91
+data:  2.23
+data:  4.14
+data:  11.86
+data:  22
+data:  Jimmy Butler, SG
+link:  []
+data:  MIN/PHI
+data:  65
+data:  33.6
+data:  2.27
+data:  1.82
+data:  4.09
+data:  10.11
+data:  23
+data:  Marc Gasol, C
+link:  []
+data:  TOR/MEM
+data:  79
+data:  30.8
+data:  0.95
+data:  2.98
+data:  3.93
+data:  10.54
+data:  24
+data:  Jusuf Nurkic, C
+link:  []
+data:  POR
+data:  72
+data:  27.4
+data:  0.73
+data:  3.12
+data:  3.85
+data:  8.66
+data:  25
+data:  Karl-Anthony Towns, C
+link:  []
+data:  MIN
+data:  77
+data:  33.1
+data:  2.99
+data:  0.84
+data:  3.83
+data:  11.32
+data:  26
+data:  Eric Bledsoe, PG
+link:  []
+data:  MIL
+data:  78
+data:  29.1
+data:  2.73
+data:  0.91
+data:  3.64
+data:  10.23
+data:  27
+data:  Danilo Gallinari, SF
+link:  []
+data:  LAC
+data:  68
+data:  30.3
+data:  3.47
+data:  0.00
+data:  3.47
+data:  8.55
+data:  28
+data:  Kevon Looney, C
+link:  []
+data:  GS
+data:  80
+data:  18.5
+data:  1.20
+data:  2.22
+data:  3.42
+data:  6.21
+data:  29
+data:  Kawhi Leonard, SF
+link:  []
+data:  TOR
+data:  60
+data:  34.0
+data:  3.31
+data:  0.01
+data:  3.32
+data:  8.40
+data:  30
+data:  Draymond Green, PF
+link:  []
+data:  GS
+data:  66
+data:  31.3
+data:  -0.32
+data:  3.52
+data:  3.20
+data:  8.39
+data:  31
+data:  Mike Conley, PG
+link:  []
+data:  MEM
+data:  70
+data:  33.5
+data:  3.54
+data:  -0.46
+data:  3.08
+data:  9.12
+data:  32
+data:  Blake Griffin, PF
+link:  []
+data:  DET
+data:  75
+data:  35.0
+data:  2.47
+data:  0.45
+data:  2.92
+data:  9.67
+data:  33
+data:  Joe Ingles, SF
+link:  []
+data:  UTAH
+data:  82
+data:  31.3
+data:  1.62
+data:  1.30
+data:  2.92
+data:  10.06
+data:  34
+data:  Davis Bertans, SF
+link:  []
+data:  SA
+data:  76
+data:  21.5
+data:  2.46
+data:  0.45
+data:  2.91
+data:  6.33
+data:  35
+data:  Ed Davis, PF
+link:  []
+data:  BKN
+data:  81
+data:  17.9
+data:  -1.42
+data:  4.20
+data:  2.78
+data:  5.42
+data:  36
+data:  Robert Covington, SF
+link:  []
+data:  MIN/PHI
+data:  35
+data:  34.4
+data:  -0.79
+data:  3.51
+data:  2.72
+data:  4.35
+data:  37
+data:  Kemba Walker, PG
+link:  []
+data:  CHA
+data:  82
+data:  34.9
+data:  4.17
+data:  -1.46
+data:  2.71
+data:  10.60
+data:  38
+data:  Patrick Beverley, PG
+link:  []
+data:  LAC
+data:  78
+data:  27.4
+data:  1.35
+data:  1.34
+data:  2.69
+data:  7.80
+data:  39
+data:  Andre Iguodala, SG
+link:  []
+data:  GS
+data:  68
+data:  23.2
+data:  0.72
+data:  1.90
+data:  2.62
+data:  5.64
+data:  40
+data:  Derrick Favors, PF
+link:  []
+data:  UTAH
+data:  76
+data:  23.2
+data:  -0.51
+data:  3.11
+data:  2.60
+data:  6.52
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Check-the-length-of-each-column-of-data-in-the-2D-array">Check the length of each column of data in the 2D array<a class="anchor-link" href="#Check-the-length-of-each-column-of-data-in-the-2D-array">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [243]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span> <span class="ow">in</span> <span class="n">col</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[243]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[891, 891, 891, 891, 891, 891, 891, 891, 891]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Store-the-data-in-a-new-dataframe">Store the data in a new dataframe<a class="anchor-link" href="#Store-the-data-in-a-new-dataframe">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [244]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">title</span><span class="p">:</span><span class="n">column</span> <span class="k">for</span> <span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">column</span><span class="p">)</span> <span class="ow">in</span> <span class="n">col</span><span class="p">}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">Dict</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Inspect-the-dataframe">Inspect the dataframe<a class="anchor-link" href="#Inspect-the-dataframe">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [245]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[245]:</div>
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
@@ -11840,101 +12577,77 @@ div#notebook {
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>City</th>
-      <th>Population</th>
-      <th>Violentcrime</th>
-      <th>Murder andnonnegligentmanslaughter</th>
-      <th>Rape(reviseddefinition)1</th>
-      <th>Rape(legacydefinition)2</th>
-      <th>Robbery</th>
-      <th>Aggravatedassault</th>
-      <th>Propertycrime</th>
-      <th>Burglary</th>
-      <th>Larceny-theft</th>
-      <th>Motorvehicletheft</th>
-      <th>Arson3</th>
+      <th>RK</th>
+      <th>NAME</th>
+      <th>TEAM</th>
+      <th>GP</th>
+      <th>MPG</th>
+      <th>ORPM</th>
+      <th>DRPM</th>
+      <th>RPM</th>
+      <th>WINS</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>Adams Village</td>
-      <td>1,861</td>
-      <td>0</td>
-      <td>0</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>12</td>
+      <td>1</td>
+      <td>Paul George, SF</td>
+      <td>OKC</td>
+      <td>77</td>
+      <td>36.9</td>
+      <td>4.49</td>
+      <td>3.09</td>
+      <td>7.58</td>
+      <td>19.77</td>
+    </tr>
+    <tr>
+      <th>1</th>
       <td>2</td>
-      <td>10</td>
-      <td>0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Addison Town and Village</td>
-      <td>2,577</td>
-      <td>3</td>
-      <td>0</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>24</td>
-      <td>3</td>
-      <td>20</td>
-      <td>1</td>
-      <td>0.0</td>
+      <td>James Harden, PG</td>
+      <td>HOU</td>
+      <td>78</td>
+      <td>36.8</td>
+      <td>7.38</td>
+      <td>0.09</td>
+      <td>7.47</td>
+      <td>18.63</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Akron Village</td>
-      <td>2,846</td>
       <td>3</td>
-      <td>0</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>16</td>
-      <td>1</td>
-      <td>15</td>
-      <td>0</td>
-      <td>0.0</td>
+      <td>Stephen Curry, PG</td>
+      <td>GS</td>
+      <td>69</td>
+      <td>33.8</td>
+      <td>5.86</td>
+      <td>0.68</td>
+      <td>6.54</td>
+      <td>14.78</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Albany</td>
-      <td>97,956</td>
-      <td>791</td>
-      <td>8</td>
-      <td>NaN</td>
-      <td>30</td>
-      <td>227</td>
-      <td>526</td>
-      <td>4,090</td>
-      <td>705</td>
-      <td>3,243</td>
-      <td>142</td>
-      <td>NaN</td>
+      <td>4</td>
+      <td>Giannis Antetokounmpo, PF</td>
+      <td>MIL</td>
+      <td>72</td>
+      <td>32.8</td>
+      <td>3.13</td>
+      <td>3.09</td>
+      <td>6.22</td>
+      <td>14.49</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Albion Village</td>
-      <td>6,388</td>
-      <td>23</td>
-      <td>0</td>
-      <td>NaN</td>
-      <td>3</td>
-      <td>4</td>
-      <td>16</td>
-      <td>223</td>
-      <td>53</td>
-      <td>165</td>
       <td>5</td>
-      <td>NaN</td>
+      <td>Nikola Jokic, C</td>
+      <td>DEN</td>
+      <td>80</td>
+      <td>31.3</td>
+      <td>3.63</td>
+      <td>2.56</td>
+      <td>6.19</td>
+      <td>14.46</td>
     </tr>
   </tbody>
 </table>
@@ -11947,39 +12660,33 @@ div#notebook {
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We now have our dataframe populated with the RPM data. However, we can see that under the 'NAME' column, the player name is combined with the player position. We want to separate the player position into a new column. However, before doing this, we need to handle pagination and collect the rest of the player data, as it is stored across 13 separate pages.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Find-the-link-to-the-next-page">Find the link to the next page<a class="anchor-link" href="#Find-the-link-to-the-next-page">¶</a></h2>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [145]:</div>
+<div class="prompt input_prompt">In [246]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Select datafame columns</span>
-<span class="n">ny_crime</span> <span class="o">=</span> <span class="n">ny_crime</span><span class="p">[[</span><span class="s1">'City'</span><span class="p">,</span> <span class="s1">'Population'</span><span class="p">,</span> <span class="s1">'Murder and</span><span class="se">\r</span><span class="s1">nonnegligent</span><span class="se">\r</span><span class="s1">manslaughter'</span><span class="p">,</span> <span class="s1">'Robbery'</span><span class="p">,</span> <span class="s1">'Property</span><span class="se">\r</span><span class="s1">crime'</span><span class="p">]]</span>
-
-<span class="c1"># Rename columns</span>
-<span class="n">ny_crime</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'City'</span><span class="p">,</span> <span class="s1">'Population'</span><span class="p">,</span> <span class="s1">'Murder'</span><span class="p">,</span> <span class="s1">'Robbery'</span><span class="p">,</span> <span class="s1">'Property Crime'</span><span class="p">]</span>
-
-<span class="c1"># Remove commas from numeric strings</span>
-<span class="n">ny_crime</span><span class="p">[</span><span class="s1">'Population'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ny_crime</span><span class="o">.</span><span class="n">Population</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">','</span><span class="p">,</span> <span class="s1">''</span><span class="p">))</span>
-
-<span class="c1"># Change type to int</span>
-<span class="n">ny_crime</span><span class="p">[</span><span class="s1">'Population'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ny_crime</span><span class="o">.</span><span class="n">Population</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-
-<span class="c1"># Remove commas from numeric strings</span>
-<span class="n">ny_crime</span><span class="p">[</span><span class="s1">'Robbery'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ny_crime</span><span class="o">.</span><span class="n">Robbery</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">','</span><span class="p">,</span> <span class="s1">''</span><span class="p">))</span>
-
-<span class="c1"># Change type to int</span>
-<span class="n">ny_crime</span><span class="p">[</span><span class="s1">'Robbery'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ny_crime</span><span class="o">.</span><span class="n">Robbery</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-
-<span class="c1"># Remove commas from numeric strings</span>
-<span class="n">ny_crime</span><span class="p">[</span><span class="s1">'Property Crime'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ny_crime</span><span class="p">[</span><span class="s1">'Property Crime'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">','</span><span class="p">,</span> <span class="s1">''</span><span class="p">))</span>
-
-<span class="c1"># Change type to int</span>
-<span class="n">ny_crime</span><span class="p">[</span><span class="s1">'Property Crime'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ny_crime</span><span class="p">[</span><span class="s1">'Property Crime'</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-
-<span class="c1"># Drop null values</span>
-<span class="n">ny_crime</span> <span class="o">=</span> <span class="n">ny_crime</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-
-<span class="n">ny_crime</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Extract the next page link</span>
+<span class="n">next_page_link</span> <span class="o">=</span> <span class="s1">'https:'</span> <span class="o">+</span> <span class="n">doc</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//*[@id="my-players-table"]/div/div[2]/div/div[2]/a/@href'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">next_page_link</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -11991,7 +12698,383 @@ div#notebook {
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[145]:</div>
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>https://www.espn.com/nba/statistics/rpm/_/page/2
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's put all of the above in its own method, which we can call repeatedly inside a wrapper function. Additionally, let's add a cleaning function to handle the separation of the player name and player position into separate features. Our complete scraper with all its methods are shown below.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Complete-scraper-with-data-cleaning-method-and-wrapper">Complete scraper with data cleaning method and wrapper<a class="anchor-link" href="#Complete-scraper-with-data-cleaning-method-and-wrapper">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">lxml.html</span> <span class="k">as</span> <span class="nn">lh</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="k">def</span> <span class="nf">clean_data</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="c1"># Extract player positions into separate list</span>
+    <span class="n">positions</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">positions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">'NAME'</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">', '</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'total positions: '</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">positions</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'dataframe size: '</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
+    
+    <span class="c1"># Fix player name and add new column for player position</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">'NAME'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'NAME'</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">', '</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">'POS'</span><span class="p">,</span> <span class="n">positions</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="c1"># Main scraping method</span>
+<span class="k">def</span> <span class="nf">rpm_scraper_single_page</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">flag</span><span class="p">):</span>
+    <span class="c1"># Create a get request to the site url</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    
+    <span class="c1"># Store the contents of the website</span>
+    <span class="n">doc</span> <span class="o">=</span> <span class="n">lh</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+    
+    <span class="c1"># Parse the data stored in all &lt;tr&gt; tags in the HTML</span>
+    <span class="n">tr_elements</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//tr'</span><span class="p">)</span>
+    <span class="c1">#print('tr_elements: ', tr_elements)</span>
+    
+    <span class="c1">#Check the length of the first 12 rows</span>
+    <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="k">for</span> <span class="n">T</span> <span class="ow">in</span> <span class="n">tr_elements</span><span class="p">[:</span><span class="mi">12</span><span class="p">]]</span>
+
+    <span class="c1"># Create empty list</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">i</span><span class="o">=</span><span class="mi">0</span>
+
+    <span class="c1"># For each row, store each first element (header) and an empty list</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tr_elements</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>        
+        <span class="n">column_name</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">text_content</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="si">%d</span><span class="s1">:"</span><span class="si">%s</span><span class="s1">"'</span><span class="o">%</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">column_name</span><span class="p">))</span>
+        <span class="n">cols</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">column_name</span><span class="p">,[]))</span>
+
+    <span class="c1"># Extract player page links</span>
+    <span class="n">links</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//*[@id="my-players-table"]/div/div[2]/table//a/@href'</span><span class="p">)</span>
+    <span class="c1"># First four links are not player pages</span>
+    <span class="n">links</span> <span class="o">=</span> <span class="n">links</span><span class="p">[</span><span class="mi">4</span><span class="p">:]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'links: '</span><span class="p">,</span> <span class="n">links</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'total links: '</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">links</span><span class="p">))</span>
+
+    <span class="c1"># Our first row is the header (columns), so data is stored in the second row onwards</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tr_elements</span><span class="p">)):</span>
+
+        <span class="c1"># T is our j'th row</span>
+        <span class="n">T</span> <span class="o">=</span> <span class="n">tr_elements</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+
+        <span class="c1"># If row is not of size 9, the //tr data is not from our table </span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">9</span><span class="p">:</span>
+            <span class="k">break</span>
+
+        <span class="c1"># i is the index of our column</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># Iterate through each element of the row</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">T</span><span class="o">.</span><span class="n">iterchildren</span><span class="p">():</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">text_content</span><span class="p">()</span> 
+            <span class="c1"># Check if row is empty</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># Convert any numerical value to integers</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">data</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+                <span class="k">except</span><span class="p">:</span>
+                    <span class="k">pass</span>
+            <span class="c1"># Append the data to the empty list of the i'th column</span>
+            <span class="n">cols</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="c1"># Increment i for the next column</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+    <span class="c1"># Check the lengths</span>
+    <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">]</span>
+
+    <span class="c1"># Store the data in a dataframe</span>
+    <span class="n">Dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">title</span><span class="p">:</span><span class="n">column</span> <span class="k">for</span> <span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">column</span><span class="p">)</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">}</span>
+    <span class="n">rpm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">Dict</span><span class="p">)</span>
+    <span class="n">rpm</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+    <span class="c1"># Data cleaning</span>
+    <span class="n">rpm</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">(</span><span class="n">rpm</span><span class="p">)</span>
+    <span class="n">rpm</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+    <span class="c1"># Add links column to dataframe</span>
+    <span class="n">rpm</span><span class="p">[</span><span class="s1">'PLAYER PAGE'</span><span class="p">]</span> <span class="o">=</span> <span class="n">links</span>
+        
+    <span class="c1"># Extract the next page link</span>
+    <span class="k">if</span> <span class="n">flag</span><span class="p">:</span>
+        <span class="n">next_page_link</span> <span class="o">=</span> <span class="s1">'https:'</span> <span class="o">+</span> <span class="n">doc</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//*[@id="my-players-table"]/div/div[2]/div/div[2]/a/@href'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>      
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">next_page_link</span> <span class="o">=</span> <span class="s1">'https:'</span> <span class="o">+</span> <span class="n">doc</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//*[@id="my-players-table"]/div/div[2]/div/div[2]/a/@href'</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+            <span class="n">next_page_link</span> <span class="o">=</span> <span class="kc">None</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="n">next_page_link</span><span class="p">)</span>
+
+    <span class="c1"># Return a tuple with the dataframe and next page link</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">rpm</span><span class="p">,</span> <span class="n">next_page_link</span><span class="p">)</span>
+
+<span class="c1"># Wrapper method</span>
+<span class="k">def</span> <span class="nf">rpm_scraper</span><span class="p">(</span><span class="n">base_url</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">flag</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">rpm_pages</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">13</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="n">base_url</span>
+            <span class="n">flag</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">flag</span> <span class="o">=</span> <span class="kc">False</span>
+            
+        <span class="k">if</span> <span class="n">url</span><span class="p">:</span>
+            <span class="c1"># Scrape all results on the current page</span>
+            <span class="n">rpm_tuple</span> <span class="o">=</span> <span class="n">rpm_scraper_single_page</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">flag</span><span class="p">)</span>
+            <span class="c1"># Append the dataframe to list</span>
+            <span class="n">rpm_pages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rpm_tuple</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="c1"># Update url to next page link</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="n">rpm_tuple</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">rpm_pages</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Run scraper</span>
+<span class="n">base_url</span> <span class="o">=</span> <span class="s1">'http://www.espn.com/nba/statistics/rpm/_/sort/RPM'</span>
+<span class="n">rpm_data</span> <span class="o">=</span> <span class="n">rpm_scraper</span><span class="p">(</span><span class="n">base_url</span><span class="p">)</span>
+
+<span class="c1"># Check results</span>
+<span class="n">rpm_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1:"RK"
+2:"NAME"
+3:"TEAM"
+4:"GP"
+5:"MPG"
+6:"ORPM"
+7:"DRPM"
+8:"RPM"
+9:"WINS"
+links:  ['http://www.espn.com/nba/player/_/id/4251/paul-george', 'http://www.espn.com/nba/player/_/id/3992/james-harden', 'http://www.espn.com/nba/player/_/id/3975/stephen-curry', 'http://www.espn.com/nba/player/_/id/3032977/giannis-antetokounmpo', 'http://www.espn.com/nba/player/_/id/3112335/nikola-jokic', 'http://www.espn.com/nba/player/_/id/3059318/joel-embiid', 'http://www.espn.com/nba/player/_/id/6583/anthony-davis', 'http://www.espn.com/nba/player/_/id/6478/nikola-vucevic', 'http://www.espn.com/nba/player/_/id/1966/lebron-james', 'http://www.espn.com/nba/player/_/id/6606/damian-lillard', 'http://www.espn.com/nba/player/_/id/3202/kevin-durant', 'http://www.espn.com/nba/player/_/id/3988/danny-green', 'http://www.espn.com/nba/player/_/id/3012/kyle-lowry', 'http://www.espn.com/nba/player/_/id/2779/chris-paul', 'http://www.espn.com/nba/player/_/id/3032976/rudy-gobert', 'http://www.espn.com/nba/player/_/id/3995/jrue-holiday', 'http://www.espn.com/nba/player/_/id/3213/al-horford', 'http://www.espn.com/nba/player/_/id/6430/jimmy-butler', 'http://www.espn.com/nba/player/_/id/3015/paul-millsap', 'http://www.espn.com/nba/player/_/id/3149673/pascal-siakam', 'http://www.espn.com/nba/player/_/id/6442/kyrie-irving', 'http://www.espn.com/nba/player/_/id/3448/brook-lopez', 'http://www.espn.com/nba/player/_/id/3102530/jusuf-nurkic', 'http://www.espn.com/nba/player/_/id/3136195/karl-anthony-towns', 'http://www.espn.com/nba/player/_/id/3206/marc-gasol', 'http://www.espn.com/nba/player/_/id/4238/eric-bledsoe', 'http://www.espn.com/nba/player/_/id/3428/danilo-gallinari', 'http://www.espn.com/nba/player/_/id/6589/draymond-green', 'http://www.espn.com/nba/player/_/id/3155535/kevon-looney', 'http://www.espn.com/nba/player/_/id/6450/kawhi-leonard', 'http://www.espn.com/nba/player/_/id/3195/mike-conley', 'http://www.espn.com/nba/player/_/id/2968436/joe-ingles', 'http://www.espn.com/nba/player/_/id/3989/blake-griffin', 'http://www.espn.com/nba/player/_/id/6426/davis-bertans', 'http://www.espn.com/nba/player/_/id/4259/ed-davis', 'http://www.espn.com/nba/player/_/id/6479/kemba-walker', 'http://www.espn.com/nba/player/_/id/2490620/robert-covington', 'http://www.espn.com/nba/player/_/id/3964/patrick-beverley', 'http://www.espn.com/nba/player/_/id/4257/derrick-favors', 'http://www.espn.com/nba/player/_/id/4258/demarcus-cousins']
+total links:  40
+total positions:  40
+dataframe size:  40
+https://www.espn.com/nba/statistics/rpm/_/page/2
+1:"RK"
+2:"NAME"
+3:"TEAM"
+4:"GP"
+5:"MPG"
+6:"ORPM"
+7:"DRPM"
+8:"RPM"
+9:"WINS"
+links:  ['http://www.espn.com/nba/player/_/id/2386/andre-iguodala', 'http://www.espn.com/nba/player/_/id/3468/russell-westbrook', 'http://www.espn.com/nba/player/_/id/6585/andre-drummond', 'http://www.espn.com/nba/player/_/id/3005/rudy-gay', 'http://www.espn.com/nba/player/_/id/2531367/dwight-powell', 'http://www.espn.com/nba/player/_/id/2990992/marcus-smart', 'http://www.espn.com/nba/player/_/id/2527963/victor-oladipo', 'http://www.espn.com/nba/player/_/id/6609/khris-middleton', 'http://www.espn.com/nba/player/_/id/3438/george-hill', 'http://www.espn.com/nba/player/_/id/2489663/kelly-olynyk', 'http://www.espn.com/nba/player/_/id/3135047/justise-winslow', 'http://www.espn.com/nba/player/_/id/3078576/derrick-white', 'http://www.espn.com/nba/player/_/id/3908809/donovan-mitchell', 'http://www.espn.com/nba/player/_/id/3244/thaddeus-young', 'http://www.espn.com/nba/player/_/id/4248/al-farouq-aminu', 'http://www.espn.com/nba/player/_/id/3059310/monte-morris', 'http://www.espn.com/nba/player/_/id/3102529/clint-capela', 'http://www.espn.com/nba/player/_/id/2991235/steven-adams', 'http://www.espn.com/nba/player/_/id/4269/nemanja-bjelica', 'http://www.espn.com/nba/player/_/id/2581190/josh-richardson', 'http://www.espn.com/nba/player/_/id/2991282/willie-cauley-stein', 'http://www.espn.com/nba/player/_/id/3907387/ben-simmons', "http://www.espn.com/nba/player/_/id/4066259/de'aaron-fox", 'http://www.espn.com/nba/player/_/id/2451037/daniel-theis', 'http://www.espn.com/nba/player/_/id/3442/deandre-jordan', 'http://www.espn.com/nba/player/_/id/6459/nikola-mirotic', 'http://www.espn.com/nba/player/_/id/4262/hassan-whiteside', 'http://www.espn.com/nba/player/_/id/3133628/myles-turner', 'http://www.espn.com/nba/player/_/id/2580913/dewayne-dedmon', 'http://www.espn.com/nba/player/_/id/6603/jeremy-lamb', 'http://www.espn.com/nba/player/_/id/6440/tobias-harris', 'http://www.espn.com/nba/player/_/id/2983/lamarcus-aldridge', 'http://www.espn.com/nba/player/_/id/3028/thabo-sefolosha', "http://www.espn.com/nba/player/_/id/3136776/d'angelo-russell", 'http://www.espn.com/nba/player/_/id/3155942/domantas-sabonis', 'http://www.espn.com/nba/player/_/id/2960236/maxi-kleber', 'http://www.espn.com/nba/player/_/id/6580/bradley-beal', 'http://www.espn.com/nba/player/_/id/2566769/malcolm-brogdon', 'http://www.espn.com/nba/player/_/id/4065648/jayson-tatum', 'http://www.espn.com/nba/player/_/id/4066261/bam-adebayo']
+total links:  40
+total positions:  40
+dataframe size:  40
+https://www.espn.com/nba/statistics/rpm/_/page/3
+1:"RK"
+2:"NAME"
+3:"TEAM"
+4:"GP"
+5:"MPG"
+6:"ORPM"
+7:"DRPM"
+8:"RPM"
+9:"WINS"
+links:  ['http://www.espn.com/nba/player/_/id/4011/ricky-rubio', 'http://www.espn.com/nba/player/_/id/2767/ersan-ilyasova', 'http://www.espn.com/nba/player/_/id/3024/jj-redick', 'http://www.espn.com/nba/player/_/id/3449/kevin-love', 'http://www.espn.com/nba/player/_/id/3064560/luke-kornet', 'http://www.espn.com/nba/player/_/id/2991230/fred-vanvleet', 'http://www.espn.com/nba/player/_/id/2490089/mike-muscala', 'http://www.espn.com/nba/player/_/id/3945274/luka-doncic', 'http://www.espn.com/nba/player/_/id/2594922/otto-porter-jr.', 'http://www.espn.com/nba/player/_/id/4376/boban-marjanovic', 'http://www.espn.com/nba/player/_/id/3936299/jamal-murray', 'http://www.espn.com/nba/player/_/id/3064447/delon-wright', 'http://www.espn.com/nba/player/_/id/2488653/mason-plumlee', 'http://www.espn.com/nba/player/_/id/3415/d.j.-augustin', 'http://www.espn.com/nba/player/_/id/1713/nene-hilario', 'http://www.espn.com/nba/player/_/id/3033/pj-tucker', 'http://www.espn.com/nba/player/_/id/3224/joakim-noah', 'http://www.espn.com/nba/player/_/id/2580365/larry-nance-jr.', 'http://www.espn.com/nba/player/_/id/2991280/nerlens-noel', 'http://www.espn.com/nba/player/_/id/3135046/tyus-jones', 'http://www.espn.com/nba/player/_/id/3934723/thomas-bryant', 'http://www.espn.com/nba/player/_/id/2490149/cj-mccollum', 'http://www.espn.com/nba/player/_/id/3973/darren-collison', 'http://www.espn.com/nba/player/_/id/2991155/danuel-house-jr.', 'http://www.espn.com/nba/player/_/id/3134908/jakob-poeltl', 'http://www.espn.com/nba/player/_/id/6591/maurice-harkless', 'http://www.espn.com/nba/player/_/id/6446/cory-joseph', 'http://www.espn.com/nba/player/_/id/3064290/aaron-gordon', "http://www.espn.com/nba/player/_/id/2583632/royce-o'neale", 'http://www.espn.com/nba/player/_/id/2429/luol-deng', 'http://www.espn.com/nba/player/_/id/2578240/khem-birch', 'http://www.espn.com/nba/player/_/id/3423/goran-dragic', 'http://www.espn.com/nba/player/_/id/3078284/noah-vonleh', 'http://www.espn.com/nba/player/_/id/6477/jonas-valanciunas', 'http://www.espn.com/nba/player/_/id/2991070/jerami-grant', 'http://www.espn.com/nba/player/_/id/2968439/aron-baynes', 'http://www.espn.com/nba/player/_/id/3136193/devin-booker', 'http://www.espn.com/nba/player/_/id/2990984/buddy-hield', 'http://www.espn.com/nba/player/_/id/4066328/jarrett-allen', 'http://www.espn.com/nba/player/_/id/3431/eric-gordon']
+total links:  40
+total positions:  40
+dataframe size:  40
+https://www.espn.com/nba/statistics/rpm/_/page/4
+1:"RK"
+2:"NAME"
+3:"TEAM"
+4:"GP"
+5:"MPG"
+6:"ORPM"
+7:"DRPM"
+8:"RPM"
+9:"WINS"
+links:  ['http://www.espn.com/nba/player/_/id/2999547/gary-harris', 'http://www.espn.com/nba/player/_/id/6621/tomas-satoransky', 'http://www.espn.com/nba/player/_/id/2797/marvin-williams', 'http://www.espn.com/nba/player/_/id/984/tyson-chandler', 'http://www.espn.com/nba/player/_/id/4249/gordon-hayward', 'http://www.espn.com/nba/player/_/id/2991055/montrezl-harrell', 'http://www.espn.com/nba/player/_/id/6619/terrence-ross', 'http://www.espn.com/nba/player/_/id/3914044/landry-shamet', 'http://www.espn.com/nba/player/_/id/6507/brad-wanamaker', 'http://www.espn.com/nba/player/_/id/3978/demar-derozan', 'http://www.espn.com/nba/player/_/id/4261/ekpe-udoh', 'http://www.espn.com/nba/player/_/id/2530572/langston-galloway', 'http://www.espn.com/nba/player/_/id/3554/omri-casspi', 'http://www.espn.com/nba/player/_/id/6443/reggie-jackson', 'http://www.espn.com/nba/player/_/id/3593/bojan-bogdanovic', 'http://www.espn.com/nba/player/_/id/2968361/raul-neto', 'http://www.espn.com/nba/player/_/id/2578239/pat-connaughton', 'http://www.espn.com/nba/player/_/id/2016/zaza-pachulia', 'http://www.espn.com/nba/player/_/id/2579258/cody-zeller', 'http://www.espn.com/nba/player/_/id/4004/patty-mills', 'http://www.espn.com/nba/player/_/id/3064514/julius-randle', 'http://www.espn.com/nba/player/_/id/6605/meyers-leonard', 'http://www.espn.com/nba/player/_/id/2596107/alex-len', 'http://www.espn.com/nba/player/_/id/3201/jared-dudley', 'http://www.espn.com/nba/player/_/id/2991047/ryan-arcidiacono', 'http://www.espn.com/nba/player/_/id/2993370/richaun-holmes', 'http://www.espn.com/nba/player/_/id/2991350/alex-caruso', 'http://www.espn.com/nba/player/_/id/2489693/ryan-broekhoff', 'http://www.espn.com/nba/player/_/id/4066336/lauri-markkanen', 'http://www.espn.com/nba/player/_/id/3037789/bogdan-bogdanovic', 'http://www.espn.com/nba/player/_/id/996/pau-gasol', 'http://www.espn.com/nba/player/_/id/2579294/frank-kaminsky', 'http://www.espn.com/nba/player/_/id/3134907/kyle-kuzma', 'http://www.espn.com/nba/player/_/id/4351852/mitchell-robinson', 'http://www.espn.com/nba/player/_/id/6631/tyler-zeller', 'http://www.espn.com/nba/player/_/id/3416/nicolas-batum', 'http://www.espn.com/nba/player/_/id/3062679/josh-hart', 'http://www.espn.com/nba/player/_/id/2799/lou-williams', 'http://www.espn.com/nba/player/_/id/3986/taj-gibson', 'http://www.espn.com/nba/player/_/id/2528794/joe-harris']
+total links:  40
+total positions:  40
+dataframe size:  40
+https://www.espn.com/nba/statistics/rpm/_/page/5
+1:"RK"
+2:"NAME"
+3:"TEAM"
+4:"GP"
+5:"MPG"
+6:"ORPM"
+7:"DRPM"
+8:"RPM"
+9:"WINS"
+links:  ['http://www.espn.com/nba/player/_/id/3908845/john-collins', 'http://www.espn.com/nba/player/_/id/2531352/eric-moreland', 'http://www.espn.com/nba/player/_/id/6433/kenneth-faried', 'http://www.espn.com/nba/player/_/id/3191/corey-brewer', 'http://www.espn.com/nba/player/_/id/2968458/salah-mejri', 'http://www.espn.com/nba/player/_/id/6578/harrison-barnes', 'http://www.espn.com/nba/player/_/id/2530780/shabazz-napier', 'http://www.espn.com/nba/player/_/id/3998/jonas-jerebko', 'http://www.espn.com/nba/player/_/id/2326307/seth-curry', 'http://www.espn.com/nba/player/_/id/4277961/jaren-jackson-jr.', 'http://www.espn.com/nba/player/_/id/4017837/ivica-zubac', 'http://www.espn.com/nba/player/_/id/4278129/deandre-ayton', 'http://www.espn.com/nba/player/_/id/6592/john-henson', 'http://www.espn.com/nba/player/_/id/4066421/lonzo-ball', 'http://www.espn.com/nba/player/_/id/2993874/kyle-anderson', 'http://www.espn.com/nba/player/_/id/3155536/thomas-welsh', 'http://www.espn.com/nba/player/_/id/6581/jae-crowder', 'http://www.espn.com/nba/player/_/id/2579326/alan-williams', 'http://www.espn.com/nba/player/_/id/6475/klay-thompson', 'http://www.espn.com/nba/player/_/id/3062744/david-nwaba', 'http://www.espn.com/nba/player/_/id/2579260/trey-burke', 'http://www.espn.com/nba/player/_/id/4065654/jonathan-isaac', 'http://www.espn.com/nba/player/_/id/4066372/kevin-huerter', 'http://www.espn.com/nba/player/_/id/3919335/cheick-diallo', 'http://www.espn.com/nba/player/_/id/3064440/zach-lavine', 'http://www.espn.com/nba/player/_/id/3136479/angel-delgado', 'http://www.espn.com/nba/player/_/id/6610/darius-miller', 'http://www.espn.com/nba/player/_/id/4066650/zach-collins', 'http://www.espn.com/nba/player/_/id/3451/luc-mbah-a-moute', 'http://www.espn.com/nba/player/_/id/4032/wesley-matthews', 'http://www.espn.com/nba/player/_/id/3064559/damian-jones', 'http://www.espn.com/nba/player/_/id/3947078/tyler-davis', 'http://www.espn.com/nba/player/_/id/2991043/caris-levert', 'http://www.espn.com/nba/player/_/id/2581177/rodney-hood', 'http://www.espn.com/nba/player/_/id/4023/garrett-temple', 'http://www.espn.com/nba/player/_/id/3064517/jarell-martin', 'http://www.espn.com/nba/player/_/id/3064528/johnathan-williams', 'http://www.espn.com/nba/player/_/id/3147657/mikal-bridges', 'http://www.espn.com/nba/player/_/id/3970/demarre-carroll', 'http://www.espn.com/nba/player/_/id/3058254/christian-wood']
+total links:  40
+total positions:  40
+dataframe size:  40
+https://www.espn.com/nba/statistics/rpm/_/page/6
+1:"RK"
+2:"NAME"
+3:"TEAM"
+4:"GP"
+5:"MPG"
+6:"ORPM"
+7:"DRPM"
+8:"RPM"
+9:"WINS"
+links:  ['http://www.espn.com/nba/player/_/id/3055/j.j.-barea', 'http://www.espn.com/nba/player/_/id/3439/serge-ibaka', 'http://www.espn.com/nba/player/_/id/2982249/amile-jefferson', 'http://www.espn.com/nba/player/_/id/3906522/henry-ellenson', 'http://www.espn.com/nba/player/_/id/2774/ian-mahinmi', 'http://www.espn.com/nba/player/_/id/3138156/justin-jackson', 'http://www.espn.com/nba/player/_/id/6464/donatas-motiejunas', 'http://www.espn.com/nba/player/_/id/3912332/justin-patton', 'http://www.espn.com/nba/player/_/id/2384/dwight-howard', 'http://www.espn.com/nba/player/_/id/4017839/juan-hernangomez', 'http://www.espn.com/nba/player/_/id/4015/jeff-teague', 'http://www.espn.com/nba/player/_/id/6588/evan-fournier', 'http://www.espn.com/nba/player/_/id/3209/jeff-green', 'http://www.espn.com/nba/player/_/id/2581018/kentavious-caldwell-pope', 'http://www.espn.com/nba/player/_/id/6462/marcus-morris', 'http://www.espn.com/nba/player/_/id/3983/tyreke-evans', 'http://www.espn.com/nba/player/_/id/6576/quincy-acy', 'http://www.espn.com/nba/player/_/id/3937101/deyonta-davis', 'http://www.espn.com/nba/player/_/id/2994526/bryn-forbes', 'http://www.espn.com/nba/player/_/id/4066490/kostas-antetokounmpo', 'http://www.espn.com/nba/player/_/id/3892894/zhou-qi', 'http://www.espn.com/nba/player/_/id/2011/kyle-korver', 'http://www.espn.com/nba/player/_/id/6601/michael-kidd-gilchrist', 'http://www.espn.com/nba/player/_/id/2982334/t.j.-warren', 'http://www.espn.com/nba/player/_/id/3074752/terry-rozier', 'http://www.espn.com/nba/player/_/id/3908806/ray-spalding', 'http://www.espn.com/nba/player/_/id/3981/wayne-ellington', 'http://www.espn.com/nba/player/_/id/4355392/emanuel-terry', 'http://www.espn.com/nba/player/_/id/3914285/drew-eubanks', 'http://www.espn.com/nba/player/_/id/4066425/t.j.-leaf', 'http://www.espn.com/nba/player/_/id/4222252/isaiah-hartenstein', 'http://www.espn.com/nba/player/_/id/4066424/ike-anigbogu', 'http://www.espn.com/nba/player/_/id/2528588/doug-mcdermott', 'http://www.espn.com/nba/player/_/id/6616/miles-plumlee', 'http://www.espn.com/nba/player/_/id/3934670/marcus-derrickson', 'http://www.espn.com/nba/player/_/id/3113297/bruno-caboclo', 'http://www.espn.com/nba/player/_/id/2753/raymond-felton', 'http://www.espn.com/nba/player/_/id/3232/jason-smith', 'http://www.espn.com/nba/player/_/id/2595516/norman-powell', 'http://www.espn.com/nba/player/_/id/3907822/malik-beasley']
+total links:  40
+total positions:  40
+dataframe size:  40
+https://www.espn.com/nba/statistics/rpm/_/page/7
+1:"RK"
+2:"NAME"
+3:"TEAM"
+4:"GP"
+5:"MPG"
+6:"ORPM"
+7:"DRPM"
+8:"RPM"
+9:"WINS"
+links:  ['http://www.espn.com/nba/player/_/id/3934662/tyler-lydon', 'http://www.espn.com/nba/player/_/id/136/vince-carter', 'http://www.espn.com/nba/player/_/id/2608891/jakarr-sampson', 'http://www.espn.com/nba/player/_/id/3056602/semi-ojeleye', 'http://www.espn.com/nba/player/_/id/3136183/yante-maten', 'http://www.espn.com/nba/player/_/id/3917376/jaylen-brown', 'http://www.espn.com/nba/player/_/id/4278077/jarred-vanderbilt', 'http://www.espn.com/nba/player/_/id/3074765/isaiah-hicks', 'http://www.espn.com/nba/player/_/id/4017838/ante-zizic', 'http://www.espn.com/nba/player/_/id/3133603/kelly-oubre-jr.', 'http://www.espn.com/nba/player/_/id/3155533/jonah-bolden', 'http://www.espn.com/nba/player/_/id/3948153/chris-boucher', 'http://www.espn.com/nba/player/_/id/4065673/tony-bradley', 'http://www.espn.com/nba/player/_/id/3418/michael-beasley', 'http://www.espn.com/nba/player/_/id/4065663/josh-okogie', 'http://www.espn.com/nba/player/_/id/6617/austin-rivers', 'http://www.espn.com/nba/player/_/id/3936099/derrick-jones-jr.', 'http://www.espn.com/nba/player/_/id/2528210/tim-hardaway-jr.', 'http://www.espn.com/nba/player/_/id/2982268/jake-layman', 'http://www.espn.com/nba/player/_/id/2184/udonis-haslem', 'http://www.espn.com/nba/player/_/id/3138256/devaughn-akoon-purcell', 'http://www.espn.com/nba/player/_/id/4348696/dzanan-musa', 'http://www.espn.com/nba/player/_/id/3032978/dario-saric', 'http://www.espn.com/nba/player/_/id/3059319/andrew-wiggins', 'http://www.espn.com/nba/player/_/id/6644/scott-machado', 'http://www.espn.com/nba/player/_/id/3129674/donte-grantham', 'http://www.espn.com/nba/player/_/id/3456/derrick-rose', 'http://www.espn.com/nba/player/_/id/3136989/vincent-edwards', 'http://www.espn.com/nba/player/_/id/4067469/jemerrio-jones', 'http://www.espn.com/nba/player/_/id/3926491/isaac-humphries', 'http://www.espn.com/nba/player/_/id/4003/jodie-meeks', 'http://www.espn.com/nba/player/_/id/3999/james-johnson', 'http://www.espn.com/nba/player/_/id/4253/quincy-pondexter', "http://www.espn.com/nba/player/_/id/6615/kyle-o'quinn", 'http://www.espn.com/nba/player/_/id/2578185/dorian-finney-smith', 'http://www.espn.com/nba/player/_/id/2758/marcin-gortat', 'http://www.espn.com/nba/player/_/id/3059358/deonte-burton', 'http://www.espn.com/nba/player/_/id/3059273/demetrius-jackson', 'http://www.espn.com/nba/player/_/id/4305/ish-smith', 'http://www.espn.com/nba/player/_/id/6628/dion-waiters']
+total links:  40
+total positions:  40
+dataframe size:  40
+https://www.espn.com/nba/statistics/rpm/_/page/8
+1:"RK"
+2:"NAME"
+3:"TEAM"
+4:"GP"
+5:"MPG"
+6:"ORPM"
+7:"DRPM"
+8:"RPM"
+9:"WINS"
+links:  ['http://www.espn.com/nba/player/_/id/2580349/ron-baker', 'http://www.espn.com/nba/player/_/id/2991018/yogi-ferrell', 'http://www.espn.com/nba/player/_/id/3922230/aaron-holiday', 'http://www.espn.com/nba/player/_/id/2579476/jalen-jones', 'http://www.espn.com/nba/player/_/id/4230548/rodions-kurucs', 'http://www.espn.com/nba/player/_/id/4278073/shai-gilgeous-alexander', 'http://www.espn.com/nba/player/_/id/3447/robin-lopez', 'http://www.espn.com/nba/player/_/id/3057240/cameron-reynolds', 'http://www.espn.com/nba/player/_/id/2534781/gorgui-dieng', 'http://www.espn.com/nba/player/_/id/4237/john-wall', 'http://www.espn.com/nba/player/_/id/3136491/d.j.-wilson', 'http://www.espn.com/nba/player/_/id/2426/trevor-ariza', 'http://www.espn.com/nba/player/_/id/2528693/torrey-craig', 'http://www.espn.com/nba/player/_/id/2761/gerald-green', 'http://www.espn.com/nba/player/_/id/3059306/johnathan-motley', 'http://www.espn.com/nba/player/_/id/3074743/troy-caupain', 'http://www.espn.com/nba/player/_/id/3133626/kenrich-williams', 'http://www.espn.com/nba/player/_/id/3137798/devin-robinson', 'http://www.espn.com/nba/player/_/id/3923250/pj-dozier', 'http://www.espn.com/nba/player/_/id/3032979/dennis-schroder', 'http://www.espn.com/nba/player/_/id/3913174/luke-kennard', 'http://www.espn.com/nba/player/_/id/4192/milos-teodosic', 'http://www.espn.com/nba/player/_/id/3934673/donte-divincenzo', 'http://www.espn.com/nba/player/_/id/2528353/tony-snell', 'http://www.espn.com/nba/player/_/id/3952343/jaylen-morris', 'http://www.espn.com/nba/player/_/id/2769/amir-johnson', 'http://www.espn.com/nba/player/_/id/2531797/jordan-mcrae', 'http://www.espn.com/nba/player/_/id/2992257/tahjere-mccall', 'http://www.espn.com/nba/player/_/id/2995702/alex-abrines', 'http://www.espn.com/nba/player/_/id/2141179/andre-ingram', 'http://www.espn.com/nba/player/_/id/2579492/julian-washburn', 'http://www.espn.com/nba/player/_/id/3001309/dusty-hannahs', 'http://www.espn.com/nba/player/_/id/3907821/dwayne-bacon', 'http://www.espn.com/nba/player/_/id/2444/jr-smith', 'http://www.espn.com/nba/player/_/id/4017843/thon-maker', 'http://www.espn.com/nba/player/_/id/3056600/jabari-parker', 'http://www.espn.com/nba/player/_/id/3059262/davon-reed', 'http://www.espn.com/nba/player/_/id/2489563/dj-stephens', 'http://www.espn.com/nba/player/_/id/2580782/spencer-dinwiddie', 'http://www.espn.com/nba/player/_/id/3913176/brandon-ingram']
+total links:  40
+total positions:  40
+dataframe size:  40
+https://www.espn.com/nba/statistics/rpm/_/page/9
+1:"RK"
+2:"NAME"
+3:"TEAM"
+4:"GP"
+5:"MPG"
+6:"ORPM"
+7:"DRPM"
+8:"RPM"
+9:"WINS"
+links:  ['http://www.espn.com/nba/player/_/id/6447/enes-kanter', 'http://www.espn.com/nba/player/_/id/3936296/skal-labissiere', 'http://www.espn.com/nba/player/_/id/3134880/kadeem-allen', 'http://www.espn.com/nba/player/_/id/3243/nick-young', 'http://www.espn.com/nba/player/_/id/3064320/george-king', 'http://www.espn.com/nba/player/_/id/3929325/furkan-korkmaz', 'http://www.espn.com/nba/player/_/id/3934672/jalen-brunson', 'http://www.espn.com/nba/player/_/id/3445/courtney-lee', 'http://www.espn.com/nba/player/_/id/2595592/jordan-loyd', 'http://www.espn.com/nba/player/_/id/4067045/alize-johnson', 'http://www.espn.com/nba/player/_/id/3059280/bj-johnson', 'http://www.espn.com/nba/player/_/id/4066383/miles-bridges', 'http://www.espn.com/nba/player/_/id/2489716/matthew-dellavedova', 'http://www.espn.com/nba/player/_/id/3059430/zach-lofton', "http://www.espn.com/nba/player/_/id/3062667/deandre'-bembry", 'http://www.espn.com/nba/player/_/id/4017844/guerschon-yabusele', 'http://www.espn.com/nba/player/_/id/2991139/kris-dunn', 'http://www.espn.com/nba/player/_/id/3058269/joe-chealey', 'http://www.espn.com/nba/player/_/id/4277847/wendell-carter-jr.', 'http://www.espn.com/nba/player/_/id/3136196/trey-lyles', 'http://www.espn.com/nba/player/_/id/3064482/bobby-portis', 'http://www.espn.com/nba/player/_/id/4065697/dennis-smith-jr.', 'http://www.espn.com/nba/player/_/id/2488945/tim-frazier', 'http://www.espn.com/nba/player/_/id/3135048/jahlil-okafor', 'http://www.espn.com/nba/player/_/id/3190/marco-belinelli', 'http://www.espn.com/nba/player/_/id/6468/iman-shumpert', 'http://www.espn.com/nba/player/_/id/2579279/jordan-sibert', 'http://www.espn.com/nba/player/_/id/2583639/elfrid-payton', 'http://www.espn.com/nba/player/_/id/3136483/j.p.-macura', 'http://www.espn.com/nba/player/_/id/3138154/theo-pinson', 'http://www.espn.com/nba/player/_/id/2530276/tyler-johnson', 'http://www.espn.com/nba/player/_/id/3276/anthony-tolliver', 'http://www.espn.com/nba/player/_/id/4244/lance-stephenson', 'http://www.espn.com/nba/player/_/id/4348697/isaac-bonga', 'http://www.espn.com/nba/player/_/id/2982240/jaron-blossomgame', 'http://www.espn.com/nba/player/_/id/3452/javale-mcgee', 'http://www.espn.com/nba/player/_/id/2531047/jerian-grant', 'http://www.espn.com/nba/player/_/id/3915560/tyler-dorsey', 'http://www.espn.com/nba/player/_/id/4277842/trevon-duval', 'http://www.espn.com/nba/player/_/id/4277923/zhaire-smith']
+total links:  40
+total positions:  40
+dataframe size:  40
+https://www.espn.com/nba/statistics/rpm/_/page/10
+1:"RK"
+2:"NAME"
+3:"TEAM"
+4:"GP"
+5:"MPG"
+6:"ORPM"
+7:"DRPM"
+8:"RPM"
+9:"WINS"
+links:  ['http://www.espn.com/nba/player/_/id/6637/kent-bazemore', 'http://www.espn.com/nba/player/_/id/2991283/alex-poythress', 'http://www.espn.com/nba/player/_/id/3194/wilson-chandler', 'http://www.espn.com/nba/player/_/id/3102528/dante-exum', 'http://www.espn.com/nba/player/_/id/3913546/melvin-frazier-jr.', 'http://www.espn.com/nba/player/_/id/1987/dwyane-wade', 'http://www.espn.com/nba/player/_/id/3136194/tyler-ulis', 'http://www.espn.com/nba/player/_/id/3137795/chris-chiozza', 'http://www.espn.com/nba/player/_/id/3150844/moritz-wagner', 'http://www.espn.com/nba/player/_/id/2326411/james-nunnally', 'http://www.espn.com/nba/player/_/id/3157465/duncan-robinson', 'http://www.espn.com/nba/player/_/id/2489530/troy-daniels', 'http://www.espn.com/nba/player/_/id/2578213/ben-mclemore', 'http://www.espn.com/nba/player/_/id/2982340/justin-anderson', 'http://www.espn.com/nba/player/_/id/3057198/brandon-goodwin', 'http://www.espn.com/nba/player/_/id/4066211/robert-williams-iii', 'http://www.espn.com/nba/player/_/id/2595231/treveon-graham', 'http://www.espn.com/nba/player/_/id/2325499/c.j.-williams', 'http://www.espn.com/nba/player/_/id/2990969/georges-niang', 'http://www.espn.com/nba/player/_/id/3917378/ivan-rabb', 'http://www.espn.com/nba/player/_/id/1975/carmelo-anthony', 'http://www.espn.com/nba/player/_/id/3134881/stanley-johnson', 'http://www.espn.com/nba/player/_/id/3412/ryan-anderson', 'http://www.espn.com/nba/player/_/id/2488826/rodney-mcgruder', 'http://www.espn.com/nba/player/_/id/1015/tony-parker', 'http://www.espn.com/nba/player/_/id/4278508/troy-brown-jr.', 'http://www.espn.com/nba/player/_/id/6622/mike-scott', 'http://www.espn.com/nba/player/_/id/2284101/justin-holiday', 'http://www.espn.com/nba/player/_/id/4065670/bruce-brown', 'http://www.espn.com/nba/player/_/id/2528779/reggie-bullock', 'http://www.espn.com/nba/player/_/id/6452/jon-leuer', 'http://www.espn.com/nba/player/_/id/3057187/sterling-brown', 'http://www.espn.com/nba/player/_/id/6466/chandler-parsons', 'http://www.espn.com/nba/player/_/id/2991184/sam-dekker', 'http://www.espn.com/nba/player/_/id/3064511/andrew-harrison', 'http://www.espn.com/nba/player/_/id/2778/cj-miles', 'http://www.espn.com/nba/player/_/id/3064291/rondae-hollis-jefferson', 'http://www.espn.com/nba/player/_/id/2991149/damyean-dotson', 'http://www.espn.com/nba/player/_/id/3133838/yuta-watanabe', 'http://www.espn.com/nba/player/_/id/4291678/haywood-highsmith']
+total links:  40
+total positions:  40
+dataframe size:  40
+https://www.espn.com/nba/statistics/rpm/_/page/11
+1:"RK"
+2:"NAME"
+3:"TEAM"
+4:"GP"
+5:"MPG"
+6:"ORPM"
+7:"DRPM"
+8:"RPM"
+9:"WINS"
+links:  ['http://www.espn.com/nba/player/_/id/2595209/damion-lee', 'http://www.espn.com/nba/player/_/id/3155526/dillon-brooks', 'http://www.espn.com/nba/player/_/id/4066243/daryl-macon', 'http://www.espn.com/nba/player/_/id/3064539/sindarius-thornwell', 'http://www.espn.com/nba/player/_/id/3132042/gary-clark', 'http://www.espn.com/nba/player/_/id/4066636/markelle-fultz', 'http://www.espn.com/nba/player/_/id/4066262/malik-monk', 'http://www.espn.com/nba/player/_/id/3912334/khyri-thomas', 'http://www.espn.com/nba/player/_/id/4239/evan-turner', 'http://www.espn.com/nba/player/_/id/3906671/caleb-swanigan', 'http://www.espn.com/nba/player/_/id/609/dirk-nowitzki', "http://www.espn.com/nba/player/_/id/6460/e'twaun-moore", 'http://www.espn.com/nba/player/_/id/2580898/chasson-randle', 'http://www.espn.com/nba/player/_/id/3078286/troy-williams', 'http://www.espn.com/nba/player/_/id/3133874/jaylen-adams', 'http://www.espn.com/nba/player/_/id/2531210/allen-crabbe', 'http://www.espn.com/nba/player/_/id/2999409/willy-hernangomez', 'http://www.espn.com/nba/player/_/id/3892818/emmanuel-mudiay', 'http://www.espn.com/nba/player/_/id/3934663/malachi-richardson', 'http://www.espn.com/nba/player/_/id/3147351/daniel-hamilton', 'http://www.espn.com/nba/player/_/id/3915195/shake-milton', 'http://www.espn.com/nba/player/_/id/4065649/harry-giles-iii', 'http://www.espn.com/nba/player/_/id/3137730/patrick-mccaw', 'http://www.espn.com/nba/player/_/id/4277905/trae-young', 'http://www.espn.com/nba/player/_/id/4260/greg-monroe', 'http://www.espn.com/nba/player/_/id/2490589/isaiah-canaan', 'http://www.espn.com/nba/player/_/id/2990962/taurean-prince', 'http://www.espn.com/nba/player/_/id/3138192/bonzie-colson', 'http://www.espn.com/nba/player/_/id/3908807/deng-adel', 'http://www.espn.com/nba/player/_/id/4277843/gary-trent-jr.', 'http://www.espn.com/nba/player/_/id/2579321/james-ennis-iii', 'http://www.espn.com/nba/player/_/id/3444/kosta-koufos', 'http://www.espn.com/nba/player/_/id/6427/bismack-biyombo', 'http://www.espn.com/nba/player/_/id/3133602/sviatoslav-mykhailiuk', 'http://www.espn.com/nba/player/_/id/2382/devin-harris', 'http://www.espn.com/nba/player/_/id/3914283/chimezie-metu', 'http://www.espn.com/nba/player/_/id/4066334/rawle-alkins', 'http://www.espn.com/nba/player/_/id/4299/jeremy-lin', 'http://www.espn.com/nba/player/_/id/6461/markieff-morris', 'http://www.espn.com/nba/player/_/id/6474/tristan-thompson']
+total links:  40
+total positions:  40
+dataframe size:  40
+https://www.espn.com/nba/statistics/rpm/_/page/12
+1:"RK"
+2:"NAME"
+3:"TEAM"
+4:"GP"
+5:"MPG"
+6:"ORPM"
+7:"DRPM"
+8:"RPM"
+9:"WINS"
+links:  ['http://www.espn.com/nba/player/_/id/6428/marshon-brooks', 'http://www.espn.com/nba/player/_/id/2393/shaun-livingston', 'http://www.espn.com/nba/player/_/id/3133843/jared-terrell', 'http://www.espn.com/nba/player/_/id/2528787/lorenzo-brown', 'http://www.espn.com/nba/player/_/id/4230546/terrance-ferguson', 'http://www.espn.com/nba/player/_/id/2528426/jordan-clarkson', 'http://www.espn.com/nba/player/_/id/2991039/glenn-robinson-iii', 'http://www.espn.com/nba/player/_/id/3936294/isaiah-briscoe', 'http://www.espn.com/nba/player/_/id/4351851/anfernee-simons', 'http://www.espn.com/nba/player/_/id/2530923/alfonzo-mckinnie', 'http://www.espn.com/nba/player/_/id/2596108/michael-carter-williams', 'http://www.espn.com/nba/player/_/id/3002137/tyrone-wallace', 'http://www.espn.com/nba/player/_/id/2530530/t.j.-mcconnell', 'http://www.espn.com/nba/player/_/id/6472/isaiah-thomas', 'http://www.espn.com/nba/player/_/id/3907385/brandon-sampson', 'http://www.espn.com/nba/player/_/id/2991274/shaquille-harrison', 'http://www.espn.com/nba/player/_/id/3974/dante-cunningham', 'http://www.espn.com/nba/player/_/id/3912854/jawun-evans', 'http://www.espn.com/nba/player/_/id/2754/channing-frye', 'http://www.espn.com/nba/player/_/id/2995706/mario-hezonja', 'http://www.espn.com/nba/player/_/id/3149010/chandler-hutchison', "http://www.espn.com/nba/player/_/id/4066436/de'anthony-melton", 'http://www.espn.com/nba/player/_/id/6594/john-jenkins', 'http://www.espn.com/nba/player/_/id/4240/avery-bradley', 'http://www.espn.com/nba/player/_/id/3943606/jerome-robinson', 'http://www.espn.com/nba/player/_/id/3136779/keita-bates-diop', 'http://www.espn.com/nba/player/_/id/3133635/jevon-carter', 'http://www.espn.com/nba/player/_/id/6429/alec-burks', 'http://www.espn.com/nba/player/_/id/3136485/edmond-sumner', 'http://www.espn.com/nba/player/_/id/2327577/jamychal-green', 'http://www.espn.com/nba/player/_/id/2585637/dairis-bertans', 'http://www.espn.com/nba/player/_/id/3064427/jordan-bell', 'http://www.espn.com/nba/player/_/id/3074797/wes-iwundu', 'http://www.espn.com/nba/player/_/id/4066297/josh-jackson', 'http://www.espn.com/nba/player/_/id/3934719/og-anunoby', 'http://www.espn.com/nba/player/_/id/3026/rajon-rondo', 'http://www.espn.com/nba/player/_/id/3934621/jacob-evans', 'http://www.espn.com/nba/player/_/id/3136696/wade-baldwin-iv', 'http://www.espn.com/nba/player/_/id/4277848/marvin-bagley-iii', 'http://www.espn.com/nba/player/_/id/3064230/cameron-payne']
+total links:  40
+total positions:  40
+dataframe size:  40
+https://www.espn.com/nba/statistics/rpm/_/page/13
+1:"RK"
+2:"NAME"
+3:"TEAM"
+4:"GP"
+5:"MPG"
+6:"ORPM"
+7:"DRPM"
+8:"RPM"
+9:"WINS"
+links:  ['http://www.espn.com/nba/player/_/id/2489785/ian-clark', 'http://www.espn.com/nba/player/_/id/6448/brandon-knight', 'http://www.espn.com/nba/player/_/id/6485/lance-thomas', 'http://www.espn.com/nba/player/_/id/2488958/solomon-hill', "http://www.espn.com/nba/player/_/id/3133601/devonte'-graham", 'http://www.espn.com/nba/player/_/id/4011991/dragan-bender', 'http://www.espn.com/nba/player/_/id/2566745/quinn-cook', 'http://www.espn.com/nba/player/_/id/3907525/allonzo-trier', 'http://www.espn.com/nba/player/_/id/3893016/cedi-osman', 'http://www.espn.com/nba/player/_/id/4065836/omari-spellman', 'http://www.espn.com/nba/player/_/id/4080610/hamidou-diallo', 'http://www.espn.com/nba/player/_/id/2595435/abdel-nader', 'http://www.espn.com/nba/player/_/id/4247/wesley-johnson', 'http://www.espn.com/nba/player/_/id/4264/patrick-patterson', 'http://www.espn.com/nba/player/_/id/3113587/cristiano-felicio', 'http://www.espn.com/nba/player/_/id/6454/shelvin-mack', 'http://www.espn.com/nba/player/_/id/6579/will-barton', 'http://www.espn.com/nba/player/_/id/3059315/frank-mason-iii', 'http://www.espn.com/nba/player/_/id/4065651/frank-jackson', 'http://www.espn.com/nba/player/_/id/4277919/mo-bamba', 'http://www.espn.com/nba/player/_/id/2806/jose-calderon', 'http://www.espn.com/nba/player/_/id/4230550/elie-okobo', 'http://www.espn.com/nba/player/_/id/2579466/jonathon-simmons', 'http://www.espn.com/nba/player/_/id/2991042/nik-stauskas', 'http://www.espn.com/nba/player/_/id/4230547/frank-ntilikina', 'http://www.espn.com/nba/player/_/id/3059316/wayne-selden', 'http://www.espn.com/nba/player/_/id/3893019/timothe-luwawu-cabarrot', 'http://www.espn.com/nba/player/_/id/4277811/collin-sexton', 'http://www.espn.com/nba/player/_/id/3417/jerryd-bayless', 'http://www.espn.com/nba/player/_/id/3135045/grayson-allen', 'http://www.espn.com/nba/player/_/id/165/jamal-crawford', 'http://www.espn.com/nba/player/_/id/3907487/marquese-chriss', 'http://www.espn.com/nba/player/_/id/3907386/antonio-blakeney', 'http://www.espn.com/nba/player/_/id/4278075/kevin-knox']
+total links:  34
+total positions:  34
+dataframe size:  34
+None
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[6]:</div>
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
@@ -12013,424 +13096,89 @@ div#notebook {
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>City</th>
-      <th>Population</th>
-      <th>Murder</th>
-      <th>Robbery</th>
-      <th>Property Crime</th>
+      <th>RK</th>
+      <th>NAME</th>
+      <th>POS</th>
+      <th>TEAM</th>
+      <th>GP</th>
+      <th>MPG</th>
+      <th>ORPM</th>
+      <th>DRPM</th>
+      <th>RPM</th>
+      <th>WINS</th>
+      <th>PLAYER PAGE</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>Adams Village</td>
-      <td>1861</td>
-      <td>0</td>
-      <td>0</td>
-      <td>12</td>
+      <td>1</td>
+      <td>Paul George</td>
+      <td>SF</td>
+      <td>OKC</td>
+      <td>77</td>
+      <td>36.9</td>
+      <td>4.48</td>
+      <td>3.08</td>
+      <td>7.56</td>
+      <td>19.73</td>
+      <td>http://www.espn.com/nba/player/_/id/4251/paul-...</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Addison Town and Village</td>
-      <td>2577</td>
-      <td>0</td>
-      <td>0</td>
-      <td>24</td>
+      <td>2</td>
+      <td>James Harden</td>
+      <td>PG</td>
+      <td>HOU</td>
+      <td>78</td>
+      <td>36.8</td>
+      <td>7.42</td>
+      <td>0.07</td>
+      <td>7.49</td>
+      <td>18.67</td>
+      <td>http://www.espn.com/nba/player/_/id/3992/james...</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Akron Village</td>
-      <td>2846</td>
-      <td>0</td>
-      <td>0</td>
-      <td>16</td>
+      <td>3</td>
+      <td>Stephen Curry</td>
+      <td>PG</td>
+      <td>GS</td>
+      <td>69</td>
+      <td>33.8</td>
+      <td>5.87</td>
+      <td>0.75</td>
+      <td>6.62</td>
+      <td>14.90</td>
+      <td>http://www.espn.com/nba/player/_/id/3975/steph...</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Albany</td>
-      <td>97956</td>
-      <td>8</td>
-      <td>227</td>
-      <td>4090</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Albion Village</td>
-      <td>6388</td>
-      <td>0</td>
       <td>4</td>
-      <td>223</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [146]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plot population distribution</span>
-<span class="n">ny_crime</span><span class="p">[</span><span class="s1">'Population'</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Population'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt"></div>
-
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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%0AAAAASUVORK5CYII=%0A">
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [147]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plot murder distribution</span>
-<span class="n">ny_crime</span><span class="p">[</span><span class="s1">'Murder'</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Murder'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt"></div>
-
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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%0AxL2Snga6Jf018D1gddp/NXCrpF5Kz/gXNyC3mZnVYNjyj4itwJkVxn8AzKsw/n/ARXVJZ2ZmDeFP%0A+JqZZcjlb2aWIZe/mVmGXP5mZhly+ZuZZcjlb2aWIZe/mVmGXP5mZhly+ZuZZcjlb2aWIZe/mVmG%0AXP5mZhly+ZuZZcjlb2aWIZe/mVmGXP5mZhly+ZuZZcjlb2aWIZe/mVmGXP5mZhly+ZuZZcjlb2aW%0AoWHLX9J0SZsk7ZS0Q9Kn0/g1kl6StCVdFpTd5mpJvZKelXR+Ix+AmZmN3vgR7HMEuDIinpT0VmCz%0ApAfTtusi4u/Kd5Y0C1gMnA68A/h3Sb8ZEa/XM7iZmVVv2Gf+EbE3Ip5My68AO4FpR7nJQqA7Ig5H%0AxAtALzCvHmHNzKw+FBEj31maATwMnAH8GXAZ8DLwBKVXBwckfR14NCJuS7dZDTwQEXcOOtZSYClA%0Ae3v73O7u7qoeQN/+Q+x7rfK22dMmVXXMsdDf309bW1uzY4xKETNDMXMXMTMUM3eRM3d1dW2OiI5q%0AjjGSaR8AJLUBdwGfiYiXJd0IfAmIdL0S+ASgCjf/ld8wEbEKWAXQ0dERnZ2dow4PcMPa9azcVvlh%0A7LqkumOOhZ6eHqp9zM1SxMxQzNxFzAzFzJ1r5hG920fSBErFvzYi7gaIiH0R8XpE/Bz4Fm9M7ewG%0Appfd/BRgT00pzcysrkbybh8Bq4GdEfHVsvGpZbt9BNieljcAiyVNlHQqMBN4vH6RzcysViOZ9jkH%0A+BiwTdKWNPZZ4GJJcyhN6ewCrgCIiB2S1gFPU3qn0DK/08fMrLUMW/4R8QiV5/HvP8ptrgWurSGX%0AmZk1kD/ha2aWIZe/mVmGXP5mZhly+ZuZZcjlb2aWIZe/mVmGXP5mZhly+ZuZZcjlb2aWIZe/mVmG%0AXP5mZhly+ZuZZcjlb2aWIZe/mVmGXP5mZhly+ZuZZcjlb2aWIZe/mVmGXP5mZhly+ZuZZcjlb2aW%0AoWHLX9J0SZsk7ZS0Q9Kn0/hJkh6U9Fy6PjGNS9L1knolbZV0VqMfhJmZjc5InvkfAa6MiHcDZwPL%0AJM0ClgMbI2ImsDGtA1wAzEyXpcCNdU9tZmY1Gbb8I2JvRDyZll8BdgLTgIXAmrTbGmBRWl4I3BIl%0AjwKTJU2te3IzM6vaqOb8Jc0AzgQeA9ojYi+UfkEAb0+7TQNeLLvZ7jRmZmYtQhExsh2lNuA/gGsj%0A4m5JByNictn2AxFxoqT7gC9HxCNpfCPwlxGxedDxllKaFqK9vX1ud3d3VQ+gb/8h9r1WedvsaZOq%0AOuZY6O/vp62trdkxRqWImaGYuYuYGYqZu8iZu7q6NkdERzXHGD+SnSRNAO4C1kbE3Wl4n6SpEbE3%0ATev0pfHdwPSym58C7Bl8zIhYBawC6OjoiM7Ozmryc8Pa9azcVvlh7LqkumOOhZ6eHqp9zM1SxMxQ%0AzNxFzAzFzJ1r5pG820fAamBnRHy1bNMGYElaXgKsLxu/NL3r52zg0MD0kJmZtYaRPPM/B/gYsE3S%0AljT2WWAFsE7S5cAPgYvStvuBBUAv8BPg43VNbGZmNRu2/NPcvYbYfF6F/QNYVmMuMzNrIH/C18ws%0AQy5/M7MMufzNzDLk8jczy5DL38wsQy5/M7MMufzNzDLk8jczy5DL38wsQy5/M7MMufzNzDLk8jcz%0Ay5DL38wsQy5/M7MMufzNzDLk8jczy5DL38wsQy5/M7MMufzNzDLk8jczy5DL38wsQy5/M7MMDVv+%0Akm6S1Cdpe9nYNZJekrQlXRaUbbtaUq+kZyWd36jgZmZWvZE8878ZmF9h/LqImJMu9wNImgUsBk5P%0At/kHSePqFdbMzOpj2PKPiIeB/SM83kKgOyIOR8QLQC8wr4Z8ZmbWAIqI4XeSZgD3RsQZaf0a4DLg%0AZeAJ4MqIOCDp68CjEXFb2m818EBE3FnhmEuBpQDt7e1zu7u7q3oAffsPse+1yttmT5tU1THHQn9/%0AP21tbc2OMSpFzAzFzF3EzFDM3EXO3NXVtTkiOqo5xvgq7/tG4EtApOuVwCcAVdi34m+XiFgFrALo%0A6OiIzs7OqoLcsHY9K7dVfhi7LqnumGOhp6eHah9zsxQxMxQzdxEzQzFz55q5qnf7RMS+iHg9In4O%0AfIs3pnZ2A9PLdj0F2FNTQjMzq7uqyl/S1LLVjwAD7wTaACyWNFHSqcBM4PHaIpqZWb0NO+0j6Xag%0AE5giaTfwBaBT0hxKUzq7gCsAImKHpHXA08ARYFlEvN6Y6GZmVq1hyz8iLq4wvPoo+18LXFtLKDMz%0Aayx/wtfMLEMufzOzDLn8zcwy5PI3M8uQy9/MLEMufzOzDLn8zcwy5PI3M8uQy9/MLEMufzOzDLn8%0Azcwy5PI3M8uQy9/MLEMufzOzDLn8zcwy5PI3M8uQy9/MLEMufzOzDLn8zcwy5PI3M8uQy9/MLEMu%0AfzOzDA1b/pJuktQnaXvZ2EmSHpT0XLo+MY1L0vWSeiVtlXRWI8ObmVl1RvLM/2Zg/qCx5cDGiJgJ%0AbEzrABcAM9NlKXBjfWKamVk9DVv+EfEwsH/Q8EJgTVpeAywqG78lSh4FJkuaWq+wZmZWH4qI4XeS%0AZgD3RsQZaf1gREwu234gIk6UdC+wIiIeSeMbgasi4okKx1xK6dUB7e3tc7u7u6t6AH37D7Hvtcrb%0AZk+bVNUxx0J/fz9tbW3NjjEqRcwMxcxdxMxQzNxFztzV1bU5IjqqOcb4OmdShbGKv10iYhWwCqCj%0AoyM6OzurusMb1q5n5bbKD2PXJdUdcyz09PRQ7WNuliJmhmLmLmJmKGbuXDNX+26ffQPTOem6L43v%0ABqaX7XcKsKf6eGZm1gjVlv8GYElaXgKsLxu/NL3r52zgUETsrTGjmZnV2bDTPpJuBzqBKZJ2A18A%0AVgDrJF0O/BC4KO1+P7AA6AV+Any8AZnNzKxGw5Z/RFw8xKbzKuwbwLJaQ5mZWWP5E75mZhly+ZuZ%0AZcjlb2aWIZe/mVmGXP5mZhly+ZuZZcjlb2aWIZe/mVmGXP5mZhly+ZuZZcjlb2aWIZe/mVmGXP5m%0AZhly+ZuZZcjlb2aWIZe/mVmGXP5mZhly+ZuZZcjlb2aWIZe/mVmGXP5mZhkaX8uNJe0CXgFeB45E%0ARIekk4A7gBnALuD3I+JAbTHNzKye6vHMvysi5kRER1pfDmyMiJnAxrRuZmYtpBHTPguBNWl5DbCo%0AAfdhZmY1UERUf2PpBeAAEMA/RsQqSQcjYnLZPgci4sQKt10KLAVob2+f293dXVWGvv2H2Pda5W2z%0Ap02q6phjob+/n7a2tmbHGJUiZoZi5i5iZihm7iJn7urq2lw26zIqNc35A+dExB5JbwcelPTMSG8Y%0AEauAVQAdHR3R2dlZVYAb1q5n5bbKD2PXJdUdcyz09PRQ7WNuliJmhmLmLmJmKGbuXDPXNO0TEXvS%0AdR9wDzAP2CdpKkC67qspoZmZ1V3V5S/pBElvHVgGPgRsBzYAS9JuS4D1tYY0M7P6qmXapx24R9LA%0Acf45Iv5V0neBdZIuB34IXFR7TDMzq6eqyz8ifgC8p8L4j4HzagllZmaN5U/4mpllyOVvZpYhl7+Z%0AWYZc/mZmGXL5m5llyOVvZpYhl7+ZWYZc/mZmGXL5m5llyOVvZpYhl7+ZWYZc/mZmGXL5m5llyOVv%0AZpYhl7+ZWYZc/mZmGXL5m5llyOVvZpYhl7+ZWYZc/mZmGXL5m5llyOVvZpah8Y06sKT5wNeAccA/%0ARcSKRt3XUGYsv6/i+K4VHx7jJGZmraUhz/wljQO+AVwAzAIuljSrEfdlZmaj16hn/vOA3oj4AYCk%0AbmAh8HSD7q8u6vVKYajjlLty9hEuS/v5lYjZsa/VZiIUEfU/qHQhMD8iPpnWPwa8NyI+VbbPUmBp%0AWv0t4Nkq724K8KMa4jZLEXMXMTMUM3cRM0Mxcxc58zsj4uRqDtCoZ/6qMPZLv2UiYhWwquY7kp6I%0AiI5ajzPWipi7iJmhmLmLmBmKmTvXzI16t89uYHrZ+inAngbdl5mZjVKjyv+7wExJp0p6M7AY2NCg%0A+zIzs1FqyLRPRByR9CngO5Te6nlTROxoxH1Rh6mjJili7iJmhmLmLmJmKGbuLDM35A++ZmbW2vwJ%0AXzOzDLn8zcwyVOjylzRf0rOSeiUtb3aeoUjaJWmbpC2SnkhjJ0l6UNJz6frEFsh5k6Q+SdvLxirm%0AVMn16dxvlXRWC2W+RtJL6XxvkbSgbNvVKfOzks5vUubpkjZJ2ilph6RPp/FWP9dD5W7Z8y3pOEmP%0AS3oqZf5iGj9V0mPpXN+R3piCpIlpvTdtnzHWmYfJfbOkF8rO9Zw0PvqfkYgo5IXSH5KfB04D3gw8%0ABcxqdq4hsu4Cpgwa+1tgeVpeDnylBXK+HzgL2D5cTmAB8AClz3ScDTzWQpmvAf68wr6z0s/JRODU%0A9PMzrgmZpwJnpeW3At9P2Vr9XA+Vu2XPdzpnbWl5AvBYOofrgMVp/JvAH6flPwG+mZYXA3c06VwP%0Alftm4MIK+4/6Z6TIz/x/8RUSEfFTYOArJIpiIbAmLa8BFjUxCwAR8TCwf9DwUDkXArdEyaPAZElT%0AxybpG4bIPJSFQHdEHI6IF4BeSj9HYyoi9kbEk2n5FWAnMI3WP9dD5R5K0893Omf9aXVCugRwLnBn%0AGh98rgf+G9wJnCep0odWG+oouYcy6p+RIpf/NODFsvXdHP0HsZkC+DdJm9PXWgC0R8ReKP2jAt7e%0AtHRHN1TOVj//n0ovf28qm1JrucxpWuFMSs/sCnOuB+WGFj7fksZJ2gL0AQ9SegVyMCKOVMj1i8xp%0A+yHgbWObuGRw7ogYONfXpnN9naSJaWzU57rI5T/sV0i0kHMi4ixK33K6TNL7mx2oDlr5/N8I/AYw%0AB9gLrEzjLZVZUhtwF/CZiHj5aLtWGGul3C19viPi9YiYQ+mbBuYB7660W7puiczwq7klnQFcDfw2%0A8LvAScBVafdR5y5y+RfmKyQiYk+67gPuofQDuG/gZVm67mtewqMaKmfLnv+I2Jf+4fwc+BZvTDW0%0ATGZJEygV6NqIuDsNt/y5rpS7COcbICIOAj2U5sQnSxr4kGt5rl9kTtsnMfJpxYYoyz0/Tb1FRBwG%0Avk0N57rI5V+Ir5CQdIKktw4sAx8CtlPKuiTttgRY35yEwxoq5wbg0vQug7OBQwNTFs02aK7zI5TO%0AN5QyL07v6DgVmAk83oR8AlYDOyPiq2WbWvpcD5W7lc+3pJMlTU7LxwMfoPS3ik3AhWm3wed64L/B%0AhcBDkf6iOpaGyP1M2ZMDUfo7Rfm5Ht3PSDP+kl2vC6W/cH+f0hze55qdZ4iMp1F6x8NTwI6BnJTm%0AETcCz6Xrk1og6+2UXrb/jNIzicuHyknpZeY30rnfBnS0UOZbU6at6R/F1LL9P5cyPwtc0KTM76P0%0AknwrsCVdFhTgXA+Vu2XPN/A7wPdStu3A59P4aZR+EfUC/wJMTOPHpfXetP20Jp3roXI/lM71duA2%0A3nhH0Kh/Rvz1DmZmGSrytI+ZmVXJ5W9mliGXv5lZhlz+ZmYZcvmbmWXI5W9mliGXv5lZhv4fhlbP%0AMGpmPj0AAAAASUVORK5CYII=%0A">
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [148]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plot robbery distribution</span>
-<span class="n">ny_crime</span><span class="p">[</span><span class="s1">'Robbery'</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Robbery'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt"></div>
-
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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%0AQmCC%0A">
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [149]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plot property crime distribution</span>
-<span class="n">ny_crime</span><span class="p">[</span><span class="s1">'Property Crime'</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Murder'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt"></div>
-
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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%0AQmCC%0A">
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [150]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Filter out any outliers over two standard deviations above the mean</span>
-<span class="n">pop_cutoff</span> <span class="o">=</span> <span class="n">ny_crime</span><span class="p">[</span><span class="s1">'Population'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">ny_crime</span><span class="p">[</span><span class="s1">'Population'</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-<span class="n">mur_cutoff</span> <span class="o">=</span> <span class="n">ny_crime</span><span class="p">[</span><span class="s1">'Murder'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">ny_crime</span><span class="p">[</span><span class="s1">'Murder'</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-<span class="n">rob_cutoff</span> <span class="o">=</span> <span class="n">ny_crime</span><span class="p">[</span><span class="s1">'Robbery'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">ny_crime</span><span class="p">[</span><span class="s1">'Robbery'</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-<span class="n">prop_cutoff</span> <span class="o">=</span> <span class="n">ny_crime</span><span class="p">[</span><span class="s1">'Property Crime'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">ny_crime</span><span class="p">[</span><span class="s1">'Property Crime'</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-
-<span class="n">ny_crime</span><span class="p">[</span><span class="s1">'Population'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ny_crime</span><span class="o">.</span><span class="n">Population</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">pop_cutoff</span> <span class="k">else</span> <span class="kc">None</span><span class="p">)</span>
-<span class="n">ny_crime</span><span class="p">[</span><span class="s1">'Murder'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ny_crime</span><span class="o">.</span><span class="n">Murder</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">mur_cutoff</span> <span class="k">else</span> <span class="kc">None</span><span class="p">)</span>
-<span class="n">ny_crime</span><span class="p">[</span><span class="s1">'Robbery'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ny_crime</span><span class="o">.</span><span class="n">Robbery</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">rob_cutoff</span> <span class="k">else</span> <span class="kc">None</span><span class="p">)</span>
-<span class="n">ny_crime</span><span class="p">[</span><span class="s1">'Property Crime'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ny_crime</span><span class="p">[</span><span class="s1">'Property Crime'</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">prop_cutoff</span> <span class="k">else</span> <span class="kc">None</span><span class="p">)</span>
-
-<span class="n">ny_crime</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[150]:</div>
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Population</th>
-      <th>Murder</th>
-      <th>Robbery</th>
-      <th>Property Crime</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>347.000000</td>
-      <td>345.000000</td>
-      <td>347.000000</td>
-      <td>347.000000</td>
-    </tr>
-    <tr>
-      <th>mean</th>
-      <td>15956.685879</td>
-      <td>0.350725</td>
-      <td>17.867435</td>
-      <td>385.752161</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>27080.218837</td>
-      <td>1.587160</td>
-      <td>94.972492</td>
-      <td>1034.369072</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>526.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>25%</th>
-      <td>2997.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>40.000000</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>7187.000000</td>
-      <td>0.000000</td>
-      <td>1.000000</td>
-      <td>112.000000</td>
-    </tr>
-    <tr>
-      <th>75%</th>
-      <td>18160.500000</td>
-      <td>0.000000</td>
-      <td>5.000000</td>
-      <td>340.500000</td>
-    </tr>
-    <tr>
-      <th>max</th>
-      <td>258789.000000</td>
-      <td>21.000000</td>
-      <td>1322.000000</td>
-      <td>12491.000000</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [151]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create new feature</span>
-<span class="n">ny_crime</span><span class="p">[</span><span class="s1">'Population^2'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ny_crime</span><span class="p">[</span><span class="s1">'Population'</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
-
-<span class="c1"># Convert specified columns to boolean</span>
-<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'Murder'</span><span class="p">,</span> <span class="s1">'Robbery'</span><span class="p">]:</span>
-    <span class="n">ny_crime</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">ny_crime</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span>
-
-<span class="n">ny_crime</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[151]:</div>
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>City</th>
-      <th>Population</th>
-      <th>Murder</th>
-      <th>Robbery</th>
-      <th>Property Crime</th>
-      <th>Population^2</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Adams Village</td>
-      <td>1861.0</td>
-      <td>False</td>
-      <td>False</td>
-      <td>12.0</td>
-      <td>3.463321e+06</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Addison Town and Village</td>
-      <td>2577.0</td>
-      <td>False</td>
-      <td>False</td>
-      <td>24.0</td>
-      <td>6.640929e+06</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Akron Village</td>
-      <td>2846.0</td>
-      <td>False</td>
-      <td>False</td>
-      <td>16.0</td>
-      <td>8.099716e+06</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Albany</td>
-      <td>97956.0</td>
-      <td>True</td>
-      <td>True</td>
-      <td>4090.0</td>
-      <td>9.595378e+09</td>
+      <td>Giannis Antetokounmpo</td>
+      <td>PF</td>
+      <td>MIL</td>
+      <td>72</td>
+      <td>32.8</td>
+      <td>3.15</td>
+      <td>3.36</td>
+      <td>6.51</td>
+      <td>14.94</td>
+      <td>http://www.espn.com/nba/player/_/id/3032977/gi...</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Albion Village</td>
-      <td>6388.0</td>
-      <td>False</td>
-      <td>True</td>
-      <td>223.0</td>
-      <td>4.080654e+07</td>
+      <td>5</td>
+      <td>Nikola Jokic</td>
+      <td>C</td>
+      <td>DEN</td>
+      <td>80</td>
+      <td>31.3</td>
+      <td>3.78</td>
+      <td>2.63</td>
+      <td>6.41</td>
+      <td>14.80</td>
+      <td>http://www.espn.com/nba/player/_/id/3112335/ni...</td>
     </tr>
   </tbody>
 </table>
@@ -12443,12 +13191,21 @@ div#notebook {
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Save-data-to-csv-file">Save data to csv file<a class="anchor-link" href="#Save-data-to-csv-file">¶</a></h2>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
+<div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rpm_data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">'nba_rpm_data_2018.csv'</span><span class="p">)</span>
 </pre></div>
 
 </div>
