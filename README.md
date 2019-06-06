@@ -22,10 +22,3 @@ I am a data scientist who is fascinated with solving challenging data-oriented p
 
 > **_Data Engineering_**
 > - [Plotting Current and Gain Distributions With Matplotlib](https://rakeshbhatia.github.io/notes/content/data_engineering/plotting_current_and_gain_distributions_with_matplotlib)
-
-> **_Thinkful Data Science_**
-> - [Preparing Data](https://rakeshbhatia.github.io/notes/content/thinkful/preparing_data)
-> - [Fixing Assumptions](https://rakeshbhatia.github.io/notes/content/thinkful/fixing_assumptions)
-> - [Analysis of Boston House Prices](https://rakeshbhatia.github.io/notes/content/thinkful/analysis_of_boston_house_prices)
-> - [In Sample Evaluation and Cross Validation](https://rakeshbhatia.github.io/notes/content/thinkful/in_sample_evaluation_and_cross_validation)
-> - [Iterate and Evaluate a Naive Bayes Classifier](https://rakeshbhatia.github.io/notes/content/thinkful/iterate_and_evaluate_a_naive_bayes_classifier)
