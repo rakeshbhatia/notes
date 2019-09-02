@@ -1,10 +1,8 @@
-## <center>Python & Data Science</center>
 ## <center>Technical Notes</center>
 
-I am a data scientist who is fascinated with solving challenging data-oriented problems across a wide variety of fields. I enjoy seeking the truth, revealing the truth, and searching for hidden truths in data. Check out my technical notes on python and data science below!
+Hello! Welcome to my site. I am fascinated with solving challenging data science problems across a wide variety of fields. Check out my technical notes and personal projects relating to python and data science below!
 
 > **_Python_**
-> - [Numbers](https://rakeshbhatia.github.io/notes/content/python/numbers)
 > - [Sets](https://rakeshbhatia.github.io/notes/content/python/sets)
 > - [If Else](https://rakeshbhatia.github.io/notes/content/python/if_else)
 > - [Linked Lists](https://rakeshbhatia.github.io/notes/content/python/linked_lists)
@@ -14,11 +12,29 @@ I am a data scientist who is fascinated with solving challenging data-oriented p
 > - [Dictionaries](https://rakeshbhatia.github.io/notes/content/python/dictionaries)
 
 > **_Web Scraping_**
-> - [Scrapy Basics](https://rakeshbhatia.github.io/notes/content/web_scraping/scrapy_basics)
-> - [Beautiful Soup Basics](https://rakeshbhatia.github.io/notes/content/web_scraping/beautiful_soup_basics)
-> - [Scrape Historical Ohlc Stock Prices](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_historical_ohlc_stock_prices)
+> - [Scraping Job Listings With Lxml](https://rakeshbhatia.github.io/notes/content/web_scraping/scraping_job_listings_with_lxml)
 > - [Scrape Fanduel Nba Player Stats With Scrapy](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_fanduel_nba_player_stats_with_scrapy)
-> - [Scrape NBA Player RPM Stats From ESPN with lxml](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_nba_player_rpm_stats_from_espn_with_lxml)
+> - [Scraping Stock Market News and Updates With Lxml](https://rakeshbhatia.github.io/notes/content/web_scraping/scraping_stock_market_news_and_updates_with_lxml)
+> - [Beautiful Soup Basics](https://rakeshbhatia.github.io/notes/content/web_scraping/beautiful_soup_basics)
+> - [Scrape Nba Player Rpm Stats From Espn With Lxml](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_nba_player_rpm_stats_from_espn_with_lxml)
+> - [Scrape Nba Player Game Logs From Espn With Lxml](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_nba_player_game_logs_from_espn_with_lxml)
+> - [Scrapy Basics](https://rakeshbhatia.github.io/notes/content/web_scraping/scrapy_basics)
+> - [Scrape Historical Ohlc Stock Prices](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_historical_ohlc_stock_prices)
+
+> **_Data Science_**
+> - [Fixing Assumptions](https://rakeshbhatia.github.io/notes/content/data_science/fixing_assumptions)
+> - [Analysis of Boston House Prices](https://rakeshbhatia.github.io/notes/content/data_science/analysis_of_boston_house_prices)
+> - [Home Credit Default Risk Analysis](https://rakeshbhatia.github.io/notes/content/data_science/home_credit_default_risk_analysis)
+> - [In Sample Evaluation and Cross Validation](https://rakeshbhatia.github.io/notes/content/data_science/in_sample_evaluation_and_cross_validation)
+> - [Fixing Assumptions](https://rakeshbhatia.github.io/notes/content/data_science/fixing_assumptions)
+> - [Iterate and Evaluate a Naive Bayes Classifier](https://rakeshbhatia.github.io/notes/content/data_science/iterate_and_evaluate_a_naive_bayes_classifier)
+> - [Preparing Data](https://rakeshbhatia.github.io/notes/content/data_science/preparing_data)
+> - [Preparing Data](https://rakeshbhatia.github.io/notes/content/data_science/preparing_data)
+> - [In Sample Evaluation and Cross Validation](https://rakeshbhatia.github.io/notes/content/data_science/in_sample_evaluation_and_cross_validation)
 
 > **_Data Engineering_**
+> - [Plotting S Parameter Distributions With Matplotlib](https://rakeshbhatia.github.io/notes/content/data_engineering/plotting_s_parameter_distributions_with_matplotlib)
 > - [Plotting Current and Gain Distributions With Matplotlib](https://rakeshbhatia.github.io/notes/content/data_engineering/plotting_current_and_gain_distributions_with_matplotlib)
+> - [Plotting Current and Gain Distributions With Matplotlib 2](https://rakeshbhatia.github.io/notes/content/data_engineering/plotting_current_and_gain_distributions_with_matplotlib_2)
+
+Copyright © Rakesh Bhatia, September 2019. All notes available on [GitHub](https://github.com/rakeshbhatia/notes).
