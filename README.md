@@ -1,6 +1,7 @@
+## <center>Python • Data Science • Machine Learning</center>
 ## <center>Technical Notes</center>
 
-Hello! Welcome to my site. I am fascinated with solving challenging data science problems across a wide variety of fields. Check out my technical notes and personal projects relating to python and data science below!
+I am a data scientist who is fascinated with solving challenging data-oriented problems across a variety of fields. I enjoy seeking hidden truths in data. Check out my technical notes on python and data science below!
 
 > **_Python_**
 > - [Sets](https://rakeshbhatia.github.io/notes/content/python/sets)
