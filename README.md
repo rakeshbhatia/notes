@@ -16,9 +16,9 @@ Hello! I'm Rakesh Bhatia. I enjoy searching for hidden truths in data, which ins
 > - [Scrapy Basics](https://rakeshbhatia.github.io/notes/content/web_scraping/scrapy_basics)
 > - [Beautiful Soup Basics](https://rakeshbhatia.github.io/notes/content/web_scraping/beautiful_soup_basics)
 > - [Scrape Historical OHLC Stock Prices](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_historical_ohlc_stock_prices)
-> - [Scrape Fanduel NBA Player Stats With Scrapy](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_fanduel_nba_player_stats_with_scrapy)
-> - [Scrape NBA Player Rpm Stats From ESPN With Lxml](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_nba_player_rpm_stats_from_espn_with_lxml)
-> - [Scrape NBA Player Game Logs From ESPN With Lxml](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_nba_player_game_logs_from_espn_with_lxml)
+> - [Scrape Fanduel NBA Player Stats with Scrapy](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_fanduel_nba_player_stats_with_scrapy)
+> - [Scrape NBA Player RPM Stats from ESPN with lxml](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_nba_player_rpm_stats_from_espn_with_lxml)
+> - [Scrape NBA Player Game Logs from ESPN with lxml](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_nba_player_game_logs_from_espn_with_lxml)
 
 > **_Data Science_**
 > - [Preparing Data](https://rakeshbhatia.github.io/notes/content/data_science/preparing_data)
