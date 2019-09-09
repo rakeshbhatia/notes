@@ -5,8 +5,8 @@ Hello! I'm Rakesh Bhatia. I enjoy searching for hidden truths in data, which ins
 
 > **_Python_**
 > - [Sets](https://rakeshbhatia.github.io/notes/content/python/sets)
-> - [If Else](https://rakeshbhatia.github.io/notes/content/python/if_else)
 > - [Loops](https://rakeshbhatia.github.io/notes/content/python/loops)
+> - [If Else](https://rakeshbhatia.github.io/notes/content/python/if_else)
 > - [Dictionaries](https://rakeshbhatia.github.io/notes/content/python/dictionaries)
 > - [Linked Lists](https://rakeshbhatia.github.io/notes/content/python/linked_lists)
 > - [Pandas Basics](https://rakeshbhatia.github.io/notes/content/python/pandas_basics)
