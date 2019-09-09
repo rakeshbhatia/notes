@@ -13,8 +13,8 @@ Hello! I'm Rakesh Bhatia. I enjoy searching for hidden truths in data, which ins
 > - [List Comprehension](https://rakeshbhatia.github.io/notes/content/python/list_comprehension)
 
 > **_Web Scraping_**
-> - [Beautiful Soup Basics](https://rakeshbhatia.github.io/notes/content/web_scraping/beautiful_soup_basics)
 > - [Scrapy Basics](https://rakeshbhatia.github.io/notes/content/web_scraping/scrapy_basics)
+> - [Beautiful Soup Basics](https://rakeshbhatia.github.io/notes/content/web_scraping/beautiful_soup_basics)
 > - [Scrape Historical OHLC Stock Prices](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_historical_ohlc_stock_prices)
 > - [Scrape Fanduel NBA Player Stats With Scrapy](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_fanduel_nba_player_stats_with_scrapy)
 > - [Scrape NBA Player Rpm Stats From ESPN With Lxml](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_nba_player_rpm_stats_from_espn_with_lxml)
