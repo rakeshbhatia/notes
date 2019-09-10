@@ -26,6 +26,8 @@ Hello! I'm Rakesh Bhatia. I enjoy searching for hidden truths in data, which ins
 > - [Analysis of Boston House Prices](https://rakeshbhatia.github.io/notes/content/data_science/analysis_of_boston_house_prices)
 > - [In Sample Evaluation and Cross Validation](https://rakeshbhatia.github.io/notes/content/data_science/in_sample_evaluation_and_cross_validation)
 > - [Iterate and Evaluate a Naive Bayes Classifier](https://rakeshbhatia.github.io/notes/content/data_science/iterate_and_evaluate_a_naive_bayes_classifier)
+> - [House Prices: Advanced Regression Techniques](https://rakeshbhatia.github.io/notes/content/data_science/house_prices_advanced_regression_techniques)
+> - [Author Prediction: Unsupervised NLP with BOW](https://rakeshbhatia.github.io/notes/content/data_science/author_prediction_unsupervised_nlp_with_bow)
 
 > **_Data Engineering_**
 > - [Plotting S Parameter Distributions With Matplotlib](https://rakeshbhatia.github.io/notes/content/data_engineering/plotting_s_parameter_distributions_with_matplotlib)
