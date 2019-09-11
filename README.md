@@ -30,7 +30,7 @@ Hello! I'm Rakesh Bhatia. I enjoy searching for hidden truths in data, which ins
 > - [Author Prediction: Unsupervised NLP with BOW](https://rakeshbhatia.github.io/notes/content/data_science/author_prediction_unsupervised_nlp_with_bow)
 
 > **_Data Engineering_**
-> - [Plotting S Parameter Distributions With Matplotlib](https://rakeshbhatia.github.io/notes/content/data_engineering/plotting_s_parameter_distributions_with_matplotlib)
-> - [Plotting Current and Gain Distributions With Matplotlib](https://rakeshbhatia.github.io/notes/content/data_engineering/plotting_current_and_gain_distributions_with_matplotlib)
+> - [Plotting S Parameter Distributions with Matplotlib](https://rakeshbhatia.github.io/notes/content/data_engineering/plotting_s_parameter_distributions_with_matplotlib)
+> - [Plotting Current and Gain Distributions with Matplotlib](https://rakeshbhatia.github.io/notes/content/data_engineering/plotting_current_and_gain_distributions_with_matplotlib)
 
 Copyright © Rakesh Bhatia, September 2019. All notes available on [GitHub](https://github.com/rakeshbhatia/notes).
