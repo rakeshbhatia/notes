@@ -1,0 +1,63 @@
+,0,1,2,3
+1,Physical Properties,Metric,English,Comments
+2,Density,19.32  g/cc,0.6980  lb/in³,
+3,Vapor Pressure,0.001013  bar  @Temperature 1770 °C,0.7598  torr  @Temperature 3220 °F,
+4,,0.01013  bar  @Temperature 2036 °C,7.598  torr  @Temperature 3697 °F,
+5,,0.1013  bar  @Temperature 2383 °C,75.98  torr  @Temperature 4321 °F,
+6,,1.013  bar  @Temperature 2857 °C,759.8  torr  @Temperature 5175 °F,
+7,,,,
+8,Chemical Properties,Metric,English,Comments
+9,Atomic Mass,196.9666,196.9666,196.96655 - 1995
+10,Atomic Number,79,79,
+11,Thermal Neutron Cross Section,99  barns/atom,99  barns/atom,
+12,X-ray Absorption Edge,0.15344  Å,0.15344  Å,K
+13,,0.86378  Å,0.86378  Å,L  I
+14,,0.90277  Å,0.90277  Å,L  II
+15,,1.04028  Å,1.04028  Å,L  III
+16,Electrode Potential,1.68  V,1.68  V,
+17,Electronegativity,2.4,2.4,Pauling
+18,Ionic Radius,0.850  Å,0.850  Å,Crystal Ionic Radius for Valence +3
+19,,1.37  Å,1.37  Å,Crystal Ionic Radius for Valence +1
+20,Electrochemical Equivalent,2.45  g/A/h,2.45  g/A/h,
+21,,,,
+22,Mechanical Properties,Metric,English,Comments
+23,"Hardness, Vickers",25,25,
+24,"Tensile Strength, Ultimate",120  MPa,17400  psi,Annealed
+25,Elongation at Break,30 %,30 %,
+26,Modulus of Elasticity,77.2  GPa,11200  ksi,60% Cold Worked
+27,Poissons Ratio,0.42,0.42,
+28,Shear Modulus,27.2  GPa,3950  ksi,60% Cold Worked; Calculated Value
+29,,,,
+30,Electrical Properties,Metric,English,Comments
+31,Electrical Resistivity,0.00000220  ohm-cm,0.00000220  ohm-cm,
+32,Magnetic Susceptibility,-1.42e-7,-1.42e-7,cgs/g
+33,,,,
+34,Thermal Properties,Metric,English,Comments
+35,Heat of Fusion,66.2  J/g,28.5  BTU/lb,
+36,Heat of Vaporization,1738  J/g,747.7  BTU/lb,
+37,"CTE, linear",14.4  µm/m-°C  @Temperature 20.0 - 100 °C,8.00  µin/in-°F  @Temperature 68.0 - 212 °F,
+38,,14.6  µm/m-°C  @Temperature 250 °C,8.11  µin/in-°F  @Temperature 482 °F,
+39,,15.2  µm/m-°C  @Temperature 500 °C,8.44  µin/in-°F  @Temperature 932 °F,
+40,,16.7  µm/m-°C  @Temperature 950 °C,9.28  µin/in-°F  @Temperature 1740 °F,
+41,Specific Heat Capacity,0.128  J/g-°C  @Temperature 25.0 °C,0.0306  BTU/lb-°F  @Temperature 77.0 °F,
+42,,0.133  J/g-°C  @Temperature 227 °C,0.0318  BTU/lb-°F  @Temperature 441 °F,
+43,,0.142  J/g-°C  @Temperature 627 °C,0.0339  BTU/lb-°F  @Temperature 1160 °F,
+44,,0.159  J/g-°C  @Temperature 1227 °C,0.0380  BTU/lb-°F  @Temperature 2241 °F,
+45,,0.163  J/g-°C  @Temperature 1027 °C,0.0390  BTU/lb-°F  @Temperature 1881 °F,
+46,,0.166  J/g-°C  @Temperature 1127 °C,0.0397  BTU/lb-°F  @Temperature 2061 °F,
+47,,0.170  J/g-°C  @Temperature 1063 °C,0.0406  BTU/lb-°F  @Temperature 1945 °F,
+48,Thermal Conductivity,301  W/m-K,2090  BTU-in/hr-ft²-°F,
+49,Melting Point,1064.43  °C,1947.97  °F,
+50,Boiling Point,2856  °C,5173  °F,
+51,,,,
+52,Optical Properties,Metric,English,Comments
+53,Emissivity (0-1),0.040  @Temperature 100 °C,0.040  @Temperature 212 °F,total spectrum
+54,"Reflection Coefficient, Visible (0-1)",0.27,0.27,400 nm
+55,,0.50,0.50,500 nm
+56,,0.85,0.85,600 nm
+57,,,,
+58,Component Elements Properties,Metric,English,Comments
+59,"Gold, Au",100 %,100 %,
+60,,,,
+61,Descriptive Properties,Descriptive Properties,Descriptive Properties,Descriptive Properties
+62,CAS Number,7440-57-5,7440-57-5,

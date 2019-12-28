@@ -1,0 +1,57 @@
+,0,1,2,3
+1,Physical Properties,Metric,English,Comments
+2,Density,1.844  g/cc,0.06662  lb/in³,
+3,,,,
+4,Chemical Properties,Metric,English,Comments
+5,Atomic Mass,9.012182,9.012182,1995
+6,Atomic Number,4,4,
+7,Thermal Neutron Cross Section,0.0090  barns/atom,0.0090  barns/atom,
+8,X-ray Absorption Edge,110.68  Å,110.68  Å,K
+9,Electrode Potential,-1.70  V,-1.70  V,
+10,Electronegativity,1.57,1.57,Pauling
+11,Ionic Radius,0.350  Å,0.350  Å,Crystal Ionic Radius for Valence +2
+12,,0.440  Å,0.440  Å,Crystal Ionic Radius for Valence +1
+13,,,,
+14,Mechanical Properties,Metric,English,Comments
+15,"Hardness, Rockwell B",75 - 85,75 - 85,
+16,"Tensile Strength, Ultimate",370  MPa,53700  psi,
+17,"Tensile Strength, Yield",240  MPa,34800  psi,
+18,Elongation at Break,3.0 %,3.0 %,
+19,Modulus of Elasticity,303  GPa,43900  ksi,
+20,Compressive Yield Strength,270  MPa,39200  psi,Yield at 0.2% offset (10% higher than tensile yield strength).
+21,Poissons Ratio,0.070 - 0.18,0.070 - 0.18,values between 0.07 and 0.18 have been reported for beryllium
+22,Fatigue Strength,160  MPa  @# of Cycles 1.00e+7,23200  psi  @# of Cycles 1.00e+7,Kt=3.07 and R = 0.1
+23,,240  MPa  @# of Cycles 1.00e+7,34800  psi  @# of Cycles 1.00e+7,smooth
+24,,240  MPa  @# of Cycles 10000,34800  psi  @# of Cycles 10000,Kt=3.07 and R = 0.1
+25,Fracture Toughness,10.6  -  12.3  MPa-m½,9.65  -  11.2  ksi-in½,K  IC  for hot-pressed structural grades
+26,Shear Modulus,135  GPa,19600  ksi,
+27,Shear Strength,345  MPa,50000  psi,hot-pressed block
+28,,480  MPa,69600  psi,cross-rolled sheet
+29,Charpy Impact,1.50  -  5.50  J,1.11  -  4.06  ft-lb,Notch status unknown
+30,,,,
+31,Electrical Properties,Metric,English,Comments
+32,Electrical Resistivity,0.00000430  ohm-cm,0.00000430  ohm-cm,
+33,Magnetic Susceptibility,-1.00e-6,-1.00e-6,cgs/g
+34,Critical Superconducting Temperature,0.0260  K,0.0260  K,
+35,,,,
+36,Thermal Properties,Metric,English,Comments
+37,Heat of Fusion,1133  J/g,487.4  BTU/lb,Be has an unusually high heat of fusion.
+38,Heat of Vaporization,24770  J/g,10660  BTU/lb,
+39,"CTE, linear",11.5  µm/m-°C  @Temperature 25.0 °C,6.39  µin/in-°F  @Temperature 77.0 °F,increases rapidly until 100°C
+40,,14.5  µm/m-°C  @Temperature 25.0 - 300 °C,8.06  µin/in-°F  @Temperature 77.0 - 572 °F,
+41,,16.5  µm/m-°C  @Temperature 25.0 - 600 °C,9.17  µin/in-°F  @Temperature 77.0 - 1110 °F,
+42,,18.4  µm/m-°C  @Temperature 25.0 - 1000 °C,10.2  µin/in-°F  @Temperature 77.0 - 1830 °F,
+43,Specific Heat Capacity,1.925  J/g-°C,0.4601  BTU/lb-°F,
+44,Thermal Conductivity,216  W/m-K,1500  BTU-in/hr-ft²-°F,
+45,Melting Point,1273  -  1283  °C,2323  -  2341  °F,
+46,Boiling Point,2471  °C,4480  °F,
+47,,,,
+48,Optical Properties,Metric,English,Comments
+49,Emissivity (0-1),0.61,0.61,650 nm
+50,"Reflection Coefficient, Visible (0-1)",0.50,0.50,50% visible; 55% UV; 98% IR (10.6 µm)
+51,,,,
+52,Component Elements Properties,Metric,English,Comments
+53,"Beryllium, Be",100 %,100 %,
+54,,,,
+55,Descriptive Properties,Descriptive Properties,Descriptive Properties,Descriptive Properties
+56,CAS Number,7440-41-7,7440-41-7,
