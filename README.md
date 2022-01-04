@@ -33,4 +33,4 @@ Hello! I'm Rakesh Bhatia. I enjoy searching for hidden truths in data, which ins
 > - [Plotting S-parameter Distributions with Matplotlib](https://rakeshbhatia.github.io/notes/content/data_engineering/plotting_s_parameter_distributions_with_matplotlib)
 > - [Plotting Current and Gain Distributions with Matplotlib](https://rakeshbhatia.github.io/notes/content/data_engineering/plotting_current_and_gain_distributions_with_matplotlib)
 
-Copyright © Rakesh Bhatia, September 2019. All notes available on [GitHub](https://github.com/rakeshbhatia/notes).
+Copyright © Rakesh Bhatia, 2022. All notes available on [GitHub](https://github.com/rakeshbhatia/notes).
