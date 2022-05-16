@@ -1,3 +1,4 @@
+## <center>Data Science for Truth</center>
 ## <center>Technical Notes</center>
 
 Hello! I'm Rakesh Bhatia, a software freelancer who specializes in web scraping, web development, and data science. I enjoy searching for hidden truths in data, which inspired me to create this website with a variety of technical notes on python, data science, machine learning, and more. Check out all of my technical notes below!
