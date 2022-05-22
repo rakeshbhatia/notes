@@ -1,4 +1,17 @@
 
+<div class="panel panel-info">
+**PYTHON**
+  <div class="panel-body">
+    <a href="https://rakeshbhatia.github.io/notes/content/python/sets">Sets</a>
+    <a href="https://rakeshbhatia.github.io/notes/content/python/if_else">If Else</a>
+    <a href="https://rakeshbhatia.github.io/notes/content/python/dictionaries">Dictionaries</a>
+    <a href="https://rakeshbhatia.github.io/notes/content/python/linked_lists">Linked Lists</a>
+    <a href="https://rakeshbhatia.github.io/notes/content/python/pandas_basics">Pandas Basics</a>
+    <a href="https://rakeshbhatia.github.io/notes/content/python/list_comprehension">List Comprehension</a>
+  </div>
+</div>
+
+
     **PYTHON**
      
     [Sets](https://rakeshbhatia.github.io/notes/content/python/sets)  
