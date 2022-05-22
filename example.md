@@ -1,6 +1,8 @@
 
+
+~~~
 ---
-**Python**
+**PYTHON**
 
 [Sets](https://rakeshbhatia.github.io/notes/content/python/sets)  
 [Loops](https://rakeshbhatia.github.io/notes/content/python/loops)  
@@ -11,6 +13,7 @@
 [List Comprehension](https://rakeshbhatia.github.io/notes/content/python/list_comprehension)
 
 ---
+~~~
 
 
 ```python
