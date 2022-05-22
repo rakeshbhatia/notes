@@ -1,4 +1,8 @@
 
+| Syntax                                                             |
+| ------------------------------------------------------------------ |
+| [Sets](https://rakeshbhatia.github.io/notes/content/python/sets)   |
+| [Loops](https://rakeshbhatia.github.io/notes/content/python/loops) |
 
 ```python
 import pandas as pd
