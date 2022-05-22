@@ -1,19 +1,15 @@
 
+    **PYTHON**
+     
+    [Sets](https://rakeshbhatia.github.io/notes/content/python/sets)  
+    [Loops](https://rakeshbhatia.github.io/notes/content/python/loops)  
+    [If Else](https://rakeshbhatia.github.io/notes/content/python/if_else)  
+    [Dictionaries](https://rakeshbhatia.github.io/notes/content/python/dictionaries)  
+    [Linked Lists](https://rakeshbhatia.github.io/notes/content/python/linked_lists)  
+    [Pandas Basics](https://rakeshbhatia.github.io/notes/content/python/pandas_basics)  
+    [List Comprehension](https://rakeshbhatia.github.io/notes/content/python/list_comprehension)
 
-~~~
----
-**PYTHON**
 
-[Sets](https://rakeshbhatia.github.io/notes/content/python/sets)  
-[Loops](https://rakeshbhatia.github.io/notes/content/python/loops)  
-[If Else](https://rakeshbhatia.github.io/notes/content/python/if_else)  
-[Dictionaries](https://rakeshbhatia.github.io/notes/content/python/dictionaries)  
-[Linked Lists](https://rakeshbhatia.github.io/notes/content/python/linked_lists)  
-[Pandas Basics](https://rakeshbhatia.github.io/notes/content/python/pandas_basics)  
-[List Comprehension](https://rakeshbhatia.github.io/notes/content/python/list_comprehension)
-
----
-~~~
 
 
 ```python
