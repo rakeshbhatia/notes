@@ -1,3 +1,8 @@
+---
+title: Scrape Proxy Table with Pandas
+date: June 1, 2022
+---
+
 # Scrape Proxy Table with pandas
 ## Overview
 * We will use the pandas library to easily scrape the list of proxies at the following website:
