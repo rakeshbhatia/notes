@@ -15,8 +15,8 @@ Hello! I'm Rakesh Bhatia, a software freelancer who specializes in web scraping,
 > **_Web Scraping_**
 > - [Scrapy Basics](https://rakeshbhatia.github.io/notes/content/web_scraping/scrapy_basics)
 > - [Beautiful Soup Basics](https://rakeshbhatia.github.io/notes/content/web_scraping/beautiful_soup_basics)
-> - [Scrape Proxy Table with pandas](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_proxy_table_with_pandas.html)
-> - [Scrape Crypto Prices with Selenium](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_crypto_prices_with_selenium.html)
+> - [Scrape Proxy Table with pandas](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_proxy_table_with_pandas)
+> - [Scrape Crypto Prices with Selenium](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_crypto_prices_with_selenium)
 > - [Scrape Historical OHLC Stock Prices](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_historical_ohlc_stock_prices)
 > - [Scrape Fanduel NBA Player Stats with Scrapy](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_fanduel_nba_player_stats_with_scrapy)
 > - [Scrape NBA Player RPM Stats from ESPN with lxml](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_nba_player_rpm_stats_from_espn_with_lxml)
