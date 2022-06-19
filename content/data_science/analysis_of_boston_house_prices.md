@@ -1,5 +1,4 @@
-
-# **Analysis of Boston House Prices Dataset**
+# **Analysis of Boston House Prices**
 
 For this drill, we will analyze Boston house-price data from 1978.
 
@@ -789,7 +788,9 @@ sns.heatmap(corr, mask=mask, cmap=cmap, vmax=0.3, center=0,
 
 
 
-![png](Analysis%20of%20Boston%20House%20Prices_files/Analysis%20of%20Boston%20House%20Prices_7_1.png)
+    
+![png](analysis_of_boston_house_prices_files/analysis_of_boston_house_prices_7_1.png)
+    
 
 
 
@@ -806,7 +807,9 @@ sns.heatmap(data=correlation_matrix, annot=True)
 
 
 
-![png](Analysis%20of%20Boston%20House%20Prices_files/Analysis%20of%20Boston%20House%20Prices_8_1.png)
+    
+![png](analysis_of_boston_house_prices_files/analysis_of_boston_house_prices_8_1.png)
+    
 
 
 We can see that several of the variables above have strong correlations (dark red). Now let's plot the distribution of median home values.
@@ -820,7 +823,9 @@ plt.show()
 ```
 
 
-![png](Analysis%20of%20Boston%20House%20Prices_files/Analysis%20of%20Boston%20House%20Prices_10_0.png)
+    
+![png](analysis_of_boston_house_prices_files/analysis_of_boston_house_prices_10_0.png)
+    
 
 
 Now let's plot a scatter plot for each of the variables against the target variable (median home values).
@@ -834,7 +839,9 @@ plt.show()
 ```
 
 
-![png](Analysis%20of%20Boston%20House%20Prices_files/Analysis%20of%20Boston%20House%20Prices_12_0.png)
+    
+![png](analysis_of_boston_house_prices_files/analysis_of_boston_house_prices_12_0.png)
+    
 
 
 
@@ -846,7 +853,9 @@ plt.show()
 ```
 
 
-![png](Analysis%20of%20Boston%20House%20Prices_files/Analysis%20of%20Boston%20House%20Prices_13_0.png)
+    
+![png](analysis_of_boston_house_prices_files/analysis_of_boston_house_prices_13_0.png)
+    
 
 
 
@@ -858,7 +867,9 @@ plt.show()
 ```
 
 
-![png](Analysis%20of%20Boston%20House%20Prices_files/Analysis%20of%20Boston%20House%20Prices_14_0.png)
+    
+![png](analysis_of_boston_house_prices_files/analysis_of_boston_house_prices_14_0.png)
+    
 
 
 
@@ -870,7 +881,9 @@ plt.show()
 ```
 
 
-![png](Analysis%20of%20Boston%20House%20Prices_files/Analysis%20of%20Boston%20House%20Prices_15_0.png)
+    
+![png](analysis_of_boston_house_prices_files/analysis_of_boston_house_prices_15_0.png)
+    
 
 
 
@@ -882,7 +895,9 @@ plt.show()
 ```
 
 
-![png](Analysis%20of%20Boston%20House%20Prices_files/Analysis%20of%20Boston%20House%20Prices_16_0.png)
+    
+![png](analysis_of_boston_house_prices_files/analysis_of_boston_house_prices_16_0.png)
+    
 
 
 
@@ -894,7 +909,9 @@ plt.show()
 ```
 
 
-![png](Analysis%20of%20Boston%20House%20Prices_files/Analysis%20of%20Boston%20House%20Prices_17_0.png)
+    
+![png](analysis_of_boston_house_prices_files/analysis_of_boston_house_prices_17_0.png)
+    
 
 
 
@@ -906,7 +923,9 @@ plt.show()
 ```
 
 
-![png](Analysis%20of%20Boston%20House%20Prices_files/Analysis%20of%20Boston%20House%20Prices_18_0.png)
+    
+![png](analysis_of_boston_house_prices_files/analysis_of_boston_house_prices_18_0.png)
+    
 
 
 
@@ -918,7 +937,9 @@ plt.show()
 ```
 
 
-![png](Analysis%20of%20Boston%20House%20Prices_files/Analysis%20of%20Boston%20House%20Prices_19_0.png)
+    
+![png](analysis_of_boston_house_prices_files/analysis_of_boston_house_prices_19_0.png)
+    
 
 
 
@@ -930,7 +951,9 @@ plt.show()
 ```
 
 
-![png](Analysis%20of%20Boston%20House%20Prices_files/Analysis%20of%20Boston%20House%20Prices_20_0.png)
+    
+![png](analysis_of_boston_house_prices_files/analysis_of_boston_house_prices_20_0.png)
+    
 
 
 
@@ -942,7 +965,9 @@ plt.show()
 ```
 
 
-![png](Analysis%20of%20Boston%20House%20Prices_files/Analysis%20of%20Boston%20House%20Prices_21_0.png)
+    
+![png](analysis_of_boston_house_prices_files/analysis_of_boston_house_prices_21_0.png)
+    
 
 
 
@@ -954,7 +979,9 @@ plt.show()
 ```
 
 
-![png](Analysis%20of%20Boston%20House%20Prices_files/Analysis%20of%20Boston%20House%20Prices_22_0.png)
+    
+![png](analysis_of_boston_house_prices_files/analysis_of_boston_house_prices_22_0.png)
+    
 
 
 
@@ -966,7 +993,9 @@ plt.show()
 ```
 
 
-![png](Analysis%20of%20Boston%20House%20Prices_files/Analysis%20of%20Boston%20House%20Prices_23_0.png)
+    
+![png](analysis_of_boston_house_prices_files/analysis_of_boston_house_prices_23_0.png)
+    
 
 
 
@@ -979,7 +1008,9 @@ plt.show()
 ```
 
 
-![png](Analysis%20of%20Boston%20House%20Prices_files/Analysis%20of%20Boston%20House%20Prices_24_0.png)
+    
+![png](analysis_of_boston_house_prices_files/analysis_of_boston_house_prices_24_0.png)
+    
 
 
 The above scatter plots reveal some key insights about this data, highlighted below:

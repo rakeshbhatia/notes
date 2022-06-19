@@ -1,5 +1,4 @@
-
-# **Fixing Assumptions**
+# **DRILL: fixing assumptions**
 
 
 ```python
@@ -164,7 +163,9 @@ plt.show()
 ```
 
 
-![png](Fixing%20Assumptions_files/Fixing%20Assumptions_5_0.png)
+    
+![png](fixing_assumptions_files/fixing_assumptions_5_0.png)
+    
 
 
 ## **Assumption three: homoscedasticity**
@@ -180,7 +181,9 @@ plt.show()
 ```
 
 
-![png](Fixing%20Assumptions_files/Fixing%20Assumptions_7_0.png)
+    
+![png](fixing_assumptions_files/fixing_assumptions_7_0.png)
+    
 
 
 Based on the scatter plot, it appears as though squaring the features improved the homoscedasticity.
@@ -197,7 +200,9 @@ display(data.corr())
 ```
 
 
-![png](Fixing%20Assumptions_files/Fixing%20Assumptions_10_0.png)
+    
+![png](fixing_assumptions_files/fixing_assumptions_10_0.png)
+    
 
 
 
@@ -628,7 +633,9 @@ plt.show()
 ```
 
 
-![png](Fixing%20Assumptions_files/Fixing%20Assumptions_15_0.png)
+    
+![png](fixing_assumptions_files/fixing_assumptions_15_0.png)
+    
 
 
 It turns out that doing PCA indicates that we should get rid of the extra squared features. Only the first three features (TV, Radio, Newspaper) have eigenvalues greater than 1. Approximately 96% of the variance is captured in these three features.

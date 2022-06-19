@@ -1,5 +1,5 @@
-
-# **Preparing Data**
+# **DRILL: Prepare the Data**
+For this drill we will use a 2013 dataset of crimes in New York state, by city.
 
 
 ```python
@@ -13,7 +13,6 @@ from sklearn import linear_model
 
 ```python
 ny_crime = pd.read_csv('table_8_offenses_known_to_law_enforcement_new_york_by_city_2013.csv')
-
 ny_crime.head()
 ```
 
@@ -256,7 +255,9 @@ plt.show()
 ```
 
 
-![png](Preparing%20Data_files/Preparing%20Data_4_0.png)
+    
+![png](preparing_data_files/preparing_data_4_0.png)
+    
 
 
 
@@ -268,7 +269,9 @@ plt.show()
 ```
 
 
-![png](Preparing%20Data_files/Preparing%20Data_5_0.png)
+    
+![png](preparing_data_files/preparing_data_5_0.png)
+    
 
 
 
@@ -280,7 +283,9 @@ plt.show()
 ```
 
 
-![png](Preparing%20Data_files/Preparing%20Data_6_0.png)
+    
+![png](preparing_data_files/preparing_data_6_0.png)
+    
 
 
 
@@ -292,7 +297,9 @@ plt.show()
 ```
 
 
-![png](Preparing%20Data_files/Preparing%20Data_7_0.png)
+    
+![png](preparing_data_files/preparing_data_7_0.png)
+    
 
 
 
