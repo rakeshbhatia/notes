@@ -1,9 +1,8 @@
-# Scrape Free Proxies with Selenium
+<h1><b>Scrape Free Proxies with Selenium</b></h1>
+
 In this tutorial, you'll learn how to scrape a list of free proxies that you can use for web scraping. One of the most reliable sources of free proxies is at [spys.one](https://spys.one/en/anonymous-proxy-list/).
 
 ![spys-proxy-list-1.png](../../assets/img/spys-proxy-list-1.png)
-
-<img src="../../assets/img/spys-proxy-list-1.png"/>
 
 The proxy information is partially rendered in JavaScript, so it's best to utilize a Selenium headless browser to scrape this data. First, we'll import the required libraries for Selenium, as well as time, Pandas, Fake UserAgent, and Undetected ChromeDriver. Time is already included with Python, but case you don't have any of the other libraries, you can install them using the following commands:
 
@@ -67,19 +66,19 @@ def scrape_proxies():
 
 There are two dropdown menus that we need to select an option from: the first is "Show" and the second is "Type." We want to show the maximum possible number of proxies, which is 500.
 
-![spys-proxy-list-2.png](attachment:spys-proxy-list-2.png)
+![spys-proxy-list-2.png](../../assets/img/spys-proxy-list-2.png)
 
 Let's inspect the element to see exactly what we need to scrape. The first dropdown menu is represented by a `<select>` tag with an `id` attribute of `xpp`.
 
-![spys-proxy-list-3.png](attachment:spys-proxy-list-3.png)
+![spys-proxy-list-3.png](../../assets/img/spys-proxy-list-3.png)
 
 The type of proxies we want is HTTP, so we'll select that from the other dropdown menu.
 
-![spys-proxy-list-4.png](attachment:spys-proxy-list-4.png)
+![spys-proxy-list-4.png](../../assets/img/spys-proxy-list-4.png)
 
 Inspecting the other dropdown element, we can see that it is represented by a `<select>` tag with `id` attribute of `xf5`.
 
-![spys-proxy-list-5.png](attachment:spys-proxy-list-5.png)
+![spys-proxy-list-5.png](../../assets/img/spys-proxy-list-5.png)
 
 We'll use the `driver.find_element()` function to select the dropdown menus by `id`, and use these to create a `Select` object. Then we can use the `driver.select_by_visible_text()` function to select our desired options. After each selection, we'll insert a `sleep` of 5 seconds to give the page time to update.
 
@@ -104,7 +103,7 @@ def scrape_proxies():
 
 Now let's inspect the elements that contain the data we need. We only need the first two columns of the table, which display the proxy address and proxy type. So, for each row of the `<table>`, we will only select the first two `td` elements.
 
-![spys-proxy-list-6.png](attachment:spys-proxy-list-6.png)
+![spys-proxy-list-6.png](../../assets/img/spys-proxy-list-6.png)
 
 We'll use the `driver.find_elements()` function to get all the `tr` elements in the HTML and store them in a list called `rows`. There are extra rows that don't list any proxy information, so we'll remove these from the list. Based on inspecting the rows that are retrieved, the rows we need are every other row from indexes `9` to `len(rows)-4`. We will use Python's slicing feature to filter out the unnecessary rows.
 
