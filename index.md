@@ -19,31 +19,18 @@
 
   <p>Hello! I'm Rakesh Bhatia, a software freelancer who specializes in web scraping, web development, and data science. Welcome to my portfolio. I enjoy searching for hidden truths in data, which inspired me to create this website with a variety of technical notes and projects on python, data science, machine learning, and more. Check out all of my posts below!</p>
 
+  <h2>Python</h2>
   <ul>
-    Python
-    <li>Sets</li>
-    <li>Loops</li>
-    <li>If Else</li>
-    <li>Strings</li>
-    <li>Dictionaries</li>
-    <li>Linked Lists</li>
-    <li>Pandas Basics</li>
-    <li>List Comprehension</li>
-    <li>Exception Handling</li>
+    <li><a href="https://rakeshbhatia.github.io/notes/content/python/sets">Sets</a></li>
+    <li><a href="https://rakeshbhatia.github.io/notes/content/python/loops">Loops</li>
+    <li><a href="https://rakeshbhatia.github.io/notes/content/python/if_else">If Else</li>
+    <li><a href="https://rakeshbhatia.github.io/notes/content/python/strings">Strings</li>
+    <li><a href="https://rakeshbhatia.github.io/notes/content/python/dictionaries">Dictionaries</li>
+    <li><a href="https://rakeshbhatia.github.io/notes/content/python/linked_lists">Linked Lists</li>
+    <li><a href="https://rakeshbhatia.github.io/notes/content/python/pandas_basics">Pandas Basics</li>
+    <li><a href="https://rakeshbhatia.github.io/notes/content/python/list_comprehension">List Comprehension</li>
+    <li><a href="https://rakeshbhatia.github.io/notes/content/python/exception_handling">Exception Handling</li>
   </ul>
-
-> **_Python_**
-> - [Sets](https://rakeshbhatia.github.io/notes/content/python/sets)
-> - [Loops](https://rakeshbhatia.github.io/notes/content/python/loops)
-> - [If Else](https://rakeshbhatia.github.io/notes/content/python/if_else)
-> - [Strings](https://rakeshbhatia.github.io/notes/content/python/strings)
-> - [Dictionaries](https://rakeshbhatia.github.io/notes/content/python/dictionaries)
-> - [Linked Lists](https://rakeshbhatia.github.io/notes/content/python/linked_lists)
-> - [Pandas Basics](https://rakeshbhatia.github.io/notes/content/python/pandas_basics)
-> - [List Comprehension](https://rakeshbhatia.github.io/notes/content/python/list_comprehension)
-> - [Exception Handling](https://rakeshbhatia.github.io/notes/content/python/exception_handling)
-
-
 
 
 
