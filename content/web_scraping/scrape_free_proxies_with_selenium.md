@@ -1,7 +1,9 @@
 # Scrape Free Proxies with Selenium
 In this tutorial, you'll learn how to scrape a list of free proxies that you can use for web scraping. One of the most reliable sources of free proxies is at [spys.one](https://spys.one/en/anonymous-proxy-list/).
 
-![spys-proxy-list-1.png](attachment:spys-proxy-list-1.png)
+![spys-proxy-list-1.png](../../assets/img/spys-proxy-list-1.png)
+
+<img src="../../assets/img/spys-proxy-list-1.png"/>
 
 The proxy information is partially rendered in JavaScript, so it's best to utilize a Selenium headless browser to scrape this data. First, we'll import the required libraries for Selenium, as well as time, Pandas, Fake UserAgent, and Undetected ChromeDriver. Time is already included with Python, but case you don't have any of the other libraries, you can install them using the following commands:
 
