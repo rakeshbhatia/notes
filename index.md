@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Title of the document</title>
+    <title>Rakesh Bhatia</title>
     <style>
       ul {
         columns: 2;
@@ -19,61 +19,22 @@
 
   <p>Hello! I'm Rakesh Bhatia, a software freelancer who specializes in web scraping, web development, and data science. Welcome to my portfolio. I enjoy searching for hidden truths in data, which inspired me to create this website with a variety of technical notes and projects on python, data science, machine learning, and more. Check out all of my posts below!</p>
 
-  <h2>Python</h2>
+  <h2><b>Python</b></h2>
   <ul>
     <li><a href="https://rakeshbhatia.github.io/notes/content/python/sets">Sets</a></li>
-    <li><a href="https://rakeshbhatia.github.io/notes/content/python/loops">Loops</li>
-    <li><a href="https://rakeshbhatia.github.io/notes/content/python/if_else">If Else</li>
-    <li><a href="https://rakeshbhatia.github.io/notes/content/python/strings">Strings</li>
-    <li><a href="https://rakeshbhatia.github.io/notes/content/python/dictionaries">Dictionaries</li>
-    <li><a href="https://rakeshbhatia.github.io/notes/content/python/linked_lists">Linked Lists</li>
-    <li><a href="https://rakeshbhatia.github.io/notes/content/python/pandas_basics">Pandas Basics</li>
-    <li><a href="https://rakeshbhatia.github.io/notes/content/python/list_comprehension">List Comprehension</li>
-    <li><a href="https://rakeshbhatia.github.io/notes/content/python/exception_handling">Exception Handling</li>
+    <li><a href="https://rakeshbhatia.github.io/notes/content/python/loops">Loops</a></li>
+    <li><a href="https://rakeshbhatia.github.io/notes/content/python/if_else">If Else</a></li>
+    <li><a href="https://rakeshbhatia.github.io/notes/content/python/strings">Strings</a></li>
+    <li><a href="https://rakeshbhatia.github.io/notes/content/python/dictionaries">Dictionaries</a></li>
+    <li><a href="https://rakeshbhatia.github.io/notes/content/python/linked_lists">Linked Lists</a></li>
+    <li><a href="https://rakeshbhatia.github.io/notes/content/python/pandas_basics">Pandas Basics</a></li>
+    <li><a href="https://rakeshbhatia.github.io/notes/content/python/list_comprehension">List Comprehension</a></li>
+    <li><a href="https://rakeshbhatia.github.io/notes/content/python/exception_handling">Exception Handling</a></li>
   </ul>
 
 
 
-> **_Python_**
-> - [Sets](https://rakeshbhatia.github.io/notes/content/python/sets)
-> - [Loops](https://rakeshbhatia.github.io/notes/content/python/loops)
-> - [If Else](https://rakeshbhatia.github.io/notes/content/python/if_else)
-> - [Strings](https://rakeshbhatia.github.io/notes/content/python/strings)
-> - [Dictionaries](https://rakeshbhatia.github.io/notes/content/python/dictionaries)
-> - [Linked Lists](https://rakeshbhatia.github.io/notes/content/python/linked_lists)
-> - [Pandas Basics](https://rakeshbhatia.github.io/notes/content/python/pandas_basics)
-> - [List Comprehension](https://rakeshbhatia.github.io/notes/content/python/list_comprehension)
-> - [Exception Handling](https://rakeshbhatia.github.io/notes/content/python/exception_handling)
-
-> **_Web Scraping_**
-> - [lxml Basics](https://rakeshbhatia.github.io/notes/content/web_scraping/lxml_basics)
-> - [Beautiful Soup Basics](https://rakeshbhatia.github.io/notes/content/web_scraping/beautiful_soup_basics)
-> - [Scrapy Basics](https://rakeshbhatia.github.io/notes/content/web_scraping/scrapy_basics)
-> - [Selenium Basics](https://rakeshbhatia.github.io/notes/content/web_scraping/selenium_basics)
-> - [Scrape Proxy Table with Pandas](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_proxy_table_with_pandas)
-> - [Scrape Free Proxies with Selenium](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_free_proxies_with_selenium)
-> - [Get Domain Information with WHOIS](https://rakeshbhatia.github.io/notes/content/web_scraping/get_domain_information_with_whois)
-> - [Scrape Crypto Prices with Selenium](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_crypto_prices_with_selenium)
-> - [Get Historical OHLC Stock Prices](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_historical_ohlc_stock_prices)
-> - [Scrape Fanduel NBA Player Stats with Scrapy](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_fanduel_nba_player_stats_with_scrapy)
-> - [Scrape NBA Player RPM Stats from ESPN with lxml](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_nba_player_rpm_stats_from_espn_with_lxml)
-> - [Scrape NBA Player Game Logs from ESPN with lxml](https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_nba_player_game_logs_from_espn_with_lxml)
-
-> **_Data Science_**
-> - [Preparing Data](https://rakeshbhatia.github.io/notes/content/data_science/preparing_data)
-> - [Fixing Assumptions](https://rakeshbhatia.github.io/notes/content/data_science/fixing_assumptions)
-> - [Home Credit Default Risk Analysis](https://rakeshbhatia.github.io/notes/content/data_science/home_credit_default_risk_analysis)
-> - [Analysis of Boston House Prices](https://rakeshbhatia.github.io/notes/content/data_science/analysis_of_boston_house_prices)
-> - [House Prices Advanced Regression Techniques](https://rakeshbhatia.github.io/notes/content/data_science/house_prices_advanced_regression_techniques)
-> - [In Sample Evaluation and Cross Validation](https://rakeshbhatia.github.io/notes/content/data_science/in_sample_evaluation_and_cross_validation)
-> - [Iterate and Evaluate a Naive Bayes Classifier](https://rakeshbhatia.github.io/notes/content/data_science/iterate_and_evaluate_a_naive_bayes_classifier)
-> - [Author Prediction Unsupervised NLP with Bow](https://rakeshbhatia.github.io/notes/content/data_science/author_prediction_unsupervised_nlp_with_bow)
-
-> **_Data Engineering_**
-> - [Plotting S Parameter Distributions with Matplotlib](https://rakeshbhatia.github.io/notes/content/data_engineering/plotting_s_parameter_distributions_with_matplotlib)
-> - [Plotting Current and Gain Distributions with Matplotlib](https://rakeshbhatia.github.io/notes/content/data_engineering/plotting_current_and_gain_distributions_with_matplotlib)
-
-Copyright © Rakesh Bhatia, 2022. All notes available on [GitHub](https://github.com/rakeshbhatia/notes).
+  <p>Copyright © Rakesh Bhatia, 2022. All notes available on [GitHub](https://github.com/rakeshbhatia/notes).</p>
 
   </body>
 </html>
