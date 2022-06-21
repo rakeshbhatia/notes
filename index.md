@@ -1,19 +1,3 @@
-## <center>**Python • Data Science • Machine Learning**</center>
-## <center>**Technical Notes**</center>
-
-Hello! I'm Rakesh Bhatia, a software freelancer who specializes in web scraping, web development, and data science. Welcome to my portfolio. I enjoy searching for hidden truths in data, which inspired me to create this website with a variety of technical notes and projects on python, data science, machine learning, and more. Check out all of my posts below!
-
-> **_Python_**
-> - [Sets](https://rakeshbhatia.github.io/notes/content/python/sets)
-> - [Loops](https://rakeshbhatia.github.io/notes/content/python/loops)
-> - [If Else](https://rakeshbhatia.github.io/notes/content/python/if_else)
-> - [Strings](https://rakeshbhatia.github.io/notes/content/python/strings)
-> - [Dictionaries](https://rakeshbhatia.github.io/notes/content/python/dictionaries)
-> - [Linked Lists](https://rakeshbhatia.github.io/notes/content/python/linked_lists)
-> - [Pandas Basics](https://rakeshbhatia.github.io/notes/content/python/pandas_basics)
-> - [List Comprehension](https://rakeshbhatia.github.io/notes/content/python/list_comprehension)
-> - [Exception Handling](https://rakeshbhatia.github.io/notes/content/python/exception_handling)
-
 <html>
   <head>
     <title>Title of the document</title>
@@ -26,16 +10,42 @@ Hello! I'm Rakesh Bhatia, a software freelancer who specializes in web scraping,
     </style>
   </head>
   <body>
-    <ul>
-      <li>Sets</li>
-      <li>Loops</li>
-      <li>If Else</li>
-      <li>Strings</li>
-      <li>Dictionaries</li>
-      <li>Linked Lists</li>
-    </ul>
-  </body>
-</html>
+
+  <!--## <center>**Python • Data Science • Machine Learning**</center>
+  ## <center>**Technical Notes**</center>-->
+
+  <h1><center><b>Python • Data Science • Machine Learning</b></center></h1>
+  <h1><center><b>Technical Notes</b></center></h1>
+
+  <p>Hello! I'm Rakesh Bhatia, a software freelancer who specializes in web scraping, web development, and data science. Welcome to my portfolio. I enjoy searching for hidden truths in data, which inspired me to create this website with a variety of technical notes and projects on python, data science, machine learning, and more. Check out all of my posts below!</p>
+
+  <ul>
+    Python
+    <li>Sets</li>
+    <li>Loops</li>
+    <li>If Else</li>
+    <li>Strings</li>
+    <li>Dictionaries</li>
+    <li>Linked Lists</li>
+    <li>Pandas Basics</li>
+    <li>List Comprehension</li>
+    <li>Exception Handling</li>
+  </ul>
+
+> **_Python_**
+> - [Sets](https://rakeshbhatia.github.io/notes/content/python/sets)
+> - [Loops](https://rakeshbhatia.github.io/notes/content/python/loops)
+> - [If Else](https://rakeshbhatia.github.io/notes/content/python/if_else)
+> - [Strings](https://rakeshbhatia.github.io/notes/content/python/strings)
+> - [Dictionaries](https://rakeshbhatia.github.io/notes/content/python/dictionaries)
+> - [Linked Lists](https://rakeshbhatia.github.io/notes/content/python/linked_lists)
+> - [Pandas Basics](https://rakeshbhatia.github.io/notes/content/python/pandas_basics)
+> - [List Comprehension](https://rakeshbhatia.github.io/notes/content/python/list_comprehension)
+> - [Exception Handling](https://rakeshbhatia.github.io/notes/content/python/exception_handling)
+
+
+
+
 
 > **_Python_**
 > - [Sets](https://rakeshbhatia.github.io/notes/content/python/sets)
@@ -64,7 +74,6 @@ Hello! I'm Rakesh Bhatia, a software freelancer who specializes in web scraping,
 
 > **_Data Science_**
 > - [Preparing Data](https://rakeshbhatia.github.io/notes/content/data_science/preparing_data)
-
 > - [Fixing Assumptions](https://rakeshbhatia.github.io/notes/content/data_science/fixing_assumptions)
 > - [Home Credit Default Risk Analysis](https://rakeshbhatia.github.io/notes/content/data_science/home_credit_default_risk_analysis)
 > - [Analysis of Boston House Prices](https://rakeshbhatia.github.io/notes/content/data_science/analysis_of_boston_house_prices)
@@ -78,3 +87,6 @@ Hello! I'm Rakesh Bhatia, a software freelancer who specializes in web scraping,
 > - [Plotting Current and Gain Distributions with Matplotlib](https://rakeshbhatia.github.io/notes/content/data_engineering/plotting_current_and_gain_distributions_with_matplotlib)
 
 Copyright © Rakesh Bhatia, 2022. All notes available on [GitHub](https://github.com/rakeshbhatia/notes).
+
+  </body>
+</html>
