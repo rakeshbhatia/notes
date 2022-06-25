@@ -5,7 +5,7 @@
 * The `read_html()` method will be used to extract all tables from the HTML
 * The website looks like this:
 
-![proxy-table-1.png](attachment:proxy-table-1.png)
+![proxy-table-1.png](../../assets/img/proxy-table-1.png)
 
 ## Import libraries
 

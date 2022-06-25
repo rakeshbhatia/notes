@@ -11,8 +11,8 @@ import whois
 import pandas as pd
 import numpy as np
 
+# Return a boolean indicating whether a domain is registered
 def is_registered(domain_name):
-    # Return a boolean indicating whether a domain is registered
     try:
         w = whois.whois(domain_name)
     except Exception:
@@ -35,30 +35,30 @@ df["Expiration date"] = ""
 
 # Iterate over rows
 for i in range(len(df)):
-    #domain_name = df.loc[i, "Proxy type"] + "://" + df.loc[i, "Proxy address"].split(":")[0]
     domain_name = df.loc[i, "Proxy address"].split(":")[0]
+    
     # Check if proxy is registered and assign values to DataFrame accordingly
     if is_registered(domain_name):
-        #print("Domain registered")
         whois_info = whois.whois(domain_name)
+        
+        # Assign values to DataFrame
         df.loc[i, "Registered"] = "yes"
         df.loc[i, "Registrar"] = str(whois_info.registrar)
-        #print("Domain registrar:", df.loc[i, "Registrar"])
         df.loc[i, "WHOIS server"] = str(whois_info.whois_server)
-        #print("WHOIS server:", df.loc[i, "WHOIS server"])
+        
+        # For creation_date, check if a list is returned in any cases
         if type(whois_info.creation_date) == list:
             df.loc[i, "Creation date"] = whois_info.creation_date[-1].strftime("%Y-%m-%d %H:%M:%S")
         else:
             df.loc[i, "Creation date"] = str(whois_info.creation_date)
-        #print("Creation date:", df.loc[i, "Creation date"])
+            
+        # For expiration_date, check if a list is returned in any cases
         if type(whois_info.expiration_date) == list:
             df.loc[i, "Expiration date"] = whois_info.expiration_date[-1].strftime("%Y-%m-%d %H:%M:%S")
         else:
             df.loc[i, "Expiration date"] = str(whois_info.expiration_date)
-        #print("Expiration date:", df.loc[i, "Expiration date"])
     # If domain is not registered, leave everything else blank
     else:
-        #print("Domain not registered")
         df.loc[i, "Registered"] = "no"
         df.loc[i, "Registrar"] = None
         df.loc[i, "WHOIS server"] = None

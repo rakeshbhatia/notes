@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 <html>
   <head>
     <title>Data Science for Truth</title>

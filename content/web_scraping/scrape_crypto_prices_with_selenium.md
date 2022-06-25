@@ -6,7 +6,7 @@
 * The price data is stored in a table
     * Right-click the first row in the table and click "inspect"
 
-![scrape-crypto-prices-1.png](attachment:scrape-crypto-prices-1.png)
+![scrape-crypto-prices-1.png](../../assets/img/scrape-crypto-prices-1.png)
 
 ## Examine table element
 * This is a dynamic website, so the table containing the price data is rendered in JavaScript
@@ -14,20 +14,20 @@
 * Each data point (column) for a particular row is in a `<td>` element
 * We need the XPaths for both the `<tr>` and `<td>` elements to scrape the data
 
-![scrape-crypto-prices-2.png](attachment:scrape-crypto-prices-2.png)
+![scrape-crypto-prices-2.png](../../assets/img/scrape-crypto-prices-2.png)
 
 ## Extract XPath for `<tr>` element
 * Right-click the `<tr>` element and copy the XPath
 * The XPath for the `<tr>` element is /html/body/div[1]/div[3]/div[2]/div/div[4]/div[1]/table/tbody/tr[1]
 
-![scrape-crypto-prices-3.png](attachment:scrape-crypto-prices-3.png)
+![scrape-crypto-prices-3.png](../../assets/img/scrape-crypto-prices-3.png)
 
 ## Extract XPath for `<td>` element
 * Now we select one of the `<td>` elements and copy the XPath in the same manner
     * We can also easily infer the XPath for `<td>` based on the XPath for `<tr>`
 * The XPath for the `<td>` element is /html/body/div[1]/div[3]/div[2]/div/div[4]/div[1]/table/tbody/tr[1]/td[1]
 
-![scrape-crypto-prices-4.png](attachment:scrape-crypto-prices-4.png)
+![scrape-crypto-prices-4.png](../../assets/img/scrape-crypto-prices-4.png)
 
 ## Import libraries
 * Now we can begin writing our scraper

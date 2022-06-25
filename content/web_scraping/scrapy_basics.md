@@ -2,7 +2,7 @@
 
 Let's demonstrate the basics of Scrapy by scraping the homepage of this website. Note: the site has been updated since this notebook was written, so scraped content shown here will not reflect any new changes. It doesn't matter as this notebook is simply for demonstration purposes.
 
-![notes_website_home.png](attachment:notes_website_home.png)
+![notes_website_home.png](../../assets/img/notes_website_home.png)
 
 ### Import libraries
 
@@ -21,7 +21,7 @@ from scrapy.crawler import CrawlerProcess
 
 ### Inspect site source code: https://rakeshbhatia.github.io/notes/
 
-![notes_website_source.png](attachment:notes_website_source.png)
+![notes_website_source.png](../../assets/img/notes_website_source.png)
 
 ### Begin creating our scraper
 * Declare your spider class
@@ -211,7 +211,7 @@ print('Scraping completed.')
 
 ### Inspect JSON output file
 
-![scrapy_basics_xpath_json.png](attachment:scrapy_basics_xpath_json.png)
+![scrapy_basics_xpath_json.png](../../assets/img/scrapy_basics_xpath_json.png)
 
 To use JSON as our feed format, we must yield our desired data in the form of a dictionary-like object. Sure enough, we can see that our JSON data was correctly printed to the output file. We have our requisite JSON dictionary object consisting of two keys, "Post Title" and "Post URL".
 
@@ -308,6 +308,6 @@ print('Scraping completed.')
 
 ### Inspect JSON output file
 
-![scrapy_basics_css_json.png](attachment:scrapy_basics_css_json.png)
+![scrapy_basics_css_json.png](../../assets/img/scrapy_basics_css_json.png)
 
 As expected, our output file is the same as before.

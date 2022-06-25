@@ -2,7 +2,7 @@
 
 Let's demonstrate the basics of Beautiful Soup by scraping the homepage of this website. Note: the site has been updated since this notebook was written, so scraped content shown here will not reflect any new changes. It doesn't matter as this notebook is simply for demonstration purposes.
 
-![notes_website_home.png](attachment:notes_website_home.png)
+![notes_website_home.png](../../assets/img/notes_website_home.png)
 
 ### Import modules
 
