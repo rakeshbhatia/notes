@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 <h1><b>Scrape Free Proxies with Selenium</b></h1>
 
 In this tutorial, you'll learn how to scrape a list of free proxies that you can use for web scraping. One of the most reliable sources of free proxies is at [spys.one](https://spys.one/en/anonymous-proxy-list/).
