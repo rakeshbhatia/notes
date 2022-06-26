@@ -6,3 +6,9 @@ table {
   display: inline-block;
   width: auto;
 }
+.markdown-body {
+  table {
+    display: inline-block;
+    width: auto;
+  }
+}
