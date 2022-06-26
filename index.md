@@ -40,7 +40,6 @@ layout: default
   <ul>
     <li><a href="https://rakeshbhatia.github.io/notes/content/web_scraping/beautiful_soup_basics">Beautiful Soup Basics</a></li>
     <li><a href="https://rakeshbhatia.github.io/notes/content/web_scraping/scrapy_basics">Scrapy Basics</a></li>
-    <li><a href="https://rakeshbhatia.github.io/notes/content/web_scraping/selenium_basics">Selenium Basics</a></li>
     <li><a href="https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_proxy_table_with_pandas">Scrape Proxy Table with Pandas</a></li>
     <li><a href="https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_free_proxies_with_selenium">Scrape Free Proxies with Selenium</a></li>
     <li><a href="https://rakeshbhatia.github.io/notes/content/web_scraping/get_domain_information_with_whois">Get Domain Information with WHOIS</a></li>
