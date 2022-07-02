@@ -21,7 +21,7 @@ layout: default
   <h1><center><b>Python • Data Science • Machine Learning</b></center></h1>
   <h1><center><b>Technical Notes</b></center></h1>
 
-  <p>Hello! I'm Rakesh Bhatia, a software freelancer who specializes in web scraping, web development, and data science. Welcome to my portfolio. I enjoy searching for hidden truths in data, which inspired me to create this website with a variety of technical notes and projects on python, data science, machine learning, and more. Check out all of my posts below!
+  <p>Hello! I'm Rakesh Bhatia, a freelance Python programmer who specializes in web scraping, web development, and data science. Welcome to my portfolio. I enjoy searching for hidden truths in data, which inspired me to create this website with a variety of technical notes and projects on python, data science, machine learning, and more. Check out all of my posts below!
 
   Upwork profile: https://www.upwork.com/freelancers/~015f20466c7a223af3
   
