@@ -1,31 +1,31 @@
-# Scrape Attorney Emails with Selenium and Beautiful Soup – Part 1
+# Scrape CalBar with Selenium and Beautiful Soup – Part 1
 In this project I will demonstrate how to scrape the email addresses for California attorneys in a particular geographical area using the [California Bar Association (CalBar) website](https://www.calbar.ca.gov/). This is a multi-part project. In this first part, we'll extract the list of all zip codes for San Diego county from the CalBar website. They have a [demographics search feature](https://apps.calbar.ca.gov/members/demographics_search.aspx) that lists the number of attorneys for a particular county by zip code or city. We will use these zip codes in Part 2 to search for attorneys using CalBar's advanced search.
 
-![calbar-1.png](attachment:calbar-1.png)
+![calbar-1.png](../../assets/img/calbar-1.png)
 
 From this page, we'll extract all the zip codes to be used in Part 2 of this tutorial. We will select the **Breakdown by ZIP code** option and also **San Diego** from the **County** dropdown menu, as shown below. We need to get results by zip code rather than city because the CalBar search feature only lists a maximum of 500 results for each search. Searching by zip code will allow us to (mostly) stay under this 500 limit, unless there are more than 500 attorneys associated with a particular zip code. For these instances, we can make our search more specific by searching by last initial in addition to zip code, but we'll save those details for Part 2.
 
-![calbar-2.png](attachment:calbar-2.png)
+![calbar-2.png](../../assets/img/calbar-2.png)
 
 We need to inspect the **County** dropdown menu, the **Breakdown by ZIP code** element, and the **Search** button to see how we can manipulate these in Selenium. The **Breakdown by ZIP code** element is an `input` element with an `id` value of `rbZipCode`.
 
-![calbar-3.png](attachment:calbar-3.png)
+![calbar-3.png](../../assets/img/calbar-3.png)
 
 The **County** dropdown menu is a `select` element with an `id` value of `ddlCounty`.
 
-![calbar-4.png](attachment:calbar-4.png)
+![calbar-4.png](../../assets/img/calbar-4.png)
 
 Lastly, the **Search** button is an `input` element with an `id` value of `btnSubmit`.
 
-![calbar-5.png](attachment:calbar-5.png)
+![calbar-5.png](../../assets/img/calbar-5.png)
 
 We can see what happens after manually selecting these options and running the search. The results page lists a table of all zip codes in San Diego county and the number of attorneys associated with each.
 
-![calbar-6.png](attachment:calbar-6.png)
+![calbar-6.png](../../assets/img/calbar-6.png)
 
 We can inspect the list of zip codes to see that they are indeed stored in a `table` element. Once we have loaded the dynamically-rendered HTML, we can simply extract this table using the pandas utility function `read_html` and then save it to a DataFrame.
 
-![calbar-7.png](attachment:calbar-7.png)
+![calbar-7.png](../../assets/img/calbar-7.png)
 
 Let's import the required libraries and create a function to instantiate the driver. We'll use undetected-chromedriver, a special version of chromedriver with enhanced bypassing of anti-scraping measures, which you can install using the following command:
 
