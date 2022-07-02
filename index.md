@@ -21,7 +21,11 @@ layout: default
   <h1><center><b>Python • Data Science • Machine Learning</b></center></h1>
   <h1><center><b>Technical Notes</b></center></h1>
 
-  <p>Hello! I'm Rakesh Bhatia, a software freelancer who specializes in web scraping, web development, and data science. Welcome to my portfolio. I enjoy searching for hidden truths in data, which inspired me to create this website with a variety of technical notes and projects on python, data science, machine learning, and more. Check out all of my posts below!</p>
+  <p>Hello! I'm Rakesh Bhatia, a software freelancer who specializes in web scraping, web development, and data science. Welcome to my portfolio. I enjoy searching for hidden truths in data, which inspired me to create this website with a variety of technical notes and projects on python, data science, machine learning, and more. Check out all of my posts below!
+
+  Upwork profile: https://www.upwork.com/freelancers/~015f20466c7a223af3
+  
+  </p>
 
   <h3><b>Python</b></h3>
   <ul>
@@ -48,6 +52,7 @@ layout: default
     <li><a href="https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_fanduel_nba_player_stats_with_scrapy">Scrape Fanduel NBA Player Stats with Scrapy</a></li>
     <li><a href="https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_nba_player_rpm_stats_from_espn_with_lxml">Scrape NBA Player RPM Stats from ESPN with lxml</a></li>
     <li><a href="https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_nba_player_game_logs_from_espn_with_lxml">Scrape NBA Player Game Logs from ESPN with lxml</a></li>
+    <li><a href="https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_attorney_emails_with_selenium_and_beautifulsoup_part1">Scrape Attorney Emails with Selenium and Beautiful Soup - Part 1</a></li>
   </ul>
 
   <h3><b>Data Science</b></h3>
