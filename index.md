@@ -4,7 +4,7 @@ layout: default
 
 <html>
   <head>
-    <title>Data Science for Truth</title>
+    <title>Data Science Mercenary</title>
     <style>
       ul {
         columns: 2;
@@ -18,10 +18,7 @@ layout: default
   <h1><center><b>Python • Data Science • Machine Learning</b></center></h1>
   <h1><center><b>Technical Notes</b></center></h1>
 
-  <p>Hello! I'm Rakesh Bhatia, a freelance Python programmer who specializes in web scraping and data extraction. Welcome to my portfolio. I enjoy searching for hidden truths in data, which inspired me to create this website with a variety of technical notes and projects on python, data science, machine learning, and more. Check out all of my posts below!</p>
-
-  <p><a href="https://www.upwork.com/freelancers/~015f20466c7a223af3">Upwork profile</a></p>
-  <p><a href="https://www.linkedin.com/in/rakeshbhatia87/">LinkedIn profile</a></p>
+  <p>Hello! I'm Rakesh Bhatia, the data science mercenary. Welcome to my portfolio. I'm a freelance Python programmer who specializes in web scraping and data extraction. My passion for working with data inspired me to create this website with a variety of technical notes and projects on python, data science, machine learning, and more. Check out all of my posts below!</p>
 
   <h3><b>Python</b></h3>
   <ul>
@@ -49,6 +46,7 @@ layout: default
     <li><a href="https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_nba_player_rpm_stats_from_espn_with_lxml">Scrape NBA Player RPM Stats from ESPN with lxml</a></li>
     <li><a href="https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_nba_player_game_logs_from_espn_with_lxml">Scrape NBA Player Game Logs from ESPN with lxml</a></li>
     <li><a href="https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_calbar_with_selenium_and_beautifulsoup_part1">Scrape CalBar with Selenium and Beautiful Soup - Part 1</a></li>
+    <li><a href="https://rakeshbhatia.github.io/notes/content/web_scraping/scrape_stock_options_data_with_beautifulsoup_and_embedded_json">Scrape Stock Options Data with BeautifulSoup and Embedded JSON</a></li>
   </ul>
 
   <h3><b>Data Science</b></h3>
@@ -68,6 +66,10 @@ layout: default
     <li><a href="https://rakeshbhatia.github.io/notes/content/data_engineering/plotting_s_parameter_distributions_with_matplotlib">Plotting S Parameter Distributions with Matplotlib</a></li>
     <li><a href="https://rakeshbhatia.github.io/notes/content/data_engineering/plotting_current_and_gain_distributions_with_matplotlib">Plotting Current and Gain Distributions with Matplotlib</a></li>
   </ul>
+
+  <p>To reach out about freelancing opportunities, feel free to contact me at any of the links below:</p>
+  <p style="text-align: center;"><a href="https://www.upwork.com/freelancers/~015f20466c7a223af3">Upwork profile</a></p>
+  <p style="text-align: center;"><a href="https://www.linkedin.com/in/rakeshbhatia87/">LinkedIn profile</a></p>
 
   <p>Copyright © Rakesh Bhatia, 2022. All notes available on <a href="https://github.com/rakeshbhatia/notes">GitHub.</a></p>
 
