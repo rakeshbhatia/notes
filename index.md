@@ -4,7 +4,7 @@ layout: default
 
 <html>
   <head>
-    <title>Data Science Mercenary</title>
+    <title>Data Science Portfolio</title>
     <style>
       ul {
         columns: 2;
@@ -18,7 +18,7 @@ layout: default
   <h1><center><b>Python • Data Science • Machine Learning</b></center></h1>
   <h1><center><b>Technical Notes</b></center></h1>
 
-  <p>Hello! I'm Rakesh Bhatia, the data science mercenary. Welcome to my portfolio. I'm a freelance Python programmer who specializes in web scraping and data extraction. My passion for working with data inspired me to create this website with a variety of technical notes and projects on python, data science, machine learning, and more. Check out all of my posts below!</p>
+  <p>Hello! I'm Rakesh Bhatia, and welcome to my portfolio. I'm a freelance Python programmer who specializes in web scraping, data entry, and data extraction. I also have extensive experience with using spreadsheets for data analysis. My passion for working with data inspired me to create this website with a variety of technical notes and projects on python, data science, machine learning, and more. Check out all of my posts below!</p>
 
   <h3><b>Python</b></h3>
   <ul>
